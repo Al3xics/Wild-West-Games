@@ -5,7 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+  - enabled: 0
+    path: Assets/Pixel Adventure 1/Scenes/Demo.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Memory/Memory.unity
+    guid: 8a3fd67d2cb7aba45b9dae5834170bb9
+  m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: a7350ff2e9119804888582a6c5c3da85, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d7e5bcff96f2177448fea582655edb84, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 49c1f30f37450614ea5a7ebadd02b65e, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 332e87e448021654181f55370a19b8dc, type: 2}
