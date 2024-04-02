@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] GameObject cockroachs;
+    [SerializeField] GameObject cockroachPrefab;
     [SerializeField] int cockroachsAmount = 1;
 
     private void Start()
     {
         for (int i = 0; i < cockroachsAmount; i++)
         {
-            GameObject cockroach = Instantiate(cockroachs);
+            GameObject cockroach = Instantiate(cockroachPrefab, new Vector2 (0.0f,0.0f), Quaternion.identity );
         }
     }
 
@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
             Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
             if(colliderHit != null && colliderHit.GetComponent<Cockroach>()) 
             {
-                colliderHit.GetComponent<Cockroach>().SetDeath(false);
+                colliderHit.GetComponent<Cockroach>().SetAlive(false);
             }
             
 

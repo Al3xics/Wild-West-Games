@@ -47,8 +47,9 @@ public class Cockroach : MonoBehaviour
         }
     }
 
-    public void SetDeath(bool death)
+    public void SetAlive(bool death)
     {
         alive = death;
+        gameObject.SetActive(false);
     }
 }
