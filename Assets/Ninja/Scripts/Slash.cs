@@ -8,7 +8,6 @@ public class Slash : MonoBehaviour
     [SerializeField] private float forceToSlash;
     private RaycastHit2D hit;
     [SerializeField] GameObject trail;
-    private GameObject trailInstance;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +19,7 @@ public class Slash : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            trailInstance = Instantiate(trail);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            Destroy(trailInstance);
+            Instantiate(trail);
         }
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -36,13 +30,21 @@ public class Slash : MonoBehaviour
                 if (Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
                     hit = Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                    if (hit.collider.gameObject != null && hit.collider.gameObject.layer == 3)
+                    if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Fruit")
                     {
                         Destroy(hit.collider.gameObject);
                     }
+                    if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Bomb")
+                    {
+                        Destroy(hit.collider.gameObject);
+                        foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
+                        {
+                            go.GetComponent<LvlManager>().SetDead(true);
+                        }
+                    }
                 }
             }
+            lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

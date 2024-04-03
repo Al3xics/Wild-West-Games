@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit_Spawner : MonoBehaviour
+public class Bomb_Spawner : MonoBehaviour
 {
-    [SerializeField] private GameObject Fruit;
+    [SerializeField] private GameObject Bomb;
     private bool timer = true;
     private bool isRunning = false;
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class Fruit_Spawner : MonoBehaviour
     private IEnumerator Spawn(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Instantiate(Fruit, gameObject.transform.position, gameObject.transform.rotation);
+        Instantiate(Bomb, gameObject.transform.position, gameObject.transform.rotation);
         timer = true;
     }
 

@@ -14,5 +14,10 @@ public class Trail : MonoBehaviour
     void Update()
     {
         gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Destroy(gameObject);
+        }
     }
 }
