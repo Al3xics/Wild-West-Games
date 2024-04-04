@@ -15,6 +15,8 @@ public class Cockroach : MonoBehaviour
 
     [SerializeField] private bool alive = true;
 
+    [SerializeField] private bool toCatch = false;
+
     private void Start()
     {
         background = GameObject.Find("/Background");
@@ -23,6 +25,10 @@ public class Cockroach : MonoBehaviour
         maxPosition = localSize * 0.5f;
 
         nextPosition = GetRandomPosition();
+        if (toCatch)
+        {
+            GetComponent<SpriteRenderer>().color = Color.blue;
+        }
     }
     private Vector2 GetRandomPosition()
     {
@@ -51,5 +57,15 @@ public class Cockroach : MonoBehaviour
     {
         alive = death;
         gameObject.SetActive(false);
+    }
+
+    public void SetCatch()
+    {
+        toCatch = true;
+    }
+
+    public bool GetCatch()
+    {
+        return toCatch;
     }
 }
