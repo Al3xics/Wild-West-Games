@@ -4,46 +4,82 @@ using UnityEngine;
 
 public class LvlManager : MonoBehaviour
 {
-    [SerializeField] private bool dead = false;
+    [SerializeField] private bool end = false;
     [SerializeField] private bool isRunning = false;
-    private Fruit_Spawner spawner;
+    [SerializeField] private bool win = false;
+    [SerializeField] private int lvl;
+    private bool timer = true;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SetLvl(lvl);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dead)
+        if (end)
         {
             isRunning = false;
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
                 Destroy(go);
             }
+
+            if(win)
+            {
+                Debug.Log("WIN");
+            }
+            else
+            {
+                Debug.Log("NOPE");
+            }
         }
         if (isRunning)
         {
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
-                spawner = go.GetComponent<Fruit_Spawner>();
-                spawner.SetRunning(true);
+                go.GetComponent<Spawner>().SetRunning(true);
+            }
+            if (timer)
+            {
+                timer = false;
+                StartCoroutine(Timing(20));
             }
         }
         else
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
-                spawner = go.GetComponent<Fruit_Spawner>();
-                spawner.SetRunning(false);
+                go.GetComponent<Spawner>().SetRunning(false);
             }
         }
     }
 
-    public void SetDead(bool b)
+    private IEnumerator Timing(float waitTime)
     {
-        dead = b;
+        yield return new WaitForSeconds(waitTime);
+        end = true;
+        win = true;
+        timer = true;
+    }
+
+    public void SetEnd(bool b)
+    {
+        end = b;
+    }
+
+    public void SetLvl(int i)
+    {
+        lvl = i;
+        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
+        {
+            go.GetComponent<Spawner>().SetLvl(lvl);
+        }
+    }
+
+    public int GetLvl()
+    {
+        return lvl; 
     }
 }

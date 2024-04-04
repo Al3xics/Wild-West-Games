@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb_Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
+    [SerializeField] private GameObject Fruit;
     [SerializeField] private GameObject Bomb;
     private bool timer = true;
     private bool isRunning = false;
@@ -21,7 +22,7 @@ public class Bomb_Spawner : MonoBehaviour
             if (timer)
             {
                 timer = false;
-                StartCoroutine(Spawn(Random.Range(1, 5)));
+                StartCoroutine(Spawn(Random.Range(4-lvl, 9-lvl)));
             }
         }
     }
@@ -29,7 +30,21 @@ public class Bomb_Spawner : MonoBehaviour
     private IEnumerator Spawn(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        Instantiate(Bomb, gameObject.transform.position, gameObject.transform.rotation);
+        if (lvl <= 1)
+        {
+            Instantiate(Fruit, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        else
+        {
+            if (Random.Range(1, 10) <= 10-lvl)
+            {
+                Instantiate(Fruit, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            else
+            {
+                Instantiate(Bomb, gameObject.transform.position, gameObject.transform.rotation);
+            }
+        }
         timer = true;
     }
 

@@ -25,7 +25,7 @@ public class Depop : MonoBehaviour
                 Destroy(collision.gameObject);
                 foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                 {
-                    go.GetComponent<LvlManager>().SetDead(true);
+                    go.GetComponent<LvlManager>().SetEnd(true);
                 }
             }
             else if (collision.gameObject.tag == "Bomb")
