@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class compteurBtn : MonoBehaviour
 {
     [SerializeField] Text numberTxt;
+    [SerializeField] NumberManager numberManager;
 
+    private bool win = false;
     private int number = 0;
     private bool isPressed = false;
     private bool disabled = false;
@@ -25,8 +27,23 @@ public class compteurBtn : MonoBehaviour
                 StartCoroutine(time(0.08f));
             }
         }
+
+        if(disabled)
+        {
+            if(number >= numberManager.randomNumber && number <= numberManager.ValueMax)
+            {
+                Debug.Log("GG");
+            }
+
+            else
+            {
+                Debug.Log("FF");
+            }
+        }
     }
 
+
+    // void OnTouchDown()
     void OnMouseDown()
     {
         if(disabled == false)
@@ -35,6 +52,7 @@ public class compteurBtn : MonoBehaviour
         }  
     }
 
+    // void OnTouchUp()
     void OnMouseUp()
     {
         isPressed = false;
@@ -47,4 +65,5 @@ public class compteurBtn : MonoBehaviour
         yield return new WaitForSeconds(sec);
         timer = true;
     }
+
 }

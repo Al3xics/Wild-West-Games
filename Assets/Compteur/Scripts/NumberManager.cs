@@ -8,13 +8,21 @@ public class NumberManager : MonoBehaviour
     [SerializeField] Text NumberMin;
     [SerializeField] Text NumberMax;
 
-    [SerializeField] string NumberValueMin;
-    [SerializeField] string NumberValueMax;
+    [SerializeField] int RandValueMin;
+    [SerializeField] int RandValueMax;
+    [SerializeField] int interval;
+
+    [HideInInspector] public int ValueMax;
+    [HideInInspector] public int randomNumber;
 
 
-    void Update()
+    void Start()
     {
-        NumberMin.text = NumberValueMin.ToString();
-        NumberMax.text = NumberValueMax.ToString();
+        randomNumber = Random.Range(RandValueMin, RandValueMax);
+        NumberMin.text = randomNumber.ToString();
+        
+        ValueMax = randomNumber + interval;
+        NumberMax.text = ValueMax.ToString();
+
     }
 }

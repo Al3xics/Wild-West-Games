@@ -403,8 +403,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberMin: {fileID: 1709182903}
   NumberMax: {fileID: 1086570818}
-  NumberValueMin: 5
-  NumberValueMax: 10
+  RandValueMin: 1
+  RandValueMax: 30
+  interval: 10
+  ValueMax: 0
+  randomNumber: 0
 --- !u!1 &1068436849
 GameObject:
   m_ObjectHideFlags: 0
@@ -662,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberTxt: {fileID: 1609151463}
+  numberManager: {fileID: 899521255}
 --- !u!61 &1346843926
 BoxCollider2D:
   m_ObjectHideFlags: 0
