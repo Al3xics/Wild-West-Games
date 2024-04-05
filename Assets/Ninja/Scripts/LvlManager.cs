@@ -5,10 +5,11 @@ using UnityEngine;
 public class LvlManager : MonoBehaviour
 {
     [SerializeField] private bool end = false;
-    [SerializeField] private bool isRunning = false;
+    [SerializeField] private bool isRunning = true;
     [SerializeField] private bool win = false;
     [SerializeField] private int lvl;
-    private bool timer = true;
+    [SerializeField] private int time = 10;
+    private bool timerBool = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,10 +42,10 @@ public class LvlManager : MonoBehaviour
             {
                 go.GetComponent<Spawner>().SetRunning(true);
             }
-            if (timer)
+            if (timerBool)
             {
-                timer = false;
-                StartCoroutine(Timing(20));
+                timerBool = false;
+                StartCoroutine(Timing(time));
             }
         }
         else
@@ -61,7 +62,7 @@ public class LvlManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         end = true;
         win = true;
-        timer = true;
+        timerBool = true;
     }
 
     public void SetEnd(bool b)

@@ -469,6 +469,7 @@ MonoBehaviour:
   isRunning: 0
   win: 0
   lvl: 4
+  time: 10
 --- !u!1001 &1080460694
 PrefabInstance:
   m_ObjectHideFlags: 0
