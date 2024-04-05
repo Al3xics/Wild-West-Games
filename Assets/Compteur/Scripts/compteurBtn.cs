@@ -7,30 +7,23 @@ public class compteurBtn : MonoBehaviour
 {
     [SerializeField] Text numberTxt;
     [SerializeField] NumberManager numberManager;
+    [SerializeField] tube tube;
+    
+    [HideInInspector]  public bool isPressed = false;
 
-    private bool win = false;
-    private int number = 0;
-    private bool isPressed = false;
     private bool disabled = false;
-    private bool timer = true;
 
 
     void Update()
     {
-        numberTxt.text = number.ToString();
+        numberManager.number = tube.value;
 
-        if (isPressed)
-        {
-            if(timer)
-            {
-                timer = false;
-                StartCoroutine(time(0.08f));
-            }
-        }
+        numberTxt.text = numberManager.number.ToString();
+
 
         if(disabled)
         {
-            if(number >= numberManager.randomNumber && number <= numberManager.ValueMax)
+            if(numberManager.number >= numberManager.randomNumber && numberManager.number <= numberManager.ValueMax)
             {
                 Debug.Log("GG");
             }
@@ -43,27 +36,26 @@ public class compteurBtn : MonoBehaviour
     }
 
 
-    // void OnTouchDown()
     void OnMouseDown()
     {
-        if(disabled == false)
+        if (disabled == false)
         {
             isPressed = true;
-        }  
+        }
+
     }
 
-    // void OnTouchUp()
+ 
     void OnMouseUp()
     {
         isPressed = false;
-        disabled = true;
-    }
+        
+         if(numberManager.stopTouch)
+         {
+            disabled = true;
+         }
 
-    private IEnumerator time(float sec)
-    {
-        number++;
-        yield return new WaitForSeconds(sec);
-        timer = true;
+        
     }
 
 }

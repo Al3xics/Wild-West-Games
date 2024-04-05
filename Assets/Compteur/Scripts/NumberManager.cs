@@ -10,7 +10,10 @@ public class NumberManager : MonoBehaviour
 
     [SerializeField] int RandValueMin;
     [SerializeField] int RandValueMax;
-    [SerializeField] int interval;
+
+    public int interval;
+    public float number;
+    public bool stopTouch = false;
 
     [HideInInspector] public int ValueMax;
     [HideInInspector] public int randomNumber;
@@ -23,6 +26,15 @@ public class NumberManager : MonoBehaviour
         
         ValueMax = randomNumber + interval;
         NumberMax.text = ValueMax.ToString();
+
+    }
+
+    private void Update()
+    {
+        if(number> ValueMax || number >= randomNumber && number <= ValueMax)
+        {
+            stopTouch = true;
+        }
 
     }
 }
