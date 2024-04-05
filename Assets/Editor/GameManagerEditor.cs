@@ -23,7 +23,11 @@ public class GameManagerEditor : Editor
         }
         if (GUILayout.Button("Restart"))
         {
-            myScript.LoadNextMiniGame();
+            myScript.RestartGame();
+        }
+        if (GUILayout.Button("Reset data"))
+        {
+            myScript.ResetAllData();
         }
 
     }

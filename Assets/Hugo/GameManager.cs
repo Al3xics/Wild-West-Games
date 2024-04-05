@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private int NumberOfMiniGame = 5;
+    [SerializeField] private int NumberOfMiniGame = 0;
     [SerializeField] private int currentMiniGame = -1;
 
 
@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            games = new List<bool>();
+            for (int i = 0; i < NumberOfMiniGame; i++)
+            {
+                games.Add(false);
+            }
             LoadData();
         }
         else
@@ -115,13 +120,14 @@ public class GameManager : MonoBehaviour
         difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
         hightScore = PlayerPrefs.GetInt("HighScore", 0);
         score = 0;
-        games = new List<bool>(NumberOfMiniGame);
         string a = "";
         for (int i = 0; i < NumberOfMiniGame; i++)
         {
             a += '0';
         }
-        string pref = PlayerPrefs.GetString("MiniGame", a);
+        string pref = PlayerPrefs.GetString("MiniGame");
+        if (pref == "") 
+            pref = a;
         for (int i = 0; i < NumberOfMiniGame; i++)
         {
             if (pref[i] == 0)
