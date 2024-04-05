@@ -4,11 +4,10 @@ using UnityEngine;
 public class Gameplay : MonoBehaviour
 {
     [SerializeField] List<Sprite> listItem = new List<Sprite>();
-    [SerializeField]private GameObject[] bloc;
+    private GameObject[] bloc;
     private int returnCard = 0;
     private GameObject firstCard, secondCard;
-    private List<string> listFound = new List<string>();    
-    
+    private List<string> listFound = new List<string>();
 
     // Start is called before the first frame update
     void Awake()
@@ -69,15 +68,23 @@ public class Gameplay : MonoBehaviour
 
     private void Shuffle()
     {
-        List<Sprite> listTemp = listItem;
-        listTemp.AddRange(listItem);   
+        List<Sprite> listTemp = new List<Sprite>(listItem);
+        listTemp.AddRange(listItem);
 
-        for (int i = 0; i < bloc.Length; i++) 
+        for (int i = 0; i < bloc.Length; i++)
         {
             int rnd = Random.Range(0, listTemp.Count);
             SpriteRenderer target = bloc[i].transform.Find("Sprite").GetComponent<SpriteRenderer>();
             target.sprite = listTemp[rnd];
-            listTemp.RemoveAt(rnd); 
+            listTemp.RemoveAt(rnd);
+            target.enabled = false;
+        }
+
+        // Assign sprites to cards
+        for (int i = 0; i < bloc.Length; i++)
+        {
+            SpriteRenderer target = bloc[i].GetComponent<SpriteRenderer>();
+            target.sprite = listTemp[i % listTemp.Count]; // Cycle through the list of sprites
             target.enabled = false;
         }
     }
