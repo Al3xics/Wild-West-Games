@@ -344,16 +344,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cockroachPrefab: {fileID: 5018930562908499867, guid: f835f87ddfb07e747a9949a163528d4b, type: 3}
-  cockroachsAmount: 50
-  cockroachsToWin: 8
+  cockroachsAmount: 10
+  cockroachsToWin: 2
   cockroachsDead: 0
   spawnNumbers: 
   winText: {fileID: 1178851215}
   loseText: {fileID: 1321630072}
-  timeLimit: 10
+  timeLimit: 100
   timer: 0
   Timerflow: 1
   timerText: {fileID: 1340044217}
+  difficultyLevel: 3
 --- !u!1 &1178851213
 GameObject:
   m_ObjectHideFlags: 0

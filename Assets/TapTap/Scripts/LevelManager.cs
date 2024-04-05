@@ -30,31 +30,31 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         //UpdateDifficulty
-        switch (difficultyLevel)
-        {
-            case 1: case 2: case 3: case 4:
-                {
-                    cockroachsAmount = 4 * difficultyLevel;
-                    cockroachsToWin = 1 * difficultyLevel;
-                    break;
-                }
-            case 5: case 6: case 7: case 8:
-                {
-                    cockroachsAmount = 20;
-                    cockroachsToWin = 4;
-                    timeLimit -= 2 * (difficultyLevel-4);
-                    break;
-                }
-            default:
-                {
-                    cockroachsAmount = 20;
-                    cockroachsToWin = 4;
-                    timeLimit = 4;
-                    break; 
-                }
+        //switch (difficultyLevel)
+        //{
+        //    case 1: case 2: case 3: case 4:
+        //        {
+        //            cockroachsAmount = 4 * difficultyLevel;
+        //            cockroachsToWin = 1 * difficultyLevel;
+        //            break;
+        //        }
+        //    case 5: case 6: case 7: case 8:
+        //        {
+        //            cockroachsAmount = 20;
+        //            cockroachsToWin = 4;
+        //            timeLimit -= 2 * (difficultyLevel-4);
+        //            break;
+        //        }
+        //    default:
+        //        {
+        //            cockroachsAmount = 20;
+        //            cockroachsToWin = 4;
+        //            timeLimit = 4;
+        //            break; 
+        //        }
 
 
-        }
+        //}
 
 
         //if(difficultyLevel <= 4)
