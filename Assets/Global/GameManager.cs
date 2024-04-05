@@ -126,6 +126,8 @@ public class GameManager : MonoBehaviour
             a += '0';
         }
         string pref = PlayerPrefs.GetString("MiniGame");
+        if (pref.Length != NumberOfMiniGame)
+            pref = "";
         if (pref == "") 
             pref = a;
         for (int i = 0; i < NumberOfMiniGame; i++)
