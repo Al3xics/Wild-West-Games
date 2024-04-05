@@ -19,14 +19,56 @@ public class LevelManager : MonoBehaviour
     [SerializeField] TextBlock winText;
     [SerializeField] TextBlock loseText;
 
-    [SerializeField] float timeLimit = 60f;
+    [SerializeField] float timeLimit = 11f;
     [SerializeField] float timer;
     [SerializeField] bool Timerflow = true;
     [SerializeField] TextBlock timerText;
 
+    [SerializeField] int difficultyLevel = 1;
+
 
     private void Start()
     {
+        //UpdateDifficulty
+        switch (difficultyLevel)
+        {
+            case 1: case 2: case 3: case 4:
+                {
+                    cockroachsAmount = 4 * difficultyLevel;
+                    cockroachsToWin = 1 * difficultyLevel;
+                    break;
+                }
+            case 5: case 6: case 7: case 8:
+                {
+                    cockroachsAmount = 20;
+                    cockroachsToWin = 4;
+                    timeLimit -= 2 * (difficultyLevel-4);
+                    break;
+                }
+            default:
+                {
+                    cockroachsAmount = 20;
+                    cockroachsToWin = 4;
+                    timeLimit = 4;
+                    break; 
+                }
+
+
+        }
+
+
+        //if(difficultyLevel <= 4)
+        //{
+        //    cockroachsAmount = 4 * difficultyLevel;
+        //    cockroachsToWin = 1 * difficultyLevel;
+        //}
+        //else if(difficultyLevel <= 8 )
+        //{
+        //    cockroachsAmount = 20;
+        //    cockroachsToWin = 4;
+        //    timeLimit -= 1 * difficultyLevel / 2;
+        //}
+
         //SpawnCockroach
         if (cockroachPrefab != null)
         {
@@ -96,6 +138,7 @@ public class LevelManager : MonoBehaviour
         {
             Vector2 touchPosition = Input.GetTouch(0).position;
             Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
             Collider2D colliderHit = Physics2D.OverlapPoint(worldPosition);
             if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
             {

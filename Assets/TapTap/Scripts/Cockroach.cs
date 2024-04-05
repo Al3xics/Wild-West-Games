@@ -16,7 +16,7 @@ public class Cockroach : MonoBehaviour
     [SerializeField] private bool alive = true;
 
     [SerializeField] private bool toCatch = false;
-
+    [SerializeField] private Rigidbody2D rb;
     private void Start()
     {
         background = GameObject.Find("/Background");
@@ -25,6 +25,10 @@ public class Cockroach : MonoBehaviour
         maxPosition = localSize * 0.5f;
 
         nextPosition = GetRandomPosition();
+        rb = GetComponent<Rigidbody2D>();
+
+
+        //Change Color
         if (toCatch)
         {
             GetComponent<SpriteRenderer>().color = Color.blue;
@@ -41,10 +45,10 @@ public class Cockroach : MonoBehaviour
     {
         if (alive)
         {
-            float distance = Vector2.Distance(transform.position, nextPosition);
+            float distance = Vector2.Distance(rb.position, nextPosition);
             if (distance >= 0.2f) 
             {
-                transform.position = Vector2.MoveTowards(transform.position, nextPosition, speed * Time.deltaTime);
+                rb.position = Vector2.MoveTowards(rb.position, nextPosition, speed * Time.deltaTime);
             }
             else
             {
