@@ -39,7 +39,7 @@ public class Slash : MonoBehaviour
                         Destroy(hit.collider.gameObject);
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                         {
-                            go.GetComponent<LvlManager>().SetEnd(true);
+                            go.GetComponent<NinjaLvlManager>().SetEnd(true);
                         }
                     }
                 }

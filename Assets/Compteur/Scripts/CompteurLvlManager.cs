@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LvlManager : MonoBehaviour
+public class CompteurLvlManager : MonoBehaviour
 {
     [SerializeField] int lvl;
     [SerializeField] NumberManager numberManager;

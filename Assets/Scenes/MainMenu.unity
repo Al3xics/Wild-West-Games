@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6170ee0c1c73cf4a81366aab909f21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumberOfMiniGame: 1
+  NumberOfMiniGame: 4
   currentMiniGame: -1
   hightScore: 0
   life: 3
