@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: 0
-  isRunning: 0
+  isRunning: 1
   win: 0
   lvl: 4
   time: 10
