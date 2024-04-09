@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    enum State
+    public enum State
     {
         None,
         WinMiniGame,
@@ -16,12 +16,23 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    [SerializeField] private State currentState;
+    private State currentState;
+
+    public State CurrentState
+    {
+        get { return currentState; }
+    }
+
     [SerializeField] private int NumberOfMiniGame = 0;
     [SerializeField] private int currentMiniGame = -1;
 
+    [SerializeField] private float difficulty = 0;
 
-    private float difficulty;
+    public float Difficulty
+    {
+        get { return difficulty; }
+    }
+
     [SerializeField] private int hightScore;
     [SerializeField] private int life = 3;
     private int score;
@@ -73,6 +84,8 @@ public class GameManager : MonoBehaviour
     {
         score += 1;
         currentState = State.WinMiniGame;
+        if (difficulty < 100)
+            difficulty += 1;
         //loadscene between menu
         LoadNextMiniGame();
     }
@@ -109,6 +122,8 @@ public class GameManager : MonoBehaviour
             //loadscene between menu
             return false;
         }
+        if (difficulty < 100)
+            difficulty += 1;
         currentState = State.LoseMiniGame;
         //loadscene between menu
         return true;
