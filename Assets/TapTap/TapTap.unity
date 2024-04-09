@@ -489,6 +489,7 @@ MonoBehaviour:
   Timerflow: 1
   timerText: {fileID: 1340044217}
   difficultyLevel: 15
+  TouchInput: 0
 --- !u!1 &1178851213
 GameObject:
   m_ObjectHideFlags: 0

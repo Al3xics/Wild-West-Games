@@ -26,13 +26,14 @@ public class LevelManager : MonoBehaviour
     [SerializeField] TextBlock timerText;
 
     [SerializeField] int difficultyLevel = 1;
-
+    [SerializeField] bool TouchInput = true;
 
     private void Start()
     {
-        //float currentDifficultyLevel = GameManager.Instance.GetDifficulty() / 10;
-        //difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
-        
+        float currentDifficultyLevel = GameManager.Instance.Difficulty / 10;
+        difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
+        if(difficultyLevel < 1) difficultyLevel = 1;
+
         if (difficultyLevel <= 4)
         {
             cockroachsAmount = 4 * difficultyLevel;
@@ -97,50 +98,51 @@ public class LevelManager : MonoBehaviour
             UpdateTimerUI();
 
         }
-        //Mouse Input
-        //if (Input.GetMouseButtonDown(0) && timer > 0)
-        //{
-        //    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
-        //    if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
-        //    {
-        //        if (colliderHit.GetComponent<Cockroach>().GetCatch())
-        //        {
-        //            colliderHit.GetComponent<Cockroach>().SetAlive(false);
-        //            cockroachsDead++;
-        //        }
-        //        else
-        //        {
-        //            EndScreen(GameState.Lose);
-        //        }
-        //    }
-        //}
-
-        //TouchInput
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && timer > 0)
+        if (TouchInput)
         {
-            Vector2 touchPosition = Input.GetTouch(0).position;
-            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-            Collider2D colliderHit = Physics2D.OverlapPoint(worldPosition);
-            if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
+            //TouchInput
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && timer > 0)
             {
-                if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                Vector2 touchPosition = Input.GetTouch(0).position;
+                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
+                Collider2D colliderHit = Physics2D.OverlapPoint(worldPosition);
+                if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
                 {
-                    colliderHit.GetComponent<Cockroach>().SetAlive(false);
-                    cockroachsDead++;
-                }
-                else
-                {
-                    EndScreen(GameState.Lose);
+                    if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                    {
+                        colliderHit.GetComponent<Cockroach>().SetAlive(false);
+                        cockroachsDead++;
+                    }
+                    else
+                    {
+                        EndScreen(GameState.Lose);
+                    }
                 }
             }
 
-            //test
-            else
+        }
+        else
+        {
+            //Mouse Input
+            if (Input.GetMouseButtonDown(0) && timer > 0)
             {
-
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
+                if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
+                {
+                    if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                    {
+                        colliderHit.GetComponent<Cockroach>().SetAlive(false);
+                        cockroachsDead++;
+                    }
+                    else
+                    {
+                        EndScreen(GameState.Lose);
+                    }
+                }
             }
+
         }
 
         //WinCheck
