@@ -9,7 +9,7 @@ public class compteurBtn : MonoBehaviour
     [SerializeField] NumberManager numberManager;
     [SerializeField] tube tube;
     
-    [HideInInspector]  public bool isPressed = false;
+    [HideInInspector]  public bool isPressed = false; 
 
     private bool disabled = false;
 

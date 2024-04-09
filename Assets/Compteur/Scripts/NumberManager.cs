@@ -8,15 +8,19 @@ public class NumberManager : MonoBehaviour
     [SerializeField] Text NumberMin;
     [SerializeField] Text NumberMax;
 
-    [SerializeField] int RandValueMin;
-    [SerializeField] int RandValueMax;
+    [SerializeField] float RandValueMin;
+    [SerializeField] float RandValueMax;
+    [SerializeField] float newValueMax;
 
-    public int interval;
+    [SerializeField] Image ImageMin;
+    [SerializeField] Image ImageMax;
+
+    public float interval;
     public float number;
     public bool stopTouch = false;
 
-    [HideInInspector] public int ValueMax;
-    [HideInInspector] public int randomNumber;
+    [HideInInspector] public float ValueMax;
+    [HideInInspector] public float randomNumber;
 
 
     void Start()
@@ -27,11 +31,16 @@ public class NumberManager : MonoBehaviour
         ValueMax = randomNumber + interval;
         NumberMax.text = ValueMax.ToString();
 
+        ImageMin.fillAmount = randomNumber / 100;
+
+        newValueMax = 100 - ValueMax;
+        ImageMax.fillAmount = newValueMax / 100;
     }
 
     private void Update()
     {
-        if(number> ValueMax || number >= randomNumber && number <= ValueMax)
+
+        if (number> ValueMax || number >= randomNumber && number <= ValueMax)
         {
             stopTouch = true;
         }
