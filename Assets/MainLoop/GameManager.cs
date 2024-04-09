@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int NumberOfMiniGame = 0;
     [SerializeField] private int currentMiniGame = -1;
 
-    private float difficulty;
+    [SerializeField] private float difficulty = 0;
 
     public float Difficulty
     {
@@ -84,6 +84,8 @@ public class GameManager : MonoBehaviour
     {
         score += 1;
         currentState = State.WinMiniGame;
+        if (difficulty < 100)
+            difficulty += 1;
         //loadscene between menu
         LoadNextMiniGame();
     }
@@ -120,6 +122,8 @@ public class GameManager : MonoBehaviour
             //loadscene between menu
             return false;
         }
+        if (difficulty < 100)
+            difficulty += 1;
         currentState = State.LoseMiniGame;
         //loadscene between menu
         return true;
