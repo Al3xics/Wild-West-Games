@@ -8,6 +8,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    enum State
+    {
+        None,
+        WinMiniGame,
+        LoseMiniGame,
+        LoseGame
+    }
+
+    [SerializeField] private State currentState;
     [SerializeField] private int NumberOfMiniGame = 0;
     [SerializeField] private int currentMiniGame = -1;
 
@@ -17,6 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int life = 3;
     private int score;
     private List<bool> games;
+    [SerializeField] private List<string> gamesName;
 
     private void Awake()
     {
@@ -29,6 +39,7 @@ public class GameManager : MonoBehaviour
             {
                 games.Add(false);
             }
+            currentState = State.None;
             LoadData();
         }
         else
@@ -43,6 +54,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SaveDataLoop());
     }
 
+    public void setGamesName(string _gameName)
+    {
+        gamesName.Add(_gameName);
+    }
+
     public void LoadNextMiniGame(int num = -1)
     {
         if (num == -1)
@@ -53,9 +69,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(num + 1);
     }
 
-    public void EndMiniGame()
+    public void WinMiniGame()
     {
         score += 1;
+        currentState = State.WinMiniGame;
+        //loadscene between menu
         LoadNextMiniGame();
     }
 
@@ -78,7 +96,7 @@ public class GameManager : MonoBehaviour
         _SaveData();
     }
 
-    public bool Die()
+    public bool EndMiniGame()
     {
         life -= 1;
         if (life == 0)
@@ -87,9 +105,12 @@ public class GameManager : MonoBehaviour
                 hightScore = score;
             score = 0;
             life = 3;
+            currentState = State.LoseGame;
             //loadscene between menu
             return false;
         }
+        currentState = State.LoseMiniGame;
+        //loadscene between menu
         return true;
 
     }
