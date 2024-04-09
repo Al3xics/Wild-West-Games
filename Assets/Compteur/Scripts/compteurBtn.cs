@@ -26,11 +26,13 @@ public class compteurBtn : MonoBehaviour
             if(numberManager.number >= numberManager.randomNumber && numberManager.number <= numberManager.ValueMax)
             {
                 Debug.Log("GG");
+                GameManager.Instance.WinMiniGame();
             }
 
             else
             {
                 Debug.Log("FF");
+                GameManager.Instance.EndMiniGame();
             }
         }
     }
