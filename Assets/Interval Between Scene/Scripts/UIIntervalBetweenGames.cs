@@ -69,15 +69,13 @@ public class UIIntervalBetweenGames : MonoBehaviour
     // Retour au Menu
     public void BackToMenu()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
+        SceneManager.LoadScene(0);
     }
 
     // Affiche le nombre de vie restant
     public void UpdateLife(GameObject go)
     {
-        // Récupérer le nombre de vie du GameManager
         int life = gameManager.Life;
-        // Récupérer les gameObject de la scene
         List<GameObject> lifeChildren = new();
 
         foreach (Transform childTransform in go.transform)
@@ -88,7 +86,17 @@ public class UIIntervalBetweenGames : MonoBehaviour
             }
         }
 
-        // On désactive (ou change le sprite) des vies qui sont perdu
+        for (int i = 0; i < lifeChildren.Count; i++)
+        {
+            if (i < life)
+            {
+                lifeChildren[i].gameObject.GetComponent<UIBlock2D>().Color = Color.green;
+            }
+            else
+            {
+                lifeChildren[i].gameObject.GetComponent<UIBlock2D>().Color = Color.red;
+            }
+        }
     }
 
     // Afficher le score
@@ -105,7 +113,6 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         yield return new WaitForSeconds(waitingTime);
 
-        // On lance la scene suivante
         gameManager.LoadNextMiniGame();
     }
 }
