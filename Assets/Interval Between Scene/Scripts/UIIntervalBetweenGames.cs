@@ -11,7 +11,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject winGame;
 
     [Header("Variables")]
-    [SerializeField] private float waitingTime;
+    [SerializeField] private float waitingTime = 5f;
 
     private GameManager gameManager;
 
@@ -30,10 +30,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
             case GameManager.State.WinMiniGame:
                 winGame.SetActive(true);
                 UpdateLife();
-
-                // Afficher le score
-
-                // On attend un peu puis on lance la scene suivante
+                ShowScore(winGame);
                 StartCoroutine(WaitBeforeLaunchingScene());
                 break;
 
@@ -41,10 +38,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
             case GameManager.State.LoseMiniGame:
                 loseGame.SetActive(true);
                 UpdateLife();
-
-                // Afficher le score
-
-                // On attend un peu puis on lance la scene suivante
+                ShowScore(loseGame);
                 StartCoroutine(WaitBeforeLaunchingScene());
                 break;
 
@@ -52,9 +46,14 @@ public class UIIntervalBetweenGames : MonoBehaviour
             case GameManager.State.LoseGame:
                 gameOver.SetActive(true);
                 break;
+
+            case GameManager.State.None:
+                Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
+                break;
         }
     }
 
+    // Lancement de la publicité récompensé par une vie en plus pour le joueur
     public void StartPublicity()
     {
         // Le joueur lance une pubs, donc on fait une "rewarded video",
@@ -64,19 +63,36 @@ public class UIIntervalBetweenGames : MonoBehaviour
         StartCoroutine(WaitBeforeLaunchingScene());
     }
 
+    // Retour au Menu
     public void BackToMenu()
     {
         SceneManager.LoadScene(SceneManager.GetSceneAt(0).buildIndex);
     }
 
+    // Affiche le nombre de vie restant
     public void UpdateLife()
     {
         // Récupérer le nombre de vie du GameManager
-        // on désactive (ou change le sprite) des vies qui sont perdu
+        // !!!!!!!!!!!!!!!!!!!!!!!! Je ne peux pas récupérer LIFE !!!!!!!!!!!!!!!!!!!!!
+        // On désactive (ou change le sprite) des vies qui sont perdu
     }
 
+    // Afficher le score
+    private void ShowScore(GameObject go)
+    {
+        // On récupère le game object "Title" qui est enfant de l'objet activé
+        GameObject title = go.transform.Find("Title").gameObject;
+        Debug.Log(title);
+        // !!!!!!!!!!!!!!!!!!!!!!!! Je ne peux pas récupérer HIGHSCORE !!!!!!!!!!!!!!!!!!!!!
+        // On modifie le texte de ce game object
+    }
+
+    // On attend un peu puis on lance la scene suivante
     IEnumerator WaitBeforeLaunchingScene()
     {
         yield return new WaitForSeconds(waitingTime);
+
+        // On lance la scene suivante
+        gameManager.LoadNextMiniGame();
     }
 }
