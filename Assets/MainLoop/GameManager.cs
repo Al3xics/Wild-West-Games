@@ -46,6 +46,12 @@ public class GameManager : MonoBehaviour
     }
 
     private int score;
+
+    public int Score
+    {
+        get { return score; }
+    }
+
     private List<bool> games;
     [SerializeField] private List<string> gamesName;
 
