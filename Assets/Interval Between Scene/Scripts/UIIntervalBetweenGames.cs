@@ -1,3 +1,4 @@
+using Nova;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
             // Win a game
             case GameManager.State.WinMiniGame:
                 winGame.SetActive(true);
-                UpdateLife();
+                UpdateLife(winGame);
                 ShowScore(winGame);
                 StartCoroutine(WaitBeforeLaunchingScene());
                 break;
@@ -37,7 +38,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
             // Lose a life
             case GameManager.State.LoseMiniGame:
                 loseGame.SetActive(true);
-                UpdateLife();
+                UpdateLife(loseGame);
                 ShowScore(loseGame);
                 StartCoroutine(WaitBeforeLaunchingScene());
                 break;
@@ -45,6 +46,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
             // Game Over
             case GameManager.State.LoseGame:
                 gameOver.SetActive(true);
+                UpdateLife(gameOver);
+                ShowScore(gameOver);
                 break;
 
             case GameManager.State.None:
@@ -70,21 +73,31 @@ public class UIIntervalBetweenGames : MonoBehaviour
     }
 
     // Affiche le nombre de vie restant
-    public void UpdateLife()
+    public void UpdateLife(GameObject go)
     {
         // Récupérer le nombre de vie du GameManager
-        // !!!!!!!!!!!!!!!!!!!!!!!! Je ne peux pas récupérer LIFE !!!!!!!!!!!!!!!!!!!!!
+        int life = gameManager.Life;
+        // Récupérer les gameObject de la scene
+        List<GameObject> lifeChildren = new();
+
+        foreach (Transform childTransform in go.transform)
+        {
+            if (childTransform.name == "Life")
+            {
+                lifeChildren.Add(childTransform.gameObject);
+            }
+        }
+
         // On désactive (ou change le sprite) des vies qui sont perdu
     }
 
     // Afficher le score
     private void ShowScore(GameObject go)
     {
-        // On récupère le game object "Title" qui est enfant de l'objet activé
-        GameObject title = go.transform.Find("Title").gameObject;
-        Debug.Log(title);
-        // !!!!!!!!!!!!!!!!!!!!!!!! Je ne peux pas récupérer HIGHSCORE !!!!!!!!!!!!!!!!!!!!!
-        // On modifie le texte de ce game object
+        GameObject scoreToShow = go.transform.Find("Score").gameObject;
+        int score = gameManager.Score;
+
+        scoreToShow.GetComponent<TextBlock>().Text = "Score : " + score;
     }
 
     // On attend un peu puis on lance la scene suivante
