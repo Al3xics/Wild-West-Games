@@ -25,6 +25,12 @@ public class Gyroscope : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(0, 0, monGyro.rotationRateUnbiased.z * speedRotation);
+        Rot(monGyro.rotationRateUnbiased.z);
+    }
+
+    public void Rot(float r) 
+    { 
+        transform.Rotate(0, 0, r * speedRotation);
+        Debug.Log(monGyro.rotationRateUnbiased.z);
     }
 }
