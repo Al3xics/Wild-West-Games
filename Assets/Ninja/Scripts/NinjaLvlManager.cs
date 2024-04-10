@@ -24,7 +24,7 @@ public class NinjaLvlManager : MonoBehaviour
             isRunning = false;
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
-                Destroy(go);
+                //Destroy(go);
             }
 
             if(win)
@@ -52,7 +52,7 @@ public class NinjaLvlManager : MonoBehaviour
         {
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
-                go.GetComponent<Spawner>().SetRunning(false);
+                go.GetComponent<Spawner>().SetRunning(true);
             }
         }
     }
