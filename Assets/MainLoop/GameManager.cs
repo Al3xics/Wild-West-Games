@@ -34,7 +34,17 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private int hightScore;
-    [SerializeField] private int life = 3;
+    public int HightScore
+    {
+        get { return hightScore; }
+    }
+
+    [SerializeField] private int life;
+    public int Life
+    {
+        get { return life; }
+    }
+
     private int score;
     private List<bool> games;
     [SerializeField] private List<string> gamesName;
