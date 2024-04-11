@@ -60,11 +60,11 @@ public class Liquid_Target : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
         {
-            Debug.Log("you win");
+            GameManager.Instance.WinMiniGame();
         }
         else
         {
-            Debug.Log("you lose");
+            GameManager.Instance.EndMiniGame();
         }
     }
 
