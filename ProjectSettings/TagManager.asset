@@ -5,11 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - LvlManager
+  - Fruit
+  - Bomb
+  - Spawner
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fruits
   - Water
   - UI
   - Fluids
