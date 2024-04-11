@@ -23,10 +23,6 @@ public class Depop : MonoBehaviour
             if (collision.gameObject.tag == "Fruit")
             {
                 Destroy(collision.gameObject);
-                foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
-                {
-                    go.GetComponent<NinjaLvlManager>().SetEnd(true);
-                }
             }
             else if (collision.gameObject.tag == "Bomb")
             {

@@ -5,54 +5,42 @@ using UnityEngine;
 public class NinjaLvlManager : MonoBehaviour
 {
     [SerializeField] private bool end = false;
-    [SerializeField] private bool isRunning = true;
     [SerializeField] private bool win = false;
-    [SerializeField] private int lvl;
+    [SerializeField] private float lvl;
     [SerializeField] private int time = 10;
-    private bool timerBool = true;
+    [SerializeField] private int score = 0;
     // Start is called before the first frame update
     void Start()
     {
-        SetLvl(lvl);
+        lvl = GameManager.Instance.Difficulty;
+        StartCoroutine(Timing(time));
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (score>=5+lvl)
+        {
+            win = true;
+            StopCoroutine(Timing(time));
+            end = true;
+        }
+
         if (end)
         {
-            isRunning = false;
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
             {
-                //Destroy(go);
+                Destroy(go);
             }
-
-            if(win)
+            if (win)
             {
+                GameManager.Instance.WinMiniGame();
                 Debug.Log("WIN");
             }
             else
             {
+                GameManager.Instance.EndMiniGame();
                 Debug.Log("NOPE");
-            }
-        }
-        if (isRunning)
-        {
-            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
-            {
-                go.GetComponent<Spawner>().SetRunning(true);
-            }
-            if (timerBool)
-            {
-                timerBool = false;
-                StartCoroutine(Timing(time));
-            }
-        }
-        else
-        {
-            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
-            {
-                go.GetComponent<Spawner>().SetRunning(true);
             }
         }
     }
@@ -61,8 +49,6 @@ public class NinjaLvlManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         end = true;
-        win = true;
-        timerBool = true;
     }
 
     public void SetEnd(bool b)
@@ -70,16 +56,17 @@ public class NinjaLvlManager : MonoBehaviour
         end = b;
     }
 
-    public void SetLvl(int i)
+    public void SetScore(int i)
     {
-        lvl = i;
-        foreach (GameObject go in GameObject.FindGameObjectsWithTag("Spawner"))
-        {
-            go.GetComponent<Spawner>().SetLvl(lvl);
-        }
+        score = i;
     }
 
-    public int GetLvl()
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public float GetLvl()
     {
         return lvl; 
     }

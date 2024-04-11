@@ -251,10 +251,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   end: 0
-  isRunning: 1
   win: 0
-  lvl: 4
-  time: 10
+  lvl: 3
+  time: 20
+  score: 0
 --- !u!1 &1152339432
 GameObject:
   m_ObjectHideFlags: 0
