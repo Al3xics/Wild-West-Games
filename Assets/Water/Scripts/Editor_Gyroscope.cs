@@ -17,11 +17,11 @@ public class Editor_Gyroscope : Editor
 
         if (GUILayout.RepeatButton("rotat left"))
         {
-            myScript.Rot(0.2f);
+            myScript.Rot(10f);
         }
         if (GUILayout.RepeatButton("rotat right"))
         {
-            myScript.Rot(-0.2f);
+            myScript.Rot(-10f);
         }
     }
 }
