@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public int Life
     {
         get { return life; }
+        set { life = value; }
     }
 
     private int score;
@@ -160,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     private void _SaveData()
     {
-        PlayerPrefs.SetFloat("Difficulty", difficulty);
+        //PlayerPrefs.SetFloat("Difficulty", difficulty);
         PlayerPrefs.SetInt("HighScore", hightScore);
         string a = "";
         for (int i = 0; i < NumberOfMiniGame; i++)
@@ -181,7 +182,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadData()
     {
-        difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
+        //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
         hightScore = PlayerPrefs.GetInt("HighScore", 0);
         score = 0;
         string a = "";
