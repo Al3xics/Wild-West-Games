@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
         StartCoroutine(SaveDataLoop());
     }
 
@@ -145,8 +146,6 @@ public class GameManager : MonoBehaviour
         {
             if (score > hightScore)
                 hightScore = score;
-            score = 0;
-            life = 3;
             currentState = State.LoseGame;
             SceneManager.LoadScene("IntervalScene");
             return false;
