@@ -21,10 +21,10 @@ public class UIIntervalBetweenGames : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
-        rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
+/*        rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
 
         rewardedAds.LoadAd();
-        rewardedAds.OnUnityAdsAdLoaded("Rewarded_Android");
+        rewardedAds.OnUnityAdsAdLoaded("Rewarded_Android");*/
 
 
         // Désactivation de tous les GameObject pour être clean
