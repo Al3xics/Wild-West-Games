@@ -51,13 +51,8 @@ public class compteurBtn : MonoBehaviour
     void OnMouseUp()
     {
         isPressed = false;
-        
-         if(numberManager.stopTouch)
-         {
-            disabled = true;
-         }
+        disabled = true;
 
-        
     }
 
 }
