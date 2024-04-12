@@ -17,7 +17,6 @@ public class NumberManager : MonoBehaviour
 
     public float interval;
     public float number;
-    public bool stopTouch = false;
 
     [HideInInspector] public float ValueMax;
     [HideInInspector] public float randomNumber;
@@ -39,11 +38,6 @@ public class NumberManager : MonoBehaviour
 
     private void Update()
     {
-
-        if (number> ValueMax || number >= randomNumber && number <= ValueMax)
-        {
-            stopTouch = true;
-        }
 
     }
 }
