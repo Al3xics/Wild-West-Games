@@ -103,7 +103,6 @@ public class GameManager : MonoBehaviour
         if (difficulty < 100)
             difficulty += 1;
         SceneManager.LoadScene("IntervalScene");
-        LoadNextMiniGame();
     }
 
     public void RestartGame()
