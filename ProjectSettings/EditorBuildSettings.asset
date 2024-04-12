@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TapTap.unity
     guid: e45db4e9a83f1ae459e396361eb829ea
-  m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c178f35ff80ebbb429435874c83572a9, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 6673826085ad97c4a9141f89b2312a71, type: 2}
-    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 72792944a7a1cd94eb0d7be838b960a9, type: 2}
+  - enabled: 1
+    path: Assets/Scenes/Liquide.unity
+    guid: cedb5f4d4c4187b498da9f97376359c5
+  m_configObjects: {}

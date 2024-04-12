@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    [SerializeField] private float upForce;
-    private float hForce;
+    private Vector3 upForce;
     // Start is called before the first frame update
     void Start()
     {
-        hForce = Random.Range(-500, 500);
-        GetComponent<Rigidbody2D>().AddForce(new Vector3(hForce, upForce, 0));
+        upForce = new Vector3 (transform.up.x + Random.Range(-0.15f, 0.15f), transform.up.y + Random.Range(-0.25f, 0.4f), 0)*500;
+        GetComponent<Rigidbody2D>().AddForce(upForce);
     }
 
     // Update is called once per frame

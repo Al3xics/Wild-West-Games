@@ -30,10 +30,16 @@ public class Slash : MonoBehaviour
                 if (Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
                 {
                     hit = Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Fruit")
                     {
                         Destroy(hit.collider.gameObject);
+                        foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
+                        {
+                            go.GetComponent<NinjaLvlManager>().SetScore(go.GetComponent<NinjaLvlManager>().GetScore()+1);
+                        }
                     }
+
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Bomb")
                     {
                         Destroy(hit.collider.gameObject);
