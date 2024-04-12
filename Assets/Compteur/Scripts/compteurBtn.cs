@@ -9,7 +9,7 @@ public class compteurBtn : MonoBehaviour
     [SerializeField] NumberManager numberManager;
     [SerializeField] tube tube;
     
-    [HideInInspector]  public bool isPressed = false;
+    [HideInInspector]  public bool isPressed = false; 
 
     private bool disabled = false;
 
@@ -26,11 +26,13 @@ public class compteurBtn : MonoBehaviour
             if(numberManager.number >= numberManager.randomNumber && numberManager.number <= numberManager.ValueMax)
             {
                 Debug.Log("GG");
+                GameManager.Instance.WinMiniGame();
             }
 
             else
             {
                 Debug.Log("FF");
+                GameManager.Instance.EndMiniGame();
             }
         }
     }
