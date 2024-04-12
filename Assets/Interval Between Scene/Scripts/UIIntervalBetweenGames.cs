@@ -2,6 +2,7 @@ using Nova;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class UIIntervalBetweenGames : MonoBehaviour
@@ -15,10 +16,16 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private float waitingTime = 5f;
 
     private GameManager gameManager;
+    private RewardedAds rewardedAds;
 
     void Start()
     {
         gameManager = GameManager.Instance;
+        rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
+
+        rewardedAds.LoadAd();
+        rewardedAds.OnUnityAdsAdLoaded("Rewarded_Android");
+
 
         // Désactivation de tous les GameObject pour être clean
         winGame.SetActive(false);
@@ -59,8 +66,11 @@ public class UIIntervalBetweenGames : MonoBehaviour
     // Lancement de la publicité récompensé par une vie en plus pour le joueur
     public void StartPublicity()
     {
-        // Le joueur lance une pubs, donc on fait une "rewarded video",
-        // on lui donne 1 vie en plus
+        //// On lui donne 1 vie en plus
+        //if (rewardedAds.OnUnityAdsShowComplete("Rewarded_Android", UnityAdsShowCompletionState.COMPLETED))
+        //{
+
+        //}
 
         // Si il a regarder la pub en entier, il passe au jeu suivant
         StartCoroutine(WaitBeforeLaunchingScene());
