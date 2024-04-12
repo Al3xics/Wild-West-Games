@@ -88,12 +88,25 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextMiniGame(int num = -1)
     {
-        if (num == -1)
+        List<int> availableMiniGames = new List<int>();
+        for (int i = 0; i < NumberOfMiniGame; i++)
         {
-            while (num == currentMiniGame || num == -1)
-                num = Random.Range(0, NumberOfMiniGame);
+            if (i != currentMiniGame)
+            {
+                availableMiniGames.Add(i);
+            }
         }
-        SceneManager.LoadScene(num + 1);
+
+        if (availableMiniGames.Count > 0)
+        {
+            if (num == -1)
+            {
+                int randomIndex = Random.Range(0, availableMiniGames.Count);
+                num = availableMiniGames[randomIndex];
+            }
+            currentMiniGame = num;
+            SceneManager.LoadScene(num + 1);
+        }
     }
 
     public void WinMiniGame()
