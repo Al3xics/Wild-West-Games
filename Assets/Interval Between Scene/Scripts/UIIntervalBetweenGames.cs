@@ -1,4 +1,5 @@
 using Nova;
+using NovaSamples.UIControls;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
+
+        rewardedAds.ShowAdButton = GameObject.FindWithTag("ADS").GetComponent<UnityEngine.UI.Button>();
 
         rewardedAds.StartPublicity();
 
@@ -65,6 +68,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     // Retour au Menu
     public void BackToMenu()
     {
+        gameManager.RestartGame();
         SceneManager.LoadScene(0);
     }
 

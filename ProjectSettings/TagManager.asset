@@ -9,6 +9,8 @@ TagManager:
   - Fruit
   - Bomb
   - Spawner
+  - Bloc
+  - ADS
   layers:
   - Default
   - TransparentFX

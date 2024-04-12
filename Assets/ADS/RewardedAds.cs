@@ -7,9 +7,15 @@ using UnityEngine.Advertisements;
 
 public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] private Button _showAdButton;
+    [SerializeField] private UnityEngine.UI.Button _showAdButton;
     [SerializeField] private string _androidAdUnitId = "Rewarded_Android";
     [SerializeField] private string _iOSAdUnitId = "Rewarded_iOS";
+
+    public UnityEngine.UI.Button ShowAdButton
+    {
+        get { return _showAdButton; }
+        set { _showAdButton = value; }
+    }
 
     private string _adUnitId = null; // This will remain null for unsupported platforms
     private UIIntervalBetweenGames _intervalBetweenGames;
@@ -24,13 +30,13 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 #endif
 
         _intervalBetweenGames = GameObject.Find("UIRoot").GetComponent<UIIntervalBetweenGames>();
-
-        // Disable the button until the ad is ready to show:
-        _showAdButton.GetComponent<Interactable>().enabled/*.interactable*/ = false;
     }
 
     public void StartPublicity()
     {
+        // Disable the button until the ad is ready to show:
+        _showAdButton/*.GetComponent<Interactable>().enabled*/.interactable = false;
+
         LoadAd();
     }
 
@@ -50,9 +56,9 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         if (adUnitId.Equals(_adUnitId))
         {
             // Configure the button to call the ShowAd() method when clicked:
-            _showAdButton.OnClicked/*.onClick*/.AddListener(ShowAd);
+            _showAdButton/*.OnClicked*/.onClick.AddListener(ShowAd);
             // Enable the button for users to click:
-            _showAdButton.GetComponent<Interactable>().enabled/*.interactable*/ = true;
+            _showAdButton/*.GetComponent<Interactable>().enabled*/.interactable = true;
         }
     }
 
@@ -60,7 +66,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     public void ShowAd()
     {
         // Disable the button:
-        _showAdButton.GetComponent<Interactable>().enabled/*.interactable*/ = false;
+        _showAdButton/*.GetComponent<Interactable>().enabled*/.interactable = false;
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
     }
@@ -100,6 +106,6 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     void OnDestroy()
     {
         // Clean up the button listeners:
-        _showAdButton.OnClicked/*.onClick*/.RemoveAllListeners();
+        _showAdButton/*.OnClicked*/.onClick.RemoveAllListeners();
     }
 }
