@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Liquide.unity
     guid: cedb5f4d4c4187b498da9f97376359c5
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 42185ed2b5402b74291c4bc1580d39f1, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 3dedc7615ad242f45aa997ec10640b86, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}

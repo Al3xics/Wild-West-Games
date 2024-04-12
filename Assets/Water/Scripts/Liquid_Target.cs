@@ -31,11 +31,29 @@ public class Liquid_Target : MonoBehaviour
     void Start()
     {
         Abovetarget.GetComponent<SpriteRenderer>().enabled = false;
+        setupGame((int)GameManager.Instance.Difficulty);
     }
+
+    public void setupGame(int difficulty)
+    {
+        //difficulty go from 0 to 100;
+        float sizeTarget = Mathf.Lerp(0.80f, 0.20f,difficulty/100f);
+        float centerTarget = Random.Range((3f+ sizeTarget/2),(4.5f-sizeTarget/2));        
+
+        float sizeAbovetarget = sizeTarget / 2;
+        float centerAbovetarget = centerTarget + sizeTarget / 2 + sizeAbovetarget / 2;
+        
+        Target.transform.localScale = new Vector3(Target.transform.localScale.x, sizeTarget, Target.transform.localScale.y);
+        Target.transform.localPosition = new Vector3(Target.transform.localPosition.x, centerTarget, Target.transform.localPosition.z);
+        Abovetarget.transform.localScale = new Vector3(Abovetarget.transform.localScale.x, sizeAbovetarget, Abovetarget.transform.localScale.y);
+        Abovetarget.transform.localPosition = new Vector3(Abovetarget.transform.localPosition.x, centerAbovetarget, Abovetarget.transform.localPosition.z);
+    }
+
 
     // Update is called once per frame
     void Update()
     {
+        
         if (timer <= 0 && !doOnce)
             StartCoroutine(endGame());
         if (timer <= 0)
