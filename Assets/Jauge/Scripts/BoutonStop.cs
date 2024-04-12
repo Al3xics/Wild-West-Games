@@ -22,11 +22,13 @@ public class BoutonStop : MonoBehaviour
             if(slider.myVal >= numberManagerJauge.randNumber && slider.myVal <= numberManagerJauge.valueMax)
             {
                 Debug.Log("GG");
+                GameManager.Instance.WinMiniGame();
             }
 
             else
             {
                 Debug.Log("FF");
+                GameManager.Instance.EndMiniGame();
             }
 
         }

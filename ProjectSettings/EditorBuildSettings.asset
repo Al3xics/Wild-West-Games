@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Ninja.unity
     guid: fafa3cda9303954438fc475362a30d51
   - enabled: 1
+    path: Assets/Scenes/Jauge.unity
+    guid: 2a2e923dcf8f7d546bea5f7db73e8f1b
+  - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
   m_configObjects: {}
