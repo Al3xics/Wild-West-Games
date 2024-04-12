@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ball
   - LvlManager
   - Fruit
   - Bomb
@@ -15,7 +16,7 @@ TagManager:
   - Fruits
   - Water
   - UI
-  - 
+  - Fluids
   - 
   - 
   - 
