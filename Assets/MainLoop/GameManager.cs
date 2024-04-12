@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    private State currentState;
+    public State currentState;
 
     public State CurrentState
     {
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
             {
                 games.Add(false);
             }
-            currentState = State.None;
+            //currentState = State.None;
             LoadData();
         }
         else
