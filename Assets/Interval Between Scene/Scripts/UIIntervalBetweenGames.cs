@@ -23,8 +23,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
         gameManager = GameManager.Instance;
         rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
 
-        rewardedAds.LoadAd();
-        rewardedAds.OnUnityAdsAdLoaded("Rewarded_Android");
+        rewardedAds.StartPublicity();
 
 
         // Désactivation de tous les GameObject pour être clean
@@ -61,19 +60,6 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
                 break;
         }
-    }
-
-    // Lancement de la publicité récompensé par une vie en plus pour le joueur
-    public void StartPublicity()
-    {
-        //// On lui donne 1 vie en plus
-        //if (rewardedAds.OnUnityAdsShowComplete("Rewarded_Android", UnityAdsShowCompletionState.COMPLETED))
-        //{
-
-        //}
-
-        // Si il a regarder la pub en entier, il passe au jeu suivant
-        StartCoroutine(WaitBeforeLaunchingScene());
     }
 
     // Retour au Menu
@@ -119,7 +105,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     }
 
     // On attend un peu puis on lance la scene suivante
-    IEnumerator WaitBeforeLaunchingScene()
+    public IEnumerator WaitBeforeLaunchingScene()
     {
         yield return new WaitForSeconds(waitingTime);
 
