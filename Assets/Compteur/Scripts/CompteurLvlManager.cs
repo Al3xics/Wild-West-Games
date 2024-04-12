@@ -10,7 +10,7 @@ public class CompteurLvlManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //numberManager.interval = numberManager.interval - (GameManager.Instance.Difficulty * 2);
+        numberManager.interval = numberManager.interval - (GameManager.Instance.Difficulty * 2);
     }
 
 }
