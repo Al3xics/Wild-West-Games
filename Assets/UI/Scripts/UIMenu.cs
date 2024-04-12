@@ -19,6 +19,7 @@ public class UIMenu : MonoBehaviour
 
     public void PlayGameButton()
     {
+        GameManager.Instance.LoadNextMiniGame();
         //SceneManager.LoadScene("......");
     }
 

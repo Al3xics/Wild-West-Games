@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    enum State
+    public enum State
     {
         None,
         WinMiniGame,
@@ -16,15 +16,42 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    [SerializeField] private State currentState;
+    public State currentState;
+
+    public State CurrentState
+    {
+        get { return currentState; }
+    }
+
     [SerializeField] private int NumberOfMiniGame = 0;
     [SerializeField] private int currentMiniGame = -1;
 
+    [SerializeField] private float difficulty = 0;
 
-    private float difficulty;
+    public float Difficulty
+    {
+        get { return difficulty; }
+    }
+
     [SerializeField] private int hightScore;
-    [SerializeField] private int life = 3;
+    public int HightScore
+    {
+        get { return hightScore; }
+    }
+
+    [SerializeField] private int life;
+    public int Life
+    {
+        get { return life; }
+    }
+
     private int score;
+
+    public int Score
+    {
+        get { return score; }
+    }
+
     private List<bool> games;
     [SerializeField] private List<string> gamesName;
 
@@ -61,20 +88,34 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextMiniGame(int num = -1)
     {
-        if (num == -1)
+        List<int> availableMiniGames = new List<int>();
+        for (int i = 0; i < NumberOfMiniGame; i++)
         {
-            while (num == currentMiniGame || num == -1)
-                num = Random.Range(0, NumberOfMiniGame);
+            if (i != currentMiniGame)
+            {
+                availableMiniGames.Add(i);
+            }
         }
-        SceneManager.LoadScene(num + 1);
+
+        if (availableMiniGames.Count > 0)
+        {
+            if (num == -1)
+            {
+                int randomIndex = Random.Range(0, availableMiniGames.Count);
+                num = availableMiniGames[randomIndex];
+            }
+            currentMiniGame = num;
+            SceneManager.LoadScene(num + 1);
+        }
     }
 
     public void WinMiniGame()
     {
         score += 1;
         currentState = State.WinMiniGame;
-        //loadscene between menu
-        LoadNextMiniGame();
+        if (difficulty < 100)
+            difficulty += 1;
+        SceneManager.LoadScene("IntervalScene");
     }
 
     public void RestartGame()
@@ -106,11 +147,13 @@ public class GameManager : MonoBehaviour
             score = 0;
             life = 3;
             currentState = State.LoseGame;
-            //loadscene between menu
+            SceneManager.LoadScene("IntervalScene");
             return false;
         }
+        if (difficulty < 100)
+            difficulty += 1;
         currentState = State.LoseMiniGame;
-        //loadscene between menu
+        SceneManager.LoadScene("IntervalScene");
         return true;
 
     }
