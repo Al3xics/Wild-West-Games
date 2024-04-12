@@ -1070,7 +1070,7 @@ MonoBehaviour:
   currentState: 0
   NumberOfMiniGame: 0
   currentMiniGame: -1
-  difficulty: 0
+  difficulty: 100
   hightScore: 0
   life: 0
   gamesName: []
