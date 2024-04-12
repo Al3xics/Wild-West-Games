@@ -5,22 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/UI/Scenes/Menu.unity
     guid: 0eb9058566028964892a75047bb7eb36
-  - enabled: 0
-    path: Assets/Scenes/Compteur-MiniJeu.unity
-    guid: b63ffa06f34facc49a7be2f7b5b0bc1c
-  - enabled: 0
-    path: Assets/Scenes/Memory.unity
-    guid: ea9e2f468465b9247acc6319a1b59330
-  - enabled: 0
-    path: Assets/Scenes/Ninja.unity
-    guid: 3ff249ae542f6264fb96b3016c3ad24d
-  - enabled: 0
-    path: Assets/Scenes/TapTap.unity
-    guid: e45db4e9a83f1ae459e396361eb829ea
   - enabled: 1
-    path: Assets/Scenes/Liquide.unity
-    guid: cedb5f4d4c4187b498da9f97376359c5
+    path: Assets/Scenes/Compteur-MiniJeu.unity
+    guid: 5510cbc0af1d81c408d6ae3a4b1a43bc
+  - enabled: 1
+    path: Assets/Scenes/TapTap.unity
+    guid: dfe8e143e9c42cd42a4bcf3015277c44
+  - enabled: 1
+    path: Assets/Scenes/Ninja.unity
+    guid: fafa3cda9303954438fc475362a30d51
+  - enabled: 1
+    path: Assets/Scenes/Jauge.unity
+    guid: 2a2e923dcf8f7d546bea5f7db73e8f1b
+  - enabled: 1
+    path: Assets/Interval Between Scene/Scene/IntervalScene.unity
+    guid: fff2d294b1daf2346a61e51a3b05023b
   m_configObjects: {}

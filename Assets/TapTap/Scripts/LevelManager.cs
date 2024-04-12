@@ -181,7 +181,7 @@ public class LevelManager : MonoBehaviour
                 {
                     GameManager.Instance.WinMiniGame();
                     ClearScreen();
-                    winText.gameObject.SetActive(true);
+                    //winText.gameObject.SetActive(true);
                     Timerflow = false;
                     break;
                 }
@@ -189,7 +189,7 @@ public class LevelManager : MonoBehaviour
                 {
                     GameManager.Instance.EndMiniGame();
                     ClearScreen();
-                    loseText.gameObject.SetActive(true);
+                    //loseText.gameObject.SetActive(true);
                     Timerflow = false;
                     break;
                 }

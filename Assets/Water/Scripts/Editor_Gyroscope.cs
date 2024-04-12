@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-[CustomEditor(typeof(Gyroscope))] // Replace MyScript with the name of your script
+/*[CustomEditor(typeof(Gyroscope))] // Replace MyScript with the name of your script
 public class Editor_Gyroscope : Editor
 {
     public override void OnInspectorGUI()
@@ -24,4 +24,4 @@ public class Editor_Gyroscope : Editor
             myScript.Rot(-10f);
         }
     }
-}
+}*/
