@@ -551,6 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySlider: {fileID: 951069093}
   myVal: 0
+  slow: 1
 --- !u!114 &899521257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,8 +567,8 @@ MonoBehaviour:
   sliderMin: {fileID: 1105621082}
   sliderMax: {fileID: 1199376955}
   RandValueMin: 0
-  RandValueMax: 0.5
-  interval: 0.3
+  RandValueMax: 0.8
+  interval: 0.2
   randNumber: 0
   valueMax: 0
 --- !u!1 &951069090
