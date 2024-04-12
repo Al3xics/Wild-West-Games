@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    private State currentState;
+    public State currentState;
 
     public State CurrentState
     {
@@ -34,8 +34,24 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] private int hightScore;
-    [SerializeField] private int life = 3;
+    public int HightScore
+    {
+        get { return hightScore; }
+    }
+
+    [SerializeField] private int life;
+    public int Life
+    {
+        get { return life; }
+    }
+
     private int score;
+
+    public int Score
+    {
+        get { return score; }
+    }
+
     private List<bool> games;
     [SerializeField] private List<string> gamesName;
 
@@ -86,7 +102,7 @@ public class GameManager : MonoBehaviour
         currentState = State.WinMiniGame;
         if (difficulty < 100)
             difficulty += 1;
-        //loadscene between menu
+        SceneManager.LoadScene("IntervalScene");
         LoadNextMiniGame();
     }
 
@@ -119,13 +135,13 @@ public class GameManager : MonoBehaviour
             score = 0;
             life = 3;
             currentState = State.LoseGame;
-            //loadscene between menu
+            SceneManager.LoadScene("IntervalScene");
             return false;
         }
         if (difficulty < 100)
             difficulty += 1;
         currentState = State.LoseMiniGame;
-        //loadscene between menu
+        SceneManager.LoadScene("IntervalScene");
         return true;
 
     }
