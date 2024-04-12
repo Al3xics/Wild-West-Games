@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] int difficultyLevel = 1;
     [SerializeField] bool TouchInput = true;
-
+   
     private void Start()
     {
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 10;
@@ -52,6 +52,9 @@ public class LevelManager : MonoBehaviour
             timeLimit = 4.0f;
         }
 
+        
+       
+        
 
         //SpawnCockroach
         if (cockroachPrefab != null)

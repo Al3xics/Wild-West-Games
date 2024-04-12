@@ -1,11 +1,11 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Cockroach : MonoBehaviour
 {
     [SerializeField] private float speed;
-    
+    [SerializeField] private float turnSpeed;
 
     [SerializeField] private Vector2 minPosition;
     [SerializeField] private Vector2 maxPosition;
@@ -17,13 +17,25 @@ public class Cockroach : MonoBehaviour
 
     [SerializeField] private bool toCatch = false;
     [SerializeField] private Rigidbody2D rb;
+
+    [SerializeField] private bool canMove = true;
+    [SerializeField] private float stopTime = 1.0f;
+
+    
+    
     private void Start()
     {
         background = GameObject.Find("/Background");
+        if(background == null)
+        {
+            return;
+        }
         Vector2 localSize = background.GetComponent<Renderer>().bounds.size;
+
+
         minPosition = localSize * -0.5f;
         maxPosition = localSize * 0.5f;
-
+        
         nextPosition = GetRandomPosition();
         rb = GetComponent<Rigidbody2D>();
 
@@ -31,13 +43,13 @@ public class Cockroach : MonoBehaviour
         //Change Color
         if (toCatch)
         {
-            GetComponent<SpriteRenderer>().color = Color.blue;
+            GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
     private Vector2 GetRandomPosition()
     {
-        float randomX = Random.Range(minPosition.x, maxPosition.x);
-        float randomY = Random.Range(minPosition.y, maxPosition.y);
+        float randomX = UnityEngine.Random.Range(minPosition.x, maxPosition.x);
+        float randomY = UnityEngine.Random.Range(minPosition.y, maxPosition.y);
         Vector2 newPosition = new Vector2(randomX, randomY);
         return newPosition;
     }
@@ -46,13 +58,18 @@ public class Cockroach : MonoBehaviour
         if (alive)
         {
             float distance = Vector2.Distance(rb.position, nextPosition);
-            if (distance >= 0.2f) 
+            if (distance >= 0.2f && canMove ) 
             {
                 rb.position = Vector2.MoveTowards(rb.position, nextPosition, speed * Time.deltaTime);
+                
             }
             else
             {
-                nextPosition = GetRandomPosition();
+               if(canMove)
+                {
+                    StartCoroutine(WaitAndMove());   
+
+                }
             }
         }
     }
@@ -71,5 +88,24 @@ public class Cockroach : MonoBehaviour
     public bool GetCatch()
     {
         return toCatch;
+    }
+
+   IEnumerator WaitAndMove()
+    {
+        canMove = false;
+        nextPosition = GetRandomPosition();
+        yield return new WaitForSeconds(stopTime);
+        canMove = true;
+        
+    }
+
+    private void Update()
+    {
+        if (!canMove)
+        {
+            Quaternion rot = Quaternion.LookRotation(Vector3.forward, nextPosition);
+            rb.transform.rotation = Quaternion.Lerp(rb.transform.rotation, rot, Time.deltaTime * turnSpeed);
+
+        }
     }
 }
