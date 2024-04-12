@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -25,49 +26,32 @@ public class LevelManager : MonoBehaviour
     [SerializeField] TextBlock timerText;
 
     [SerializeField] int difficultyLevel = 1;
-
+    [SerializeField] bool TouchInput = true;
 
     private void Start()
     {
-        //UpdateDifficulty
-        //switch (difficultyLevel)
-        //{
-        //    case 1: case 2: case 3: case 4:
-        //        {
-        //            cockroachsAmount = 4 * difficultyLevel;
-        //            cockroachsToWin = 1 * difficultyLevel;
-        //            break;
-        //        }
-        //    case 5: case 6: case 7: case 8:
-        //        {
-        //            cockroachsAmount = 20;
-        //            cockroachsToWin = 4;
-        //            timeLimit -= 2 * (difficultyLevel-4);
-        //            break;
-        //        }
-        //    default:
-        //        {
-        //            cockroachsAmount = 20;
-        //            cockroachsToWin = 4;
-        //            timeLimit = 4;
-        //            break; 
-        //        }
+        float currentDifficultyLevel = GameManager.Instance.Difficulty / 10;
+        difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
+        if(difficultyLevel < 1) difficultyLevel = 1;
 
+        if (difficultyLevel <= 4)
+        {
+            cockroachsAmount = 4 * difficultyLevel;
+            cockroachsToWin = 1 * difficultyLevel;
+        }
+        else if (difficultyLevel <= 8)
+        {
+            cockroachsAmount = 20;
+            cockroachsToWin = 4;
+            timeLimit -= difficultyLevel - 3 ;
+        }
+        else
+        {
+            cockroachsAmount = 25;
+            cockroachsToWin = 5;
+            timeLimit = 4.0f;
+        }
 
-        //}
-
-
-        //if(difficultyLevel <= 4)
-        //{
-        //    cockroachsAmount = 4 * difficultyLevel;
-        //    cockroachsToWin = 1 * difficultyLevel;
-        //}
-        //else if(difficultyLevel <= 8 )
-        //{
-        //    cockroachsAmount = 20;
-        //    cockroachsToWin = 4;
-        //    timeLimit -= 1 * difficultyLevel / 2;
-        //}
 
         //SpawnCockroach
         if (cockroachPrefab != null)
@@ -114,45 +98,52 @@ public class LevelManager : MonoBehaviour
             UpdateTimerUI();
 
         }
-        //Mouse Input
-        if (Input.GetMouseButtonDown(0) && timer > 0)
+        if (TouchInput)
         {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
-            if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
+            //TouchInput
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && timer > 0)
             {
-                if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                Vector2 touchPosition = Input.GetTouch(0).position;
+                Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+
+                Collider2D colliderHit = Physics2D.OverlapPoint(worldPosition);
+                if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
                 {
-                    colliderHit.GetComponent<Cockroach>().SetAlive(false);
-                    cockroachsDead++;
-                }
-                else
-                {
-                    EndScreen(GameState.Lose);
+                    if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                    {
+                        colliderHit.GetComponent<Cockroach>().SetAlive(false);
+                        cockroachsDead++;
+                    }
+                    else
+                    {
+                        EndScreen(GameState.Lose);
+                    }
                 }
             }
+
         }
+        else
+        {
+            //Mouse Input
+            if (Input.GetMouseButtonDown(0) && timer > 0)
+            {
+                Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
+                if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
+                {
+                    if (colliderHit.GetComponent<Cockroach>().GetCatch())
+                    {
+                        colliderHit.GetComponent<Cockroach>().SetAlive(false);
+                        cockroachsDead++;
+                    }
+                    else
+                    {
+                        EndScreen(GameState.Lose);
+                    }
+                }
+            }
 
-        //TouchInput
-        //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && timer > 0)
-        //{
-        //    Vector2 touchPosition = Input.GetTouch(0).position;
-        //    Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
-        //    Collider2D colliderHit = Physics2D.OverlapPoint(worldPosition);
-        //    if (colliderHit != null && colliderHit.GetComponent<Cockroach>())
-        //    {
-        //        if (colliderHit.GetComponent<Cockroach>().GetCatch())
-        //        {
-        //            colliderHit.GetComponent<Cockroach>().SetAlive(false);
-        //            cockroachsDead++;
-        //        }
-        //        else
-        //        {
-        //            EndScreen(GameState.Lose);
-        //        }
-        //    }
-        //}
+        }
 
         //WinCheck
         if (cockroachsDead >= cockroachsToWin)
@@ -166,12 +157,12 @@ public class LevelManager : MonoBehaviour
 
     private void UpdateTimerUI()
     {
-       
-        int minutes = Mathf.FloorToInt(timer / 60f);
-        int seconds = Mathf.FloorToInt(timer % 60f);
 
-       
-        timerText.Text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        int seconds = Mathf.FloorToInt(timer % 60f);
+        int milliseconds = Mathf.FloorToInt((timer - seconds) * 1000f);
+
+
+        timerText.Text = string.Format("{0:00}:{1:000}", seconds, milliseconds);
     }
 
     private void ClearScreen()
@@ -188,6 +179,7 @@ public class LevelManager : MonoBehaviour
         {
             case GameState.Win:
                 {
+                    //GameManager.Instance.WinMiniGame();
                     ClearScreen();
                     winText.gameObject.SetActive(true);
                     Timerflow = false;
@@ -195,6 +187,7 @@ public class LevelManager : MonoBehaviour
                 }
             case GameState.Lose:
                 {
+                    //GameManager.Instance.EndMiniGame();
                     ClearScreen();
                     loseText.gameObject.SetActive(true);
                     Timerflow = false;
@@ -203,5 +196,10 @@ public class LevelManager : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void Reload()
+    {
+        SceneManager.LoadScene("TapTap");
     }
 }
