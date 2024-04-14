@@ -17,16 +17,16 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private float waitingTime = 5f;
 
     private GameManager gameManager;
-    private RewardedAds rewardedAds;
+    //private RewardedAds rewardedAds;
 
     void Start()
     {
         gameManager = GameManager.Instance;
-        rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
+        //rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
 
-        rewardedAds.ShowAdButton = GameObject.FindWithTag("ADS").GetComponent<UnityEngine.UI.Button>();
+        //rewardedAds.ShowAdButton = GameObject.FindWithTag("ADS").GetComponent<UnityEngine.UI.Button>();
 
-        rewardedAds.StartPublicity();
+        //rewardedAds.StartPublicity();
 
 
         // D�sactivation de tous les GameObject pour �tre clean
