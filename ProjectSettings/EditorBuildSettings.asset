@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 0eb9058566028964892a75047bb7eb36
   - enabled: 1
     path: Assets/Scenes/Compteur-MiniJeu.unity
-    guid: 5510cbc0af1d81c408d6ae3a4b1a43bc
+    guid: b5ca75ab9abc3364eaf0a4baca8241d5
   - enabled: 1
     path: Assets/Scenes/TapTap.unity
     guid: dfe8e143e9c42cd42a4bcf3015277c44
@@ -19,7 +19,10 @@ EditorBuildSettings:
     guid: fafa3cda9303954438fc475362a30d51
   - enabled: 1
     path: Assets/Scenes/Jauge.unity
-    guid: 2a2e923dcf8f7d546bea5f7db73e8f1b
+    guid: 8d044439d4496fb4dae5fef570d55ab7
+  - enabled: 1
+    path: Assets/Scenes/Liquide.unity
+    guid: cedb5f4d4c4187b498da9f97376359c5
   - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b

@@ -7798,7 +7798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  NumberOfMiniGame: 4
+  NumberOfMiniGame: 5
   currentMiniGame: -1
   difficulty: 0
   hightScore: 0
