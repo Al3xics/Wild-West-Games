@@ -11,16 +11,17 @@ public class UIMenu : MonoBehaviour
 
     // L'objet en haut de la pile est l'objet actuel sur lequel on se situe
     private Stack<GameObject> objectStack = new();
+    private AdsManager adsManager;
 
     void Start()
     {
         objectStack.Push(menu);
+        adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
     }
 
     public void PlayGameButton()
     {
         GameManager.Instance.LoadNextMiniGame();
-        //SceneManager.LoadScene("......");
     }
 
     public void SettingsButton()
@@ -35,6 +36,11 @@ public class UIMenu : MonoBehaviour
         objectStack.Push(games);
         menu.SetActive(false);
         games.SetActive(true);
+    }
+
+    public void LaunchInterstitialVideo()
+    {
+        adsManager.LaunchInterstitial();
     }
 
     public void MusicButton()

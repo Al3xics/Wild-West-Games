@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AdsManager : MonoBehaviour
 {
+    public static AdsManager Instance;
+
     [SerializeField] private string androidAppKey = "1e2ae5685";
     [SerializeField] private string iosAppKey = "1e2b0cf5d";
 
@@ -12,8 +14,16 @@ public class AdsManager : MonoBehaviour
 
     void Awake()
     {
-        InitializeAds();
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            InitializeAds();
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     private void InitializeAds()
@@ -114,27 +124,16 @@ public class AdsManager : MonoBehaviour
 
     #region Interstitial
 
-    public void LoadInterstitial()
+    public void LaunchInterstitial()
     {
         IronSource.Agent.loadInterstitial();
-    }
-
-    public void ShowInterstitial()
-    {
-        if (IronSource.Agent.isInterstitialReady())
-        {
-            IronSource.Agent.showInterstitial();
-        }
-        else
-        {
-            Debug.Log("Interstitial not ready");
-        }
     }
 
     /************* Interstitial AdInfo Delegates *************/
     // Invoked when the interstitial ad was loaded succesfully.
     void InterstitialOnAdReadyEvent(IronSourceAdInfo adInfo)
     {
+        IronSource.Agent.showInterstitial();
     }
     // Invoked when the initialization process has failed.
     void InterstitialOnAdLoadFailed(IronSourceError ironSourceError)
@@ -167,20 +166,9 @@ public class AdsManager : MonoBehaviour
 
     #region Rewarded
 
-    public void LoadRewarded()
+    public void LaunchRewarded()
     {
-        IronSource.Agent.loadRewardedVideo();
-    }
-    public void ShowRewarded()
-    {
-        if (IronSource.Agent.isRewardedVideoAvailable())
-        {
-            IronSource.Agent.showRewardedVideo();
-        }
-        else
-        {
-            Debug.Log("Rewarded not ready");
-        }
+        //IronSource.Agent.loadRewardedVideo();
     }
 
     /************* RewardedVideo AdInfo Delegates *************/
@@ -189,6 +177,7 @@ public class AdsManager : MonoBehaviour
     // This replaces the RewardedVideoAvailabilityChangedEvent(true) event
     void RewardedVideoOnAdAvailable(IronSourceAdInfo adInfo)
     {
+        //IronSource.Agent.showRewardedVideo();
     }
     // Indicates that no ads are available to be displayed
     // This replaces the RewardedVideoAvailabilityChangedEvent(false) event
@@ -208,7 +197,10 @@ public class AdsManager : MonoBehaviour
     // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback.
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
-        Debug.LogWarning("Give reward to the player");
+        //GameManager.Instance.Life++;
+        // Du coup on affiche LoseMiniGame
+        // Et il faut update le nombre de vie
+
     }
     // The rewarded video ad was failed to show.
     void RewardedVideoOnAdShowFailedEvent(IronSourceError error, IronSourceAdInfo adInfo)

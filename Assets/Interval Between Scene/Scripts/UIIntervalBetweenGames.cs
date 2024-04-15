@@ -17,16 +17,12 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private float waitingTime = 5f;
 
     private GameManager gameManager;
-    //private RewardedAds rewardedAds;
+    private AdsManager adsManager;
 
     void Start()
     {
         gameManager = GameManager.Instance;
-        //rewardedAds = GameObject.Find("Ads").GetComponent<RewardedAds>();
-
-        //rewardedAds.ShowAdButton = GameObject.FindWithTag("ADS").GetComponent<UnityEngine.UI.Button>();
-
-        //rewardedAds.StartPublicity();
+        adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
 
 
         // D�sactivation de tous les GameObject pour �tre clean
@@ -63,6 +59,11 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
                 break;
         }
+    }
+
+    public void LaunchRewardedVideo()
+    {
+        adsManager.LaunchRewarded();
     }
 
     // Retour au Menu
