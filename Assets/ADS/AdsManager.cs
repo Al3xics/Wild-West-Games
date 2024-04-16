@@ -11,6 +11,7 @@ public class AdsManager : MonoBehaviour
     [SerializeField] private string iosAppKey = "1e2b0cf5d";
 
     private string appKey;
+    private UIIntervalBetweenGames script;
 
     void Awake()
     {
@@ -22,7 +23,7 @@ public class AdsManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
@@ -84,9 +85,19 @@ public class AdsManager : MonoBehaviour
 
     #region Banner
 
-    public void LoadBanner()
+    public void LaunchBanner()
     {
         IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.BOTTOM);
+    }
+
+    public void HideBanner()
+    {
+        IronSource.Agent.hideBanner();
+    }
+
+    public void DisplayBanner()
+    {
+        IronSource.Agent.displayBanner();
     }
 
     public void DestroyBanner()
@@ -166,9 +177,17 @@ public class AdsManager : MonoBehaviour
 
     #region Rewarded
 
-    public void LaunchRewarded()
+    public IEnumerator WaitForRewarded()
     {
-        //IronSource.Agent.loadRewardedVideo();
+        IronSource.Agent.loadRewardedVideo();
+        script = GameObject.Find("GameOver").transform.parent.GetComponent<UIIntervalBetweenGames>();
+
+        while (!IronSource.Agent.isRewardedVideoAvailable())
+        {
+            yield return null;
+        }
+
+        IronSource.Agent.showRewardedVideo();
     }
 
     /************* RewardedVideo AdInfo Delegates *************/
@@ -177,7 +196,6 @@ public class AdsManager : MonoBehaviour
     // This replaces the RewardedVideoAvailabilityChangedEvent(true) event
     void RewardedVideoOnAdAvailable(IronSourceAdInfo adInfo)
     {
-        //IronSource.Agent.showRewardedVideo();
     }
     // Indicates that no ads are available to be displayed
     // This replaces the RewardedVideoAvailabilityChangedEvent(false) event
@@ -191,16 +209,20 @@ public class AdsManager : MonoBehaviour
     // The Rewarded Video ad view is about to be closed. Your activity will regain its focus.
     void RewardedVideoOnAdClosedEvent(IronSourceAdInfo adInfo)
     {
+        GameManager.Instance.Life++;
+
+        script.GameOver.SetActive(false);
+
+        script.LoseGame.SetActive(true);
+        script.UpdateLife(script.LoseGame);
+        script.ShowScore(script.LoseGame);
     }
     // The user completed to watch the video, and should be rewarded.
     // The placement parameter will include the reward data.
     // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback.
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
-        //GameManager.Instance.Life++;
-        // Du coup on affiche LoseMiniGame
-        // Et il faut update le nombre de vie
-
+        StartCoroutine(script.WaitBeforeLaunchingScene());
     }
     // The rewarded video ad was failed to show.
     void RewardedVideoOnAdShowFailedEvent(IronSourceError error, IronSourceAdInfo adInfo)

@@ -13,7 +13,6 @@ public class MusicManager : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
 
         if (Instance == null)
         {
@@ -22,12 +21,12 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Instance.musicSlider = musicSlider;
+            Destroy(gameObject);
         }
 
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
-            //musicSlider = GameObject.Find("Music").GetComponent<Slider>();
             float volume = PlayerPrefs.GetFloat("MusicVolume");
             audioSource.volume = volume;
             musicSlider.Value = volume * Slider.MaxValue;
@@ -40,11 +39,6 @@ public class MusicManager : MonoBehaviour
 
     public void MusicVolume()
     {
-        //if (musicSlider == null)
-        //{
-        //    musicSlider = GameObject.FindWithTag("MUSIC").GetComponent<Slider>();
-        //}
-
         float normalizedValue = musicSlider.Value / Slider.MaxValue;
 
         if (normalizedValue == 0)

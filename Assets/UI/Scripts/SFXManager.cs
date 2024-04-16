@@ -24,12 +24,12 @@ public class SFXManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Instance.sfxSlider = sfxSlider;
+            Destroy(gameObject);
         }
 
         if (PlayerPrefs.HasKey("SFXVolume"))
         {
-            //sfxSlider = GameObject.Find("Sound Effects").GetComponent<Slider>();
             float volume = PlayerPrefs.GetFloat("SFXVolume");
             Audio.volume = volume;
             sfxSlider.Value = volume * Slider.MaxValue;
@@ -42,11 +42,6 @@ public class SFXManager : MonoBehaviour
 
     public void SFXVolume()
     {
-        //if (sfxSlider == null)
-        //{
-        //    sfxSlider = GameObject.FindWithTag("SFX").GetComponent<Slider>();
-        //}
-
         float normalizedValue = sfxSlider.Value / Slider.MaxValue;
 
         if (normalizedValue == 0)

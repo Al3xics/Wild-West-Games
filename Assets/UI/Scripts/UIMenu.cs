@@ -17,6 +17,8 @@ public class UIMenu : MonoBehaviour
     {
         objectStack.Push(menu);
         adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
+        adsManager.LaunchBanner();
+        adsManager.HideBanner();
     }
 
     public void PlayGameButton()

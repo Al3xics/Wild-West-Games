@@ -14,18 +14,23 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject winGame;
 
     [Header("Variables")]
-    [SerializeField] private float waitingTime = 5f;
+    [SerializeField] private float waitingTime = 2f;
 
     private GameManager gameManager;
     private AdsManager adsManager;
+
+    public GameObject GameOver => gameOver;
+    public GameObject LoseGame => loseGame;
+    public GameObject WinGame => winGame;
 
     void Start()
     {
         gameManager = GameManager.Instance;
         adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
+        adsManager.DisplayBanner();
 
 
-        // D�sactivation de tous les GameObject pour �tre clean
+        // Désactivation de tous les GameObject pour être clean
         winGame.SetActive(false);
         loseGame.SetActive(false);
         gameOver.SetActive(false);
@@ -63,12 +68,13 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
     public void LaunchRewardedVideo()
     {
-        adsManager.LaunchRewarded();
+        StartCoroutine(adsManager.WaitForRewarded());
     }
 
     // Retour au Menu
     public void BackToMenu()
     {
+        adsManager.DestroyBanner();
         gameManager.RestartGame();
         SceneManager.LoadScene(0);
     }
@@ -101,11 +107,17 @@ public class UIIntervalBetweenGames : MonoBehaviour
     }
 
     // Afficher le score
-    private void ShowScore(GameObject go)
+    public void ShowScore(GameObject go)
     {
+        if (go.name == "GameOver")
+        {
+            GameObject bestScoreToShow = go.transform.Find("Best Score").gameObject;
+            int bestScore = gameManager.HightScore;
+            bestScoreToShow.GetComponent<TextBlock>().Text = "Best Score : " + bestScore;
+        }
+
         GameObject scoreToShow = go.transform.Find("Score").gameObject;
         int score = gameManager.Score;
-
         scoreToShow.GetComponent<TextBlock>().Text = "Score : " + score;
     }
 
@@ -114,6 +126,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         yield return new WaitForSeconds(waitingTime);
 
+        adsManager.HideBanner();
         gameManager.LoadNextMiniGame();
     }
 }
