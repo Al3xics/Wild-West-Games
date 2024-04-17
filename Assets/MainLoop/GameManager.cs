@@ -63,10 +63,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             games = new List<bool>();
-            for (int i = 0; i < NumberOfMiniGame; i++)
-            {
-                games.Add(false);
-            }
             currentState = State.None;
             LoadData();
         }
@@ -80,12 +76,22 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Screen.orientation = ScreenOrientation.Portrait;
+        NumberOfMiniGame = gamesName.Count;
+        for (int i = 0; i < NumberOfMiniGame; i++)
+        {
+            games.Add(false);
+        }
         StartCoroutine(SaveDataLoop());
     }
 
     public void setGamesName(string _gameName)
     {
         gamesName.Add(_gameName);
+    }
+
+    public List<string> getGamesName()
+    {
+        return (gamesName);
     }
 
     public void LoadNextMiniGame(int num = -1)
