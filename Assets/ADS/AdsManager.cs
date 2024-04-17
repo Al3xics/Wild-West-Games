@@ -13,6 +13,14 @@ public class AdsManager : MonoBehaviour
     private string appKey;
     private UIIntervalBetweenGames script;
 
+    private bool alreadyWatchedPubs;
+
+    public bool AlreadyWatchedPubs
+    {
+        get { return alreadyWatchedPubs; }
+    }
+
+
     void Awake()
     {
         if (Instance == null)
@@ -188,6 +196,16 @@ public class AdsManager : MonoBehaviour
         }
 
         IronSource.Agent.showRewardedVideo();
+
+        alreadyWatchedPubs = true;
+
+        GameManager.Instance.Life++;
+
+        script.GameOver.SetActive(false);
+
+        script.LoseGame.SetActive(true);
+        script.UpdateLife(script.LoseGame);
+        script.ShowScore(script.LoseGame);
     }
 
     /************* RewardedVideo AdInfo Delegates *************/
@@ -209,13 +227,6 @@ public class AdsManager : MonoBehaviour
     // The Rewarded Video ad view is about to be closed. Your activity will regain its focus.
     void RewardedVideoOnAdClosedEvent(IronSourceAdInfo adInfo)
     {
-        GameManager.Instance.Life++;
-
-        script.GameOver.SetActive(false);
-
-        script.LoseGame.SetActive(true);
-        script.UpdateLife(script.LoseGame);
-        script.ShowScore(script.LoseGame);
     }
     // The user completed to watch the video, and should be rewarded.
     // The placement parameter will include the reward data.

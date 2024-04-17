@@ -2389,6 +2389,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2905764967384224458, guid: 33994460efecd9d4794903c0f8d9a630, type: 3}
   m_PrefabInstance: {fileID: 671046064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &671046066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2905764967384224463, guid: 33994460efecd9d4794903c0f8d9a630, type: 3}
+  m_PrefabInstance: {fileID: 671046064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &771169054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2848,7 @@ MonoBehaviour:
   gameOver: {fileID: 835498974}
   loseGame: {fileID: 1923370778}
   winGame: {fileID: 1729303197}
+  buttonPubs: {fileID: 671046066}
   waitingTime: 2
 --- !u!1 &835498974
 GameObject:

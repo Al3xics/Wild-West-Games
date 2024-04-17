@@ -1,5 +1,6 @@
 using Nova;
 using NovaSamples.UIControls;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject loseGame;
     [SerializeField] private GameObject winGame;
+    [SerializeField] private GameObject buttonPubs;
 
     [Header("Variables")]
     [SerializeField] private float waitingTime = 2f;
@@ -58,11 +60,20 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
+                CanWeWatchRewarded();
                 break;
 
             case GameManager.State.None:
                 Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
                 break;
+        }
+    }
+
+    private void CanWeWatchRewarded()
+    {
+        if (adsManager.AlreadyWatchedPubs)
+        {
+            buttonPubs.SetActive(false);
         }
     }
 
