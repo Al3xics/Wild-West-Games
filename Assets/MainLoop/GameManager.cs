@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    public State currentState;
+    [SerializeField] private State currentState;
 
     public State CurrentState
     {
@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
