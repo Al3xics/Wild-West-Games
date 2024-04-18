@@ -9,25 +9,27 @@ public class GetScenesName : MonoBehaviour
     void Start()
     {
         string folderPath = "Assets/Scenes";
-
-        if (Directory.Exists(folderPath))
+        if (GameManager.Instance.getGamesName().Count <= 0)
         {
-            string[] files = Directory.GetFiles(folderPath);
-
-            foreach (string file in files)
+            if (Directory.Exists(folderPath))
             {
-                if (!file.EndsWith(".meta"))
+                string[] files = Directory.GetFiles(folderPath);
+
+                foreach (string file in files)
                 {
-                    // Obtient le nom du fichier sans son extension
-                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
-                    GameManager.Instance.setGamesName(fileNameWithoutExtension);
+                    if (!file.EndsWith(".meta"))
+                    {
+                        // Obtient le nom du fichier sans son extension
+                        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(file);
+                        GameManager.Instance.setGamesName(fileNameWithoutExtension);
+                    }
                 }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            Debug.LogError("Le dossier n'existe pas : " + folderPath);
+            else
+            {
+                Debug.LogError("Le dossier n'existe pas : " + folderPath);
+            }
         }
     }
 }
