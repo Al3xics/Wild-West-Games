@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   end: 0
   win: 0
-  lvl: 3
+  lvl: 2
   time: 20
   score: 0
 --- !u!1 &1152339432
