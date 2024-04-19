@@ -11,16 +11,15 @@ public class Gyroscope : MonoBehaviour
     {
         monGyro = Input.gyro;
 
-        if (!SystemInfo.supportsGyroscope )
+        if (SystemInfo.supportsGyroscope )
         {
             Debug.Log("Gyro ON");
+            monGyro.enabled = true;
         }
         else
         {
             Debug.Log("Gyro OFF");
         }
-
-        monGyro.enabled = true;
     }
 
     void Update()
