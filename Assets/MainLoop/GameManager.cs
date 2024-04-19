@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             games = new List<bool>();
             currentState = State.None;
-            LoadData();
+            //LoadData();
         }
         else
         {
@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SaveDataLoop());
     }
 
-    private void LoadData()
+/*    private void LoadData()
     {
         //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
         hightScore = PlayerPrefs.GetInt("HighScore", 0);
@@ -207,6 +207,6 @@ public class GameManager : MonoBehaviour
             else
                 games[i] = true;
         }
-    }
+    }*/
 
 }
