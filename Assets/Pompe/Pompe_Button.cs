@@ -23,15 +23,21 @@ public class Pompe_Button : MonoBehaviour
 
     public void Pompe()
     {
-        Pompe_LM_S.NbrClickedPompe += 1;
-        value += Pompe_LM_S.Diviseur;
-        material.SetFloat("_Fill", value);
+        if (Pompe_LM_S.NbrClickedPompe < Pompe_LM_S.NumberOfClickPompe) 
+        {
+            Pompe_LM_S.NbrClickedPompe += 1;
+            value += Pompe_LM_S.Diviseur;
+            material.SetFloat("_Fill", value);
+        }
     }
 
     public void Remplis()
     {
-        Pompe_LM_S.NbrClickedRemplis += 1;
-        value += Pompe_LM_S.Diviseur;
-        material.SetFloat("_Fill", value);
+        if (Pompe_LM_S.NbrClickedRemplis < Pompe_LM_S.NumberOfClickRemplis)
+        {
+            Pompe_LM_S.NbrClickedRemplis += 1;
+            value += Pompe_LM_S.Diviseur;
+            material.SetFloat("_Fill", value);
+        }
     }
 }

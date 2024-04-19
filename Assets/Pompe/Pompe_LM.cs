@@ -20,8 +20,25 @@ public class Pompe_LM : MonoBehaviour
     [SerializeField] int difficultyLevel = 1;
 
     [SerializeField] int numberOfClickTotalToWin;
-    [SerializeField] int numberOfClickPompe;
-    [SerializeField] int numberOfClickRemplis;
+
+    [SerializeField] private int numberOfClickPompe;
+
+    public int NumberOfClickPompe
+    {
+        get { return numberOfClickPompe; }
+        set { numberOfClickPompe = value; }
+    }
+
+    [SerializeField] private int numberOfClickRemplis;
+
+    public int NumberOfClickRemplis
+    {
+        get { return numberOfClickRemplis; }
+        set { numberOfClickRemplis = value; }
+    }
+
+/*    [SerializeField] int numberOfClickPompe;
+    [SerializeField] int numberOfClickRemplis;*/
 
     [SerializeField] private int nbrClickedPompe;
     public int NbrClickedPompe
@@ -89,8 +106,9 @@ public class Pompe_LM : MonoBehaviour
                 GameManager.Instance.EndMiniGame();
                 timer = 0;
             }
-            if (nbrClickedPompe == numberOfClickPompe && nbrClickedRemplis == numberOfClickRemplis)
+            if (nbrClickedPompe >= numberOfClickPompe && nbrClickedRemplis >= numberOfClickRemplis)
             {
+                Debug.Log("win");
                 GameManager.Instance.WinMiniGame();
                 timer = 0;
             }
