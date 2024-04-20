@@ -6,10 +6,16 @@ using UnityEngine.UIElements;
 
 public class Pubs : MonoBehaviour
 {
-    public void DestroyPubs()
+    private EnleverPubsLevelManager levelManager;
+
+    void Start()
     {
-        Destroy(gameObject);
+        levelManager = GameObject.Find("LevelManager").GetComponent<EnleverPubsLevelManager>();
     }
 
-    // Je pourrait ajouter qu'on puisse déplacer l'objet (dans le cas on le bouton n'est pas accessible)
+    public void DestroyPubs()
+    {
+        levelManager.RemovePubsFromList(gameObject);
+        Destroy(gameObject);
+    }
 }

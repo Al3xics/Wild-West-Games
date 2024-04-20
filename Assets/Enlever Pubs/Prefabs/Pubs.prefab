@@ -318,7 +318,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1799.7
+  m_fontSize: 227.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -354,7 +354,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -268.8, y: -179.61484, z: -268.8, w: -179.61484}
+  m_margin: {x: -34.019997, y: -22.732504, z: -34.019997, w: -22.732504}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 564.35
+  m_fontSize: 109.95
   m_fontSizeBase: 300
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -38.4, y: -38.488895, z: -38.4, w: -38.488895}
+  m_margin: {x: -7.5, y: -7.5, z: -7.5, w: -7.5}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -791,11 +791,11 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 672
+        Raw: 85.049995
         Type: 0
       Y:
-        Raw: 513.18524
-        Type: 0
+        Raw: 0.15000002
+        Type: 1
       Z:
         Raw: 0
         Type: 0
@@ -914,8 +914,8 @@ MonoBehaviour:
       Y: 0
       Z: 0
     RotateSize: 0
-    AspectRatio: {x: 0, y: 0, z: 0}
-    AspectRatioAxis: 0
+    AspectRatio: {x: 1.3094685, y: 1, z: 0}
+    AspectRatioAxis: 2
   autoLayout:
     Axis: 0
     Spacing:
@@ -1063,7 +1063,7 @@ Transform:
   m_GameObject: {fileID: 8529229914006958152}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 297.6, y: 218.10373, z: 0}
+  m_LocalPosition: {x: 35.024998, y: 24.975006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1099,10 +1099,10 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.11428572
+        Raw: 0.17636685
         Type: 1
       Y:
-        Raw: 0.15
+        Raw: 0.23094684
         Type: 1
       Z:
         Raw: 0
