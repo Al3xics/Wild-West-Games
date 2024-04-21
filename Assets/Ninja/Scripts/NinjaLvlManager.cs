@@ -58,12 +58,10 @@ public class NinjaLvlManager : MonoBehaviour
             if (win)
             {
                 GameManager.Instance.WinMiniGame();
-                Debug.Log("WIN");
             }
             else
             {
                 GameManager.Instance.EndMiniGame();
-                Debug.Log("NOPE");
             }
         }
     }

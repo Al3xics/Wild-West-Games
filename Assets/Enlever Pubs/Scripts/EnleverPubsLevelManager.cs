@@ -82,7 +82,6 @@ public class EnleverPubsLevelManager : MonoBehaviour
         if (pubsList.Count == 0 && timer > 0f)
         {
             timerFlow = false;
-            Debug.Log("WIN !!!");
             GameManager.Instance.WinMiniGame();
         }
     }
@@ -92,7 +91,6 @@ public class EnleverPubsLevelManager : MonoBehaviour
         if (timer <= 0f)
         {
             timerFlow = false;
-            Debug.Log("LOSE !!!");
             GameManager.Instance.EndMiniGame();
         }
     }

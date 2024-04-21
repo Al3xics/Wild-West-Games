@@ -45,21 +45,6 @@ public class UIMenu : MonoBehaviour
         adsManager.LaunchInterstitial();
     }
 
-    public void MusicButton()
-    {
-
-    }
-
-    public void SoundEffectsButton()
-    {
-
-    }
-
-    public void LanguagesButton()
-    {
-
-    }
-
     public void ProgressionButton()
     {
 

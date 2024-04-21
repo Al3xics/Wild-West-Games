@@ -108,7 +108,6 @@ public class Pompe_LM : MonoBehaviour
             }
             if (nbrClickedPompe >= numberOfClickPompe && nbrClickedRemplis >= numberOfClickRemplis)
             {
-                Debug.Log("win");
                 GameManager.Instance.WinMiniGame();
                 timer = 0;
             }
