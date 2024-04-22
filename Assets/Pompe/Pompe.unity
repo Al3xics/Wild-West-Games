@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 55087964}
   - component: {fileID: 55087963}
   - component: {fileID: 55087962}
-  - component: {fileID: 55087965}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -381,18 +380,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55087960}
   m_CullTransparentMesh: 1
---- !u!210 &55087965
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 55087960}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 2
-  m_SortAtRoot: 0
 --- !u!1 &115646389
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,7 +392,6 @@ GameObject:
   - component: {fileID: 115646393}
   - component: {fileID: 115646392}
   - component: {fileID: 115646391}
-  - component: {fileID: 115646394}
   m_Layer: 5
   m_Name: Pompe
   m_TagString: Untagged
@@ -527,18 +513,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115646389}
   m_CullTransparentMesh: 1
---- !u!210 &115646394
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115646389}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 2
-  m_SortAtRoot: 0
 --- !u!1 &171872841
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,7 +526,6 @@ GameObject:
   - component: {fileID: 171872844}
   - component: {fileID: 171872843}
   - component: {fileID: 171872842}
-  - component: {fileID: 171872847}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -658,18 +631,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!210 &171872847
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171872841}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_SortAtRoot: 1
 --- !u!1 &278849382
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +883,6 @@ GameObject:
   - component: {fileID: 813426517}
   - component: {fileID: 813426516}
   - component: {fileID: 813426515}
-  - component: {fileID: 813426519}
   m_Layer: 0
   m_Name: Recipient Liquide
   m_TagString: Untagged
@@ -1018,18 +978,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &813426519
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813426514}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 3
-  m_SortAtRoot: 0
 --- !u!1 &948378111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,7 +1459,6 @@ GameObject:
   - component: {fileID: 1059284987}
   - component: {fileID: 1059284986}
   - component: {fileID: 1059284985}
-  - component: {fileID: 1059284988}
   m_Layer: 5
   m_Name: Remplis
   m_TagString: Untagged
@@ -1633,18 +1580,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059284983}
   m_CullTransparentMesh: 1
---- !u!210 &1059284988
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059284983}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 2
-  m_SortAtRoot: 0
 --- !u!1 &1106318976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2490,7 +2425,6 @@ GameObject:
   - component: {fileID: 1521419955}
   - component: {fileID: 1521419957}
   - component: {fileID: 1521419956}
-  - component: {fileID: 1521419958}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -2558,18 +2492,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521419954}
   m_CullTransparentMesh: 1
---- !u!210 &1521419958
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1521419954}
-  m_Enabled: 1
-  m_SortingLayerID: 1587055789
-  m_SortingLayer: 1
-  m_SortingOrder: 1
-  m_SortAtRoot: 0
 --- !u!1 &1655769909
 GameObject:
   m_ObjectHideFlags: 0
