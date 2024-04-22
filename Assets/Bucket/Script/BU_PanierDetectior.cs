@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class BU_PanierDetectior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Ball"))
+            Debug.Log("Panier detected");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
