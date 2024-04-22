@@ -79,14 +79,6 @@ public class Gameplay : MonoBehaviour
             listTemp.RemoveAt(rnd);
             target.enabled = false;
         }
-
-        // Assign sprites to cards
-        for (int i = 0; i < bloc.Length; i++)
-        {
-            SpriteRenderer target = bloc[i].GetComponent<SpriteRenderer>();
-            target.sprite = listTemp[i % listTemp.Count]; // Cycle through the list of sprites
-            target.enabled = false;
-        }
     }
 
     private void FoundPair(GameObject obj1, GameObject obj2)

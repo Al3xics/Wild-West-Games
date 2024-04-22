@@ -4,10 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ball
   - LvlManager
   - Fruit
   - Bomb
   - Spawner
+  - Bloc
+  - ADS
+  - SFX
+  - MUSIC
   layers:
   - Default
   - TransparentFX
@@ -15,7 +20,7 @@ TagManager:
   - Fruits
   - Water
   - UI
-  - 
+  - Fluids
   - 
   - 
   - 

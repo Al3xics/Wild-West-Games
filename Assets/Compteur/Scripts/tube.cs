@@ -29,7 +29,7 @@ public class tube : MonoBehaviour
             if (canAdd)
             {
                 canAdd = false;
-                StartCoroutine(addFillAmount(0.05f));
+                StartCoroutine(addFillAmount(0.01f));
             }
         }
        
