@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UIElements;
 
 public class NinjaLvlManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class NinjaLvlManager : MonoBehaviour
     [SerializeField] private float lvl;
     [SerializeField] private int time = 8;
     [SerializeField] private int score = 0;
-    [SerializeField] GameObject borders;
+    [SerializeField] GameObject border;
+    [SerializeField] GameObject depop;
 
     private Vector3[] corners;
     // Start is called before the first frame update
@@ -41,7 +43,18 @@ public class NinjaLvlManager : MonoBehaviour
         //    lvl = 1;
         //}
 
-        Instantiate(borders, CornersPosition(), gameObject.transform.rotation);
+        GameObject borderL = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject borderR = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject borderU = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject dep = Instantiate(depop, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.5f, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+
+        float scaleY = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)));
+        float scaleX = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)));
+
+        borderR.transform.localScale = new Vector3(1, -scaleY, 1);
+        borderL.transform.localScale = new Vector3(-1, -scaleY, 1);
+        borderU.transform.localScale = new Vector3(-scaleX, 1, 1);
+        dep.transform.localScale = new Vector3(scaleX*3, 1, 1);
 
         StartCoroutine(Timing(time-lvl));
     }
@@ -86,7 +99,7 @@ public class NinjaLvlManager : MonoBehaviour
         Vector2 bottomLeft = new(-topRight.x, -topRight.y);
 
         corners = new Vector3[2];
-        corners[0] = new Vector3 (topRight.x, topRight.y, 0f);
+        corners[0] = new Vector3(topRight.x, topRight.y, 0f);
         corners[1] = bottomLeft;
 
         //float randomX = Random.Range(bottomLeft.x, topRight.x);
