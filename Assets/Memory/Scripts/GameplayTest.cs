@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class GameplayTest : MonoBehaviour
 {
+    [SerializeField] private MemoryLvlManager memoryLvlManager;
+    [SerializeField] private float timer = 30f;
+    private bool gameIsRunning = true;
+    public static GameplayTest instance;
+
     [SerializeField] List<Sprite> listItem = new List<Sprite>();
+    [SerializeField] private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
-    private GameObject[,] blocs;
+    public GameObject[,] blocs;
     private int returnCard = 0;
     private GameObject firstCard, secondCard;
-    private List<string> listFound = new List<string>();
 
     [SerializeField] private int rows = 2; // Nombre initial de lignes
     [SerializeField] private int columns = 2; // Nombre initial de colonnes
@@ -18,6 +23,16 @@ public class GameplayTest : MonoBehaviour
     private float cameraWidth;
     private float cameraHeight;
 
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        memoryLvlManager = FindObjectOfType<MemoryLvlManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +40,10 @@ public class GameplayTest : MonoBehaviour
         mainCamera = Camera.main;
         GetCameraSize();
         InitGame();
+
+        /*int currentLevel = memoryLvlManager.Level;
+        float difficulty = memoryLvlManager.DifficultyMultiplier;
+        int pairs = memoryLvlManager.NumberOfPairsFound;*/
     }
 
     void GetCameraSize()
@@ -62,46 +81,54 @@ public class GameplayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)/*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began*/)
+        if (gameIsRunning)
         {
-            if (returnCard == 2)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                returnCard = 0;
-
-                SpriteRenderer firstSprite = firstCard.GetComponentInChildren<SpriteRenderer>();
-                SpriteRenderer secondSprite = secondCard.GetComponentInChildren<SpriteRenderer>();
-
-                if (!listFound.Contains(firstSprite.sprite.name))
-                {
-                    firstSprite.enabled = false;
-                    secondSprite.enabled = false;
-                }
-
+                EndGame();
             }
-
-            /*Touch touch = Input.GetTouch(0);*/
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition/*touch.position*/);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0)/*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began*/)
             {
-                SpriteRenderer spriteRenderer = hit.transform.Find("Sprite").GetComponent<SpriteRenderer>();
-                spriteRenderer.enabled = !spriteRenderer.enabled;
-
-                returnCard++;
-
-                if (returnCard == 1)
-                {
-                    firstCard = hit.collider.gameObject;
-                }
-
                 if (returnCard == 2)
                 {
-                    secondCard = hit.collider.gameObject;
+                    returnCard = 0;
 
-                    if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
-                        FoundPair(firstCard, secondCard);
+                    SpriteRenderer firstSprite = firstCard.GetComponentInChildren<SpriteRenderer>();
+                    SpriteRenderer secondSprite = secondCard.GetComponentInChildren<SpriteRenderer>();
+
+                    if (!listFound.Contains(firstSprite.sprite.name))
+                    {
+                        firstSprite.enabled = false;
+                        secondSprite.enabled = false;
+                    }
+
+                }
+
+                /*Touch touch = Input.GetTouch(0);*/
+
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition/*touch.position*/);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    SpriteRenderer spriteRenderer = hit.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+                    spriteRenderer.enabled = !spriteRenderer.enabled;
+
+                    returnCard++;
+
+                    if (returnCard == 1)
+                    {
+                        firstCard = hit.collider.gameObject;
+                    }
+
+                    if (returnCard == 2)
+                    {
+                        secondCard = hit.collider.gameObject;
+
+                        if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
+                            FoundPair(firstCard, secondCard);
+                    }
                 }
             }
         }
@@ -142,6 +169,21 @@ public class GameplayTest : MonoBehaviour
         obj2.GetComponentInChildren<BoxCollider>().enabled = false;
         listFound.Add(obj1.GetComponentInChildren<SpriteRenderer>().sprite.name);
         listFound.Add(obj2.GetComponentInChildren<SpriteRenderer>().sprite.name);
+        memoryLvlManager.PairFound();
     }
 
+    void EndGame()
+    {
+        /*gameIsRunning = false;
+        if (memoryLvlManager.NumberOfPairsFound == blocs.GetLength(0) * blocs.GetLength(1) / 2)
+        {
+            // Victoire
+            GameManager.Instance.WinMiniGame();
+        }
+        else
+        {
+            // Défaite
+            GameManager.Instance.EndMiniGame();
+        }*/
+    }
 }
