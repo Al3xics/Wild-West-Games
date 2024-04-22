@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 46fcc4f17a779c54689bae371d32cb66, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: d044bebfb3279a5458fdcfff2947c37c, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f3bc66f0cf9960a48acee6ec4fbf8d0a, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 4e82666fc19bd6148a6e5517c8333e94, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}
