@@ -11,7 +11,9 @@ public class slider : MonoBehaviour
     private bool maxVal = false;
     private bool minVal = true;
 
-     public float myVal = 0;
+    [HideInInspector] public float myVal = 0;
+
+    public float speed;
 
     // Update is called once per frame
     void Update()
@@ -31,7 +33,31 @@ public class slider : MonoBehaviour
         if (canMove)
         {
             canMove = false;
-            StartCoroutine(addValue(0.01f));
+
+            if(GameManager.Instance.Difficulty <= 20)
+            {
+                StartCoroutine(addValue(0.01f));
+            }
+
+            if (GameManager.Instance.Difficulty > 20 && GameManager.Instance.Difficulty <= 40)
+            {
+                StartCoroutine(addValue(0.007f));
+            }
+
+            if (GameManager.Instance.Difficulty > 40 && GameManager.Instance.Difficulty <= 60)
+            {
+                StartCoroutine(addValue(0.005f));
+            }
+
+            if (GameManager.Instance.Difficulty > 60 && GameManager.Instance.Difficulty <= 80)
+            {
+                StartCoroutine(addValue(0.003f));
+            }
+
+            if (GameManager.Instance.Difficulty > 80)
+            {
+                StartCoroutine(addValue(0.001f));
+            }
         }
 
     }

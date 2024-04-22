@@ -16,15 +16,15 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    public State currentState;
+    private State currentState;
 
     public State CurrentState
     {
         get { return currentState; }
     }
 
-    [SerializeField] private int NumberOfMiniGame = 0;
-    [SerializeField] private int currentMiniGame = -1;
+    private int NumberOfMiniGame = 0;
+    private int currentMiniGame = -1;
 
     [SerializeField] private float difficulty = 0;
 
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public int Life
     {
         get { return life; }
+        set { life = value; }
     }
 
     private int score;
@@ -52,8 +53,8 @@ public class GameManager : MonoBehaviour
         get { return score; }
     }
 
-    private List<bool> games;
-    [SerializeField] private List<string> gamesName;
+    private List<bool> games = new();
+    [SerializeField] private List<string> gamesName = new();
 
     private void Awake()
     {
@@ -61,29 +62,35 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            games = new List<bool>();
-            for (int i = 0; i < NumberOfMiniGame; i++)
-            {
-                games.Add(false);
-            }
             currentState = State.None;
             LoadData();
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
 
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Portrait;
+        NumberOfMiniGame = gamesName.Count;
+        for (int i = 0; i < NumberOfMiniGame; i++)
+        {
+            games.Add(false);
+        }
         StartCoroutine(SaveDataLoop());
     }
 
     public void setGamesName(string _gameName)
     {
         gamesName.Add(_gameName);
+    }
+
+    public List<string> getGamesName()
+    {
+        return (gamesName);
     }
 
     public void LoadNextMiniGame(int num = -1)
@@ -144,8 +151,6 @@ public class GameManager : MonoBehaviour
         {
             if (score > hightScore)
                 hightScore = score;
-            score = 0;
-            life = 3;
             currentState = State.LoseGame;
             SceneManager.LoadScene("IntervalScene");
             return false;
@@ -160,7 +165,7 @@ public class GameManager : MonoBehaviour
 
     private void _SaveData()
     {
-        PlayerPrefs.SetFloat("Difficulty", difficulty);
+        //PlayerPrefs.SetFloat("Difficulty", difficulty);
         PlayerPrefs.SetInt("HighScore", hightScore);
         string a = "";
         for (int i = 0; i < NumberOfMiniGame; i++)
@@ -181,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     private void LoadData()
     {
-        difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
+        //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
         hightScore = PlayerPrefs.GetInt("HighScore", 0);
         score = 0;
         string a = "";

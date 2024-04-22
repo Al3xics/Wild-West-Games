@@ -12,8 +12,31 @@ public class NinjaLvlManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lvl = GameManager.Instance.Difficulty;
-        StartCoroutine(Timing(time));
+        if (GameManager.Instance.Difficulty > 0 && GameManager.Instance.Difficulty <= 20)
+        {
+            lvl = 1;
+        }
+        else if (GameManager.Instance.Difficulty > 20 && GameManager.Instance.Difficulty <= 40)
+        {
+            lvl = 2;
+        }
+        else if (GameManager.Instance.Difficulty > 40 && GameManager.Instance.Difficulty <= 60)
+        {
+            lvl = 3;
+        }
+        else if (GameManager.Instance.Difficulty > 60 && GameManager.Instance.Difficulty <= 80)
+        {
+            lvl = 4;
+        }
+        else if (GameManager.Instance.Difficulty > 80 && GameManager.Instance.Difficulty <= 100)
+        {
+            lvl = 5;
+        }
+        else
+        {
+            lvl = 1;
+        }
+        StartCoroutine(Timing(time-lvl));
     }
 
     // Update is called once per frame
@@ -35,12 +58,10 @@ public class NinjaLvlManager : MonoBehaviour
             if (win)
             {
                 GameManager.Instance.WinMiniGame();
-                Debug.Log("WIN");
             }
             else
             {
                 GameManager.Instance.EndMiniGame();
-                Debug.Log("NOPE");
             }
         }
     }
