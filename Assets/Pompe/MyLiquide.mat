@@ -27,7 +27,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Fill: 0.248
+    - _Fill: 1
     m_Colors:
     - _SideColor: {r: 0.2264151, g: 0.55224425, b: 0.9056604, a: 1}
     - _TopColor: {r: 0.010768958, g: 0.043695163, b: 0.20754719, a: 1}
