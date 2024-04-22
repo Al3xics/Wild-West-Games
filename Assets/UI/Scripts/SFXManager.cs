@@ -1,8 +1,7 @@
-using NovaSamples.UIControls;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class SFXManager : MonoBehaviour
 {
@@ -11,11 +10,13 @@ public class SFXManager : MonoBehaviour
     [HideInInspector] public AudioSource Audio;
     public AudioClip Clip;
 
-    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private GameObject sfxSlider;
+    private Slider slider;
 
     void Awake()
     {
         Audio = GetComponent<AudioSource>();
+        slider = sfxSlider.GetComponent<Slider>();
 
         if (Instance == null)
         {
@@ -25,6 +26,7 @@ public class SFXManager : MonoBehaviour
         else
         {
             Instance.sfxSlider = sfxSlider;
+            slider = sfxSlider.GetComponent<Slider>();
             Destroy(gameObject);
         }
 
@@ -32,17 +34,18 @@ public class SFXManager : MonoBehaviour
         {
             float volume = PlayerPrefs.GetFloat("SFXVolume");
             Audio.volume = volume;
-            sfxSlider.Value = volume * Slider.MaxValue;
+            slider.value = volume * slider.maxValue;
         }
         else
         {
-            Audio.volume = Slider.MaxValue;
+            slider.value = slider.maxValue;
+            Audio.volume = slider.maxValue;
         }
     }
 
     public void SFXVolume()
     {
-        float normalizedValue = sfxSlider.Value / Slider.MaxValue;
+        float normalizedValue = slider.value / slider.maxValue;
 
         if (normalizedValue == 0)
         {
