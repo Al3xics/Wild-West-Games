@@ -20,19 +20,26 @@ public class Cockroach : MonoBehaviour
 
     [SerializeField] private bool canMove = true;
     [SerializeField] private float stopTime = 1.0f;
+    private SpriteRenderer spriteRenderer;
 
-    
-    
+
+
     private void Start()
     {
         background = GameObject.Find("/Background");
-        if(background == null)
+        
+        
+        if (background == null)
         {
             return;
         }
+        spriteRenderer = background.GetComponent<SpriteRenderer>();
+        spriteRenderer.size = new Vector2(Screen.width, Screen.height);
+
         Vector2 localSize = background.GetComponent<Renderer>().bounds.size;
+        
 
-
+        
         minPosition = localSize * -0.5f;
         maxPosition = localSize * 0.5f;
         
