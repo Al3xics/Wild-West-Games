@@ -1,33 +1,68 @@
-using Nova;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Instanciate_Button : MonoBehaviour
 {
+    [SerializeField] private List<string> ListColorNames;
+    [SerializeField] private List<Color> ListColors;
+    [SerializeField] private List<Color> colorsWithoutColorToFind;
+
+
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject parent;
     [SerializeField] private GameObject button_obj;
-    [SerializeField] private TextMeshPro Consigne;
-    [SerializeField] private List<string> ListColorName;
-    [SerializeField] private List<Color> ListColor;
+    [SerializeField] private TextMeshProUGUI Consigne;
 
     [SerializeField] private int numberOfObjects;
     Vector3 position;
 
     float rand_Consigne;
     int rand_Color_To_Find;
-    string Color_To_FInd;
+    string Color_To_Find;
     bool Color_Find_Is_Given = false;
     bool Need_To_Find_Color_Button = false;
 
+    int randColorButton;
+    int randColorText;
+
     float x = 0;
     float y = 0;
-    void Start()
+    void Awake()
     {
+        ListColorNames = new List<string>()
+        {
+            "Red",
+            "Green",
+            "Blue",
+            "Yellow",
+            "Orange",
+            "Purple",
+            "Cyan",
+            "Magenta",
+            "Brown",
+            "Black"
+        };
+        ListColors = new List<Color>()
+        {
+            Color.red,
+            Color.green,
+            Color.blue,
+            Color.yellow,
+            new Color(1.0f, 0.5f, 0.0f), // Orange
+            new Color(0.5f, 0.0f, 0.5f), // Purple
+            Color.cyan,
+            new Color(1.0f, 0.0f, 1.0f), // Magenta
+            new Color(0.6f, 0.3f, 0.0f), // Brown
+            Color.black
+        };
         Color_Find_Is_Given = false;
         Need_To_Find_Color_Button = false;
+        List<Color> colorsWithoutColorToFind = new List<Color>();
     }
 
     void Update()
@@ -37,24 +72,25 @@ public class Instanciate_Button : MonoBehaviour
 
     public void Make_Game(int nbrButton)
     {
-        rand_Color_To_Find = Random.Range(0, ListColor.Count);
-        Color_To_FInd = ListColorName[rand_Color_To_Find];
+        rand_Color_To_Find = UnityEngine.Random.Range(0, ListColors.Count - 1);
+        Color_To_Find = ListColorNames[rand_Color_To_Find];
 
-        rand_Consigne = Random.Range(0f, 1f);
+        rand_Consigne = UnityEngine.Random.Range(0f, 1f);
         if (rand_Consigne <= 0.5f) {
             Need_To_Find_Color_Button = true;
-            Consigne.SetText("Cliquer sur le button de couleur " + Color_To_FInd);
+            Consigne.SetText("Cliquer sur le button de couleur " + Color_To_Find);
         } else {
             Need_To_Find_Color_Button = false;
-            Consigne.SetText("Cliquer sur le texte de couleur " + Color_To_FInd);
+            Consigne.SetText("Cliquer sur le texte de couleur " + Color_To_Find);
         }
-/*        int rows = Mathf.CeilToInt(Mathf.Sqrt(nbrButton));
-        int cols = Mathf.CeilToInt((float)nbrButton / rows);
 
-        float spacingX = 3f;
-        float spacingY = -1.5f;
-
-        Vector3 initialPosition = new Vector3(-3f, 1.5f, 0f);*/
+        for (int i =  0; i < ListColors.Count; i++)
+        {
+            if (i != rand_Color_To_Find)
+            {
+                colorsWithoutColorToFind.Add(ListColors[i]);
+            }
+        }
 
         for (int i = 0; i < nbrButton; i++)
         {
@@ -73,47 +109,58 @@ public class Instanciate_Button : MonoBehaviour
                         y = -1.5f;
                     else
                         y = 1.5f;
-           /* if (i == 10)
-            {
-                position = new Vector3(0, -3);
-            }
-            else
-            {
-                int row = i / cols;
-                int col = i % cols;
-                position = initialPosition + new Vector3(col * spacingX, row * spacingY, 0f);
-            }*/
+
             position = new Vector2(x, y);
-            button_obj = Instantiate(prefab, position, Quaternion.identity);
-            button_obj.transform.parent = parent.transform;
-            button_obj.GetComponent<UIBlock2D>().Position = position;
-            
+            button_obj = Instantiate(prefab);
+            button_obj.transform.SetParent(parent.transform, false);
+            button_obj.transform.position = position;
+
             if (Color_Find_Is_Given == false)
             {
-                float rand = Random.Range(0f, 1f);
+                float rand = UnityEngine.Random.Range(0f, 1f);
                 if (rand <= 0.2f || i + 1 >= nbrButton)
                 {
-/*                    if (Need_To_Find_Color_Button)
+                    int index = ListColorNames.IndexOf(Color_To_Find);
+                    if (Need_To_Find_Color_Button)
                     {
-                        int index = ListColor.IndexOf(Color_To_FInd);
-                        button_obj.GetComponent<UIBlock2D>().Border.Color = ListColor[Color_To_FInd];
+                        button_obj.GetComponent<Image>().color = ListColors[index];
+                        randColorText = UnityEngine.Random.Range(0, colorsWithoutColorToFind.Count);
+                        button_obj.GetComponentInChildren<TextMeshProUGUI>().color = colorsWithoutColorToFind[randColorText];
                     }
                     else
                     {
-                        button_obj.GetComponent<UIBlock2D>().Border.Color = ListColor[Color_To_FInd];
-                    }*/
+                        button_obj.GetComponentInChildren<TextMeshProUGUI>().color = ListColors[index];
+                        randColorButton = UnityEngine.Random.Range(0, colorsWithoutColorToFind.Count);
+                        button_obj.GetComponent<Image>().color = colorsWithoutColorToFind[randColorButton];
+                    }
+                    Color_Find_Is_Given = true;
                 }
+                else
+                {
+                    RandomColorTextEtButton();
+
+                    button_obj.GetComponent<Image>().color = colorsWithoutColorToFind[randColorButton];
+                    button_obj.GetComponentInChildren<TextMeshProUGUI>().color = colorsWithoutColorToFind[randColorText];
+                }
+            }
+            else
+            {
+                RandomColorTextEtButton();
+
+                button_obj.GetComponent<Image>().color = colorsWithoutColorToFind[randColorButton];
+                button_obj.GetComponentInChildren<TextMeshProUGUI>().color = colorsWithoutColorToFind[randColorText];
             }
         }
         
     }
+     private void RandomColorTextEtButton()
+     {
+        randColorButton = UnityEngine.Random.Range(0, colorsWithoutColorToFind.Count);
+        randColorText = UnityEngine.Random.Range(0, colorsWithoutColorToFind.Count);
 
-/*    public void Instanciate_Button_Less_4()
-    {
-        Consigne.SetText("");
-    }
-    public void Instanciate_Button_Less_other()
-    {
-        Consigne.SetText("");
-    }*/
+        if (randColorButton == randColorText) 
+        {
+            RandomColorTextEtButton();
+        }
+     }
 }

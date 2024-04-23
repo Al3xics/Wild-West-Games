@@ -59,7 +59,7 @@ public class Difference_LM : MonoBehaviour
                 GameManager.Instance.WinMiniGame();
                 timer = 0;
             }*/
-            myTimer_S.UpdateTimer();
+            myTimer_S.UpdateTimerColor();
         }
     }
 }
