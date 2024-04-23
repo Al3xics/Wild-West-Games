@@ -7,7 +7,7 @@ public class Gameplay : MonoBehaviour
     private GameObject[] bloc;
     private int returnCard = 0;
     private GameObject firstCard, secondCard;
-    private List<string> listFound = new List<string>();
+    [SerializeField]private List<string> listFound = new List<string>();
 
     // Start is called before the first frame update
     void Awake()

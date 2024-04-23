@@ -1,30 +1,27 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
-public class GameplayTest : MonoBehaviour
+public class Memory : MonoBehaviour
 {
     [SerializeField] List<Sprite> listItem = new List<Sprite>();
+    [SerializeField] private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
     private GameObject[,] blocs;
     private int returnCard = 0;
     private GameObject firstCard, secondCard;
-    private List<string> listFound = new List<string>();
-
-    [SerializeField] private int rows = 2; // Nombre initial de lignes
-    [SerializeField] private int columns = 2; // Nombre initial de colonnes
 
     private Camera mainCamera;
     private float cameraWidth;
     private float cameraHeight;
 
-    // Start is called before the first frame update
     void Start()
     {
-        //listItem.AddRange(Resources.LoadAll<Sprite>("Sprites"));
         mainCamera = Camera.main;
-        GetCameraSize();
-        InitGame();
+        if (mainCamera != null) // Vérifiez si mainCamera est null
+        {
+            GetCameraSize();
+            InitGame();
+        }
     }
 
     void GetCameraSize()
@@ -33,16 +30,21 @@ public class GameplayTest : MonoBehaviour
         cameraWidth = cameraHeight * mainCamera.aspect + 1f ;
     }
 
-    void InitGame()
+    private void InitGame()
     {
+        int rowsI = MemoryLvlManager.instance.Rows;
+        int columnsI = MemoryLvlManager.instance.Columns;
         // Générer la grille de cartes en fonction de rows et columns
-        blocs = new GameObject[rows, columns];
+        blocs = new GameObject[rowsI, columnsI];
         GenerateGrid();
         Shuffle();
     }
 
-    void GenerateGrid()
+    private void GenerateGrid()
     {
+        int rows = MemoryLvlManager.instance.Rows;
+        int columns = MemoryLvlManager.instance.Columns;
+        
         float offsetX = cameraWidth / columns;
         float offsetY = cameraHeight / rows;
         float startX = -cameraWidth / 2 + offsetX / 2;
@@ -52,8 +54,8 @@ public class GameplayTest : MonoBehaviour
         {
             for (int j = 0; j < columns; j++)
             {
-                GameObject newBlock = Instantiate(Cube); // Utilisez votre prefab ici
-                newBlock.transform.position = new Vector3(startX + j * offsetX, startY + i * offsetY, 0);
+                GameObject newBlock = Instantiate(Cube); // Utilisez votre prefab ici 
+                newBlock.transform.position = new Vector3(startX + j * offsetX, startY + i * offsetY + 0.2f, 0);
                 blocs[i, j] = newBlock;
             }
         }
@@ -67,7 +69,6 @@ public class GameplayTest : MonoBehaviour
             if (returnCard == 2)
             {
                 returnCard = 0;
-
                 SpriteRenderer firstSprite = firstCard.GetComponentInChildren<SpriteRenderer>();
                 SpriteRenderer secondSprite = secondCard.GetComponentInChildren<SpriteRenderer>();
 
@@ -78,9 +79,7 @@ public class GameplayTest : MonoBehaviour
                 }
 
             }
-
             /*Touch touch = Input.GetTouch(0);*/
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition/*touch.position*/);
             RaycastHit hit;
 
@@ -102,6 +101,11 @@ public class GameplayTest : MonoBehaviour
 
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
                         FoundPair(firstCard, secondCard);
+
+                    if (listFound.Count == MemoryLvlManager.instance.Rows * MemoryLvlManager.instance.Columns)
+                    {
+                        MemoryLvlManager.instance.EndGame(true);
+                    }
                 }
             }
         }
@@ -109,7 +113,7 @@ public class GameplayTest : MonoBehaviour
 
     private void Shuffle()
     {
-        int pairsNeeded = rows * columns / 2;
+        int pairsNeeded = blocs.GetLength(0) * blocs.GetLength(1) / 2;
         List<Sprite> listTemp = new List<Sprite>(listItem);
         
         foreach (Sprite sprite in listItem)
@@ -121,7 +125,6 @@ public class GameplayTest : MonoBehaviour
 
         if (pairsNeeded < listTemp.Count / 2)
             listTemp.RemoveRange(pairsNeeded * 2, listTemp.Count - pairsNeeded * 2);
-
 
         for (int i = 0; i < blocs.GetLength(0); i++)
         {
