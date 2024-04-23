@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Slash : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Slash : MonoBehaviour
     [SerializeField] private float forceToSlash;
     private RaycastHit2D hit;
     [SerializeField] GameObject trail;
+    private Vector3 position;
+    private float width;
+    private float height;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,23 +21,30 @@ public class Slash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.touchCount >= 1)
         {
-            Instantiate(trail);
+            Touch touch = Input.GetTouch(0);
+            if (touch.phase == TouchPhase.Began)
+            {
+                Instantiate(trail);
+            }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.touchCount >= 1)
         {
-            if (Vector3.Distance(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition)) > forceToSlash)
+            Touch touch = Input.GetTouch(0);
+            position = Camera.main.ScreenToWorldPoint(touch.position);
+            if (Vector3.Distance(lastPos, position) > forceToSlash && lastPos != Vector3.zero)
             {
-                Debug.DrawLine(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition), Color.red, 1.0f, false);
-                if (Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+                Debug.DrawLine(lastPos, position, Color.red, 1.0f, false);
+                if (Physics2D.Linecast(lastPos, position))
                 {
-                    hit = Physics2D.Linecast(lastPos, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                    hit = Physics2D.Linecast(lastPos, position);
 
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Fruit")
                     {
-                        Destroy(hit.collider.gameObject);
+                        hit.collider.gameObject.GetComponent<Fruit>().Particles();
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Cut);
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                         {
                             go.GetComponent<NinjaLvlManager>().SetScore(go.GetComponent<NinjaLvlManager>().GetScore()+1);
@@ -42,7 +53,8 @@ public class Slash : MonoBehaviour
 
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Bomb")
                     {
-                        Destroy(hit.collider.gameObject);
+                        hit.collider.gameObject.GetComponent<Fruit>().Particles();
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Bomb);
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                         {
                             go.GetComponent<NinjaLvlManager>().SetEnd(true);
@@ -50,7 +62,11 @@ public class Slash : MonoBehaviour
                     }
                 }
             }
-            lastPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lastPos = Camera.main.ScreenToWorldPoint(touch.position);
+        }
+        else
+        {
+            lastPos = Vector3.zero;
         }
     }
 }
