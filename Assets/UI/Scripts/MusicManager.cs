@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ public class MusicManager : MonoBehaviour
     public static MusicManager Instance;
 
     [SerializeField] private GameObject musicSlider;
+    [SerializeField] private TMP_Text musicSliderText;
     private AudioSource audioSource;
     private Slider slider;
 
@@ -25,6 +27,7 @@ public class MusicManager : MonoBehaviour
         else
         {
             Instance.musicSlider = musicSlider;
+            Instance.musicSliderText = musicSliderText;
             slider = musicSlider.GetComponent<Slider>();
             Destroy(gameObject);
         }
@@ -57,5 +60,10 @@ public class MusicManager : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("MusicVolume", normalizedValue);
+    }
+
+    public void SetTextSlider()
+    {
+        musicSliderText.text = slider.value.ToString();
     }
 }

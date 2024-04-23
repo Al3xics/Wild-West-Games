@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip Clip;
 
     [SerializeField] private GameObject sfxSlider;
+    [SerializeField] private TMP_Text sfxSliderText;
     private Slider slider;
 
     void Awake()
@@ -26,6 +28,7 @@ public class SFXManager : MonoBehaviour
         else
         {
             Instance.sfxSlider = sfxSlider;
+            Instance.sfxSliderText = sfxSliderText;
             slider = sfxSlider.GetComponent<Slider>();
             Destroy(gameObject);
         }
@@ -58,5 +61,10 @@ public class SFXManager : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("SFXVolume", normalizedValue);
+    }
+
+    public void SetTextSlider()
+    {
+        sfxSliderText.text = slider.value.ToString();
     }
 }
