@@ -34,7 +34,7 @@ public class Slash : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             position = Camera.main.ScreenToWorldPoint(touch.position);
-            if (Vector3.Distance(lastPos, position) > forceToSlash)
+            if (Vector3.Distance(lastPos, position) > forceToSlash && lastPos != Vector3.zero)
             {
                 Debug.DrawLine(lastPos, position, Color.red, 1.0f, false);
                 if (Physics2D.Linecast(lastPos, position))
@@ -43,8 +43,8 @@ public class Slash : MonoBehaviour
 
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Fruit")
                     {
-                        //Destroy(hit.collider.gameObject);
                         hit.collider.gameObject.GetComponent<Fruit>().Particles();
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Cut);
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                         {
                             go.GetComponent<NinjaLvlManager>().SetScore(go.GetComponent<NinjaLvlManager>().GetScore()+1);
@@ -53,7 +53,8 @@ public class Slash : MonoBehaviour
 
                     if (hit.collider.gameObject != null && hit.collider.gameObject.tag == "Bomb")
                     {
-                        Destroy(hit.collider.gameObject);
+                        hit.collider.gameObject.GetComponent<Fruit>().Particles();
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Bomb);
                         foreach (GameObject go in GameObject.FindGameObjectsWithTag("LvlManager"))
                         {
                             go.GetComponent<NinjaLvlManager>().SetEnd(true);
@@ -62,6 +63,10 @@ public class Slash : MonoBehaviour
                 }
             }
             lastPos = Camera.main.ScreenToWorldPoint(touch.position);
+        }
+        else
+        {
+            lastPos = Vector3.zero;
         }
     }
 }

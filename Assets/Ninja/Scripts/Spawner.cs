@@ -32,15 +32,15 @@ public class Spawner : MonoBehaviour
     private IEnumerator Spawn(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 2+lvl; i++)
         {
             Instantiate(Fruit, gameObject.transform.position, gameObject.transform.rotation);
         }
         if (lvl > 1)
         {
-            for (int i = 0; i < Random.Range(1, 5); i++)
+            for (int i = 0; i < Random.Range(1, 3); i++)
             {
-                if (Random.Range(1, 10) < 4)
+                if (Random.Range(1, 10) < 6)
                 {
                     Instantiate(Fruit, gameObject.transform.position, gameObject.transform.rotation);
                 }
