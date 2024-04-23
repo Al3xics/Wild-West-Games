@@ -16,6 +16,11 @@ public class compteurBtn : MonoBehaviour
 
     void Update()
     {
+        if(isPressed)
+        {
+            transform.Rotate(Vector3.forward * 100 * Time.deltaTime);
+        }
+
         numberManager.number = tube.value;
 
         numberTxt.text = numberManager.number.ToString();
@@ -25,13 +30,11 @@ public class compteurBtn : MonoBehaviour
         {
             if(numberManager.number >= numberManager.randomNumber && numberManager.number <= numberManager.ValueMax)
             {
-                Debug.Log("GG");
                 GameManager.Instance.WinMiniGame();
             }
 
             else
             {
-                Debug.Log("FF");
                 GameManager.Instance.EndMiniGame();
             }
         }
@@ -44,7 +47,6 @@ public class compteurBtn : MonoBehaviour
         {
             isPressed = true;
         }
-
     }
 
  

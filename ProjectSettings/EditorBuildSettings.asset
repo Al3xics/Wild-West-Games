@@ -10,23 +10,29 @@ EditorBuildSettings:
     guid: 0eb9058566028964892a75047bb7eb36
   - enabled: 1
     path: Assets/Scenes/Compteur-MiniJeu.unity
-    guid: b5ca75ab9abc3364eaf0a4baca8241d5
+    guid: 658c786dc4188a54f9ae6fa588edf852
   - enabled: 1
-    path: Assets/Scenes/TapTap.unity
-    guid: dfe8e143e9c42cd42a4bcf3015277c44
-  - enabled: 1
-    path: Assets/Scenes/Ninja.unity
-    guid: fafa3cda9303954438fc475362a30d51
+    path: Assets/Scenes/EnleverPubs.unity
+    guid: 20cf2c5b5bff46a47a75d257cf634c67
   - enabled: 1
     path: Assets/Scenes/Jauge.unity
-    guid: 8d044439d4496fb4dae5fef570d55ab7
-  - enabled: 1
+    guid: 3dcaf37d023df6a4fb06095f07c00a23
+  - enabled: 0
     path: Assets/Scenes/Liquide.unity
     guid: cedb5f4d4c4187b498da9f97376359c5
+  - enabled: 1
+    path: Assets/Scenes/Ninja.unity
+    guid: 0223b38afd2da634ea26964bdf0929d0
+  - enabled: 1
+    path: Assets/Scenes/Pompe.unity
+    guid: f24d9ab61f2d58142be5dfbfd505fcb4
+  - enabled: 1
+    path: Assets/Scenes/TapTap.unity
+    guid: 9ebace535861f96458072bec70dccb87
   - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f3bc66f0cf9960a48acee6ec4fbf8d0a, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 4e82666fc19bd6148a6e5517c8333e94, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c178f35ff80ebbb429435874c83572a9, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 6673826085ad97c4a9141f89b2312a71, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}
