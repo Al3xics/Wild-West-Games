@@ -6,6 +6,7 @@ public class BU_GameManager : MonoBehaviour
 {
     static public BU_GameManager instance;
     [SerializeField] private Transform BallPlacement;
+    [SerializeField] private Transform[] BallPlacements;
     [SerializeField] private Transform[] BinPlacement;
     //[SerializeField] private Transform[] FanPlacement;
 
@@ -18,11 +19,13 @@ public class BU_GameManager : MonoBehaviour
 
 
 
-    [SerializeField] private GameObject ball;
+    private GameObject ball;
     private Vector3 startPos;
     private Vector3 endPos;
     private bool validStart = true;
     private bool validEnd = false;
+
+    private GameObject[] ballsIndicator;
 
     private void OnDrawGizmos()
     {
@@ -40,6 +43,12 @@ public class BU_GameManager : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(BallPlacement.position, 0.05f);
+
+        Gizmos.color = Color.blue;
+        foreach (Transform t in BallPlacements)
+        {
+            Gizmos.DrawSphere(t.position, 0.05f);
+        }
 
 
         Gizmos.color = Color.green;
@@ -59,6 +68,12 @@ public class BU_GameManager : MonoBehaviour
     private void Start()
     {
         ball = Instantiate(BallPrefab, BallPlacement.position, Quaternion.identity);
+        ballsIndicator = new GameObject[BallPlacements.Length];
+        for (int i = 0; i < BallPlacements.Length; i++)
+        {
+            ballsIndicator[i] =  Instantiate(BallPrefab, BallPlacements[i].position , Quaternion.identity);
+            ballsIndicator[i].GetComponent<Rigidbody>().isKinematic = true;
+        }
 
         Instantiate(BinPrefab, BinPlacement[Random.Range(0,BinPlacement.Length)].position, Quaternion.identity);
 
@@ -95,6 +110,10 @@ public class BU_GameManager : MonoBehaviour
         ballCount--;
         if (ballCount > 0)
         {
+            //if (ballCount > 1)
+            {
+                ballsIndicator[ballCount - 1].SetActive(false);
+            }
             ResetBall();
         }
         else
