@@ -10,6 +10,8 @@ public class SFXManager : MonoBehaviour
 
     [HideInInspector] public AudioSource Audio;
     public AudioClip Clip;
+    public AudioClip Cut;
+    public AudioClip Bomb;
 
     [SerializeField] private Slider sfxSlider;
 

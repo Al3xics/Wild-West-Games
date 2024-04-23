@@ -11436,6 +11436,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Audio: {fileID: 0}
   Clip: {fileID: 8300000, guid: b726752f0677e5242bcdbd8414a21ab4, type: 3}
+  Cut: {fileID: 8300000, guid: 10f52e98950489f4abc095b8831acc38, type: 3}
+  Bomb: {fileID: 8300000, guid: a8a4c9df084cf0841b85a6ceb1822e12, type: 3}
   sfxSlider: {fileID: 1416133007}
 --- !u!1 &1220836930
 GameObject:
