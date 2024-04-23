@@ -71,25 +71,25 @@ public class Pompe_LM : MonoBehaviour
 
         if (difficultyLevel <= 4)
         {
-            numberOfClickTotalToWin = difficultyLevel * 10;
+            numberOfClickTotalToWin = difficultyLevel * 5;
             diviseur = 1f / numberOfClickTotalToWin;
             numberOfClickPompe = numberOfClickTotalToWin / 2;
-            numberOfClickRemplis = numberOfClickTotalToWin / 2;
+            numberOfClickRemplis = numberOfClickTotalToWin ;
         }
         else if (difficultyLevel <= 8)
         {
-            numberOfClickTotalToWin = 40;
+            numberOfClickTotalToWin = 20;
             diviseur = 1f / numberOfClickTotalToWin;
             numberOfClickPompe = numberOfClickTotalToWin / 2;
-            numberOfClickRemplis = numberOfClickTotalToWin / 2;
+            numberOfClickRemplis = numberOfClickTotalToWin ;
             timeLimit -= difficultyLevel - 3;
         }
         else
         {
-            numberOfClickTotalToWin = 60;
+            numberOfClickTotalToWin = 30;
             diviseur = 1f / numberOfClickTotalToWin;
             numberOfClickPompe = numberOfClickTotalToWin / 2;
-            numberOfClickRemplis = numberOfClickTotalToWin / 2;
+            numberOfClickRemplis = numberOfClickTotalToWin;
             timeLimit = 4.0f;
         }
 
