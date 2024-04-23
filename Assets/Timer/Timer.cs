@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private float Time;
+    [SerializeField] private float Time;
     [SerializeField] private Slider slider;
     private bool cd = true;
     // Start is called before the first frame update
