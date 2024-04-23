@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pubsPrefab: {fileID: 4187978750721694601, guid: 673638734cb42544188fc5cb0e539c81, type: 3}
   timerText: {fileID: 800896660}
-  timerDuration: 10
+  timerDuration: 11
   timer: 0
   UIRoot: {fileID: 1308521794}
 --- !u!1 &587358531
@@ -334,7 +334,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 120365626}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -398,10 +398,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1308521795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -130}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchorMin: {x: 0.21914734, y: 0.8825206}
+  m_AnchorMax: {x: 0.78177905, y: 0.9850001}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: -3, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800896660
 MonoBehaviour:
@@ -425,8 +425,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -605,7 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6170ee0c1c73cf4a81366aab909f21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 10
+  difficulty: 100
   hightScore: 0
   life: 3
   gamesName: []

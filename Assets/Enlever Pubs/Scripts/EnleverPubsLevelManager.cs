@@ -40,7 +40,7 @@ public class EnleverPubsLevelManager : MonoBehaviour
             UpdateTimerUI();
         }
     }
-    private void OnDrawGizmos()
+/*    private void OnDrawGizmos()
     {
         // Obtenir la caméra principale
         Camera mainCamera = Camera.main;
@@ -67,7 +67,7 @@ public class EnleverPubsLevelManager : MonoBehaviour
         Gizmos.DrawLine(topRight, bottomRight);
         Gizmos.DrawLine(bottomRight, bottomLeft);
         Gizmos.DrawLine(bottomLeft, topLeft);
-    }
+    }*/
 
     private void CreatePubs()
     {
@@ -75,9 +75,18 @@ public class EnleverPubsLevelManager : MonoBehaviour
         {
             for (int i = 0; i < numberOfPubs; i++)
             {
-                GameObject pubs = Instantiate(pubsPrefab, UIRoot.transform);
+                //Vector3 pos = Vector3.zero;
+                GameObject pubs = Instantiate(pubsPrefab);
+                pubs.transform.SetParent(UIRoot.transform, false);
+                RectTransform uiRectTransform = pubs.GetComponent<RectTransform>();
+                /*                pubs.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                                Vector3 value = RandomSpawnPosition();
+                                pubs.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(value.x, value.y, Camera.main.nearClipPlane));*/
                 Vector3 value = RandomSpawnPosition();
-                pubs.transform.position = Camera.main.ViewportToWorldPoint(new Vector3(value.x, value.y, Camera.main.nearClipPlane));
+                uiRectTransform.anchoredPosition = new Vector2(value.x, value.y);
+                uiRectTransform.pivot = new Vector2(0.5f, 0.5f);
+                //pubs.transform.TransformPoint(pubs.transform.localPosition);
+                //pubs.transform.localPosition = new Vector3(pubs.transform.position.x, pubs.transform.position.y , 0);
                 //pubs.transform.position = RandomSpawnPosition();
                 pubsList.Add(pubs);
             }
@@ -86,20 +95,25 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     private Vector3 RandomSpawnPosition()
     {
-        /*        // Obtenir les dimensions de la vue de la caméra en pixels
+/*               // Obtenir les dimensions de la vue de la caméra en pixels
                 float cameraWidthInPixels = Camera.main.pixelWidth;
-                float cameraHeightInPixels = Camera.main.pixelHeight;
+                float cameraHeightInPixels = Camera.main.pixelHeight;*/
+        float panelWidth = UIRoot.GetComponent<RectTransform>().rect.width;
+        float panelHeight = UIRoot.GetComponent<RectTransform>().rect.height;
 
                 // Calculer les coins du rectangle en fonction de la résolution de la caméra
-                //Vector2 topRight = new(cameraWidthInPixels / 3.5f, cameraHeightInPixels / 2.5f);
-                Vector2 topRight = new(cameraWidthInPixels / 2.5f, cameraHeightInPixels / 3.5f);
+                Vector2 topRight = new(panelWidth / 3.8f, panelHeight / 2.8f);
                 Vector2 bottomLeft = new(-topRight.x, -topRight.y);
 
                 float randomX = Random.Range(bottomLeft.x, topRight.x);
-                float randomY = Random.Range(bottomLeft.y, topRight.y);*/
+                float randomY = Random.Range(bottomLeft.y, topRight.y);
 
-        float randomX = Random.Range(0.2f, 0.8f);
-        float randomY = Random.Range(0.2f, 0.8f);
+
+        Debug.Log("width : " + panelWidth);
+        Debug.Log("height : " + panelHeight);
+
+/*        float randomX = Random.Range(0, panelWidth);
+        float randomY = Random.Range(0, panelHeight);*/
 
         Vector3 randomPosition = new(randomX, randomY, 0f);
 
