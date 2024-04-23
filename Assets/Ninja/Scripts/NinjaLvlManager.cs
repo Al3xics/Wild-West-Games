@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
+using UnityEngine.UIElements;
 
 public class NinjaLvlManager : MonoBehaviour
 {
     [SerializeField] private bool end = false;
     [SerializeField] private bool win = false;
     [SerializeField] private float lvl;
-    [SerializeField] private int time = 10;
+    [SerializeField] private int time = 8;
     [SerializeField] private int score = 0;
+    [SerializeField] GameObject border;
+    [SerializeField] GameObject depop;
+    [SerializeField] private Timer timer;
+
+    private Vector3[] corners;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,13 +43,27 @@ public class NinjaLvlManager : MonoBehaviour
         {
             lvl = 1;
         }
+
+        GameObject borderL = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject borderR = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject borderU = Instantiate(border, Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+        GameObject dep = Instantiate(depop, Camera.main.ViewportToWorldPoint(new Vector3(0.5f, -0.5f, Camera.main.nearClipPlane)), gameObject.transform.rotation);
+
+        float scaleY = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.nearClipPlane)));
+        float scaleX = Vector3.Distance(Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane)), Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.nearClipPlane)));
+
+        borderR.transform.localScale = new Vector3(1, -scaleY, 1);
+        borderL.transform.localScale = new Vector3(-1, -scaleY, 1);
+        borderU.transform.localScale = new Vector3(-scaleX, 1, 1);
+        dep.transform.localScale = new Vector3(scaleX*3, 1, 1);
+
         StartCoroutine(Timing(time-lvl));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (score>=5+lvl)
+        if (score>=1+lvl)
         {
             win = true;
             StopCoroutine(Timing(time));
@@ -68,6 +89,7 @@ public class NinjaLvlManager : MonoBehaviour
 
     private IEnumerator Timing(float waitTime)
     {
+        timer.SetValues(waitTime);
         yield return new WaitForSeconds(waitTime);
         end = true;
     }

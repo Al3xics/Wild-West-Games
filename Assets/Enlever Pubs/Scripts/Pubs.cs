@@ -15,6 +15,7 @@ public class Pubs : MonoBehaviour
 
     public void DestroyPubs()
     {
+        Debug.Log("je suis cliqué");
         levelManager.RemovePubsFromList(gameObject);
         Destroy(gameObject);
     }
