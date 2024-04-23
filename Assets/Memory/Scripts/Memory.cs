@@ -77,7 +77,6 @@ public class Memory : MonoBehaviour
                     firstSprite.enabled = false;
                     secondSprite.enabled = false;
                 }
-
             }
             /*Touch touch = Input.GetTouch(0);*/
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition/*touch.position*/);
@@ -100,8 +99,10 @@ public class Memory : MonoBehaviour
                     secondCard = hit.collider.gameObject;
 
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
+                    {
                         FoundPair(firstCard, secondCard);
-
+                    }
+                        
                     if (listFound.Count == MemoryLvlManager.instance.Rows * MemoryLvlManager.instance.Columns)
                     {
                         MemoryLvlManager.instance.EndGame(true);
