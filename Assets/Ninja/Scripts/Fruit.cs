@@ -9,6 +9,7 @@ public class Fruit : MonoBehaviour
     void Start()
     {
         upForce = new Vector3(transform.up.x + Random.Range(-0.4f, 0.4f), transform.up.y + Random.Range(0f, 0.5f), 0) * 200;
+        transform.rotation = new Quaternion(upForce.x, upForce.y, upForce.z, upForce.z);
         GetComponent<Rigidbody2D>().AddForce(upForce);
     }
 
