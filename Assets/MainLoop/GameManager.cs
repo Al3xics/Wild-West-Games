@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
         None,
         WinMiniGame,
         LoseMiniGame,
-        LoseGame
+        LoseGame,
+  
     }
 
     private State currentState;
@@ -53,11 +54,18 @@ public class GameManager : MonoBehaviour
         get { return score; }
     }
 
+    [SerializeField] public bool isTraining = false;
+    [SerializeField] public string miniGameTrain;
+
+    
+    
+
     private List<bool> games = new();
     [SerializeField] private List<string> gamesName = new();
 
     private void Awake()
     {
+        
         if (Instance == null)
         {
             Instance = this;
@@ -67,6 +75,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+           
             Destroy(gameObject);
         }
         
@@ -95,24 +104,33 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextMiniGame(int num = -1)
     {
-        List<int> availableMiniGames = new List<int>();
-        for (int i = 0; i < NumberOfMiniGame; i++)
-        {
-            if (i != currentMiniGame)
-            {
-                availableMiniGames.Add(i);
-            }
-        }
+        Debug.Log(isTraining);
 
-        if (availableMiniGames.Count > 0)
+        if(isTraining)
         {
-            if (num == -1)
+            SceneManager.LoadScene(miniGameTrain);
+        }
+        else
+        {
+            List<int> availableMiniGames = new List<int>();
+            for (int i = 0; i < NumberOfMiniGame; i++)
             {
-                int randomIndex = Random.Range(0, availableMiniGames.Count);
-                num = availableMiniGames[randomIndex];
+                if (i != currentMiniGame)
+                {
+                    availableMiniGames.Add(i);
+                }
             }
-            currentMiniGame = num;
-            SceneManager.LoadScene(num + 1);
+
+            if (availableMiniGames.Count > 0)
+            {
+                if (num == -1)
+                {
+                    int randomIndex = Random.Range(0, availableMiniGames.Count);
+                    num = availableMiniGames[randomIndex];
+                }
+                currentMiniGame = num;
+                SceneManager.LoadScene(num + 1);
+            }
         }
     }
 
@@ -146,7 +164,10 @@ public class GameManager : MonoBehaviour
 
     public bool EndMiniGame()
     {
+        
         life -= 1;
+
+        
         if (life == 0)
         {
             if (score > hightScore)
@@ -184,28 +205,30 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SaveDataLoop());
     }
 
-/*    private void LoadData()
-    {
-        //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
-        hightScore = PlayerPrefs.GetInt("HighScore", 0);
-        score = 0;
-        string a = "";
-        for (int i = 0; i < NumberOfMiniGame; i++)
+
+    
+    /*    private void LoadData()
         {
-            a += '0';
-        }
-        string pref = PlayerPrefs.GetString("MiniGame");
-        if (pref.Length != NumberOfMiniGame)
-            pref = "";
-        if (pref == "") 
-            pref = a;
-        for (int i = 0; i < NumberOfMiniGame; i++)
-        {
-            if (pref[i] == 0)
-                games[i] = false;
-            else
-                games[i] = true;
-        }
-    }*/
+            //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
+            hightScore = PlayerPrefs.GetInt("HighScore", 0);
+            score = 0;
+            string a = "";
+            for (int i = 0; i < NumberOfMiniGame; i++)
+            {
+                a += '0';
+            }
+            string pref = PlayerPrefs.GetString("MiniGame");
+            if (pref.Length != NumberOfMiniGame)
+                pref = "";
+            if (pref == "") 
+                pref = a;
+            for (int i = 0; i < NumberOfMiniGame; i++)
+            {
+                if (pref[i] == 0)
+                    games[i] = false;
+                else
+                    games[i] = true;
+            }
+        }*/
 
 }
