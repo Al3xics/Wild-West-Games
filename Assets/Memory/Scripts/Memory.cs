@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Memory : MonoBehaviour
 {
-    [SerializeField] List<Sprite> listItem = new List<Sprite>();
+    [SerializeField] private List<Sprite> listItem = new List<Sprite>();
     [SerializeField] private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
     private GameObject[,] blocs;
