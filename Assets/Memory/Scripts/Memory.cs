@@ -48,7 +48,7 @@ public class Memory : MonoBehaviour
         float offsetX = cameraWidth / columns;
         float offsetY = cameraHeight / rows;
         float startX = -cameraWidth / 2 + offsetX / 2;
-        float startY = -cameraHeight / 2 + offsetY / 2;
+        float startY = -cameraHeight / 2 + offsetY / 2 - .25f;
 
         for (int i = 0; i < rows; i++)
         {
