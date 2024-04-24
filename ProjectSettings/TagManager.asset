@@ -11,6 +11,8 @@ TagManager:
   - Spawner
   - Bloc
   - ADS
+  - SFX
+  - MUSIC
   layers:
   - Default
   - TransparentFX

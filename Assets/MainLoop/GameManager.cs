@@ -16,15 +16,15 @@ public class GameManager : MonoBehaviour
         LoseGame
     }
 
-    public State currentState;
+    private State currentState;
 
     public State CurrentState
     {
         get { return currentState; }
     }
 
-    [SerializeField] private int NumberOfMiniGame = 0;
-    [SerializeField] private int currentMiniGame = -1;
+    private int NumberOfMiniGame = 0;
+    private int currentMiniGame = -1;
 
     [SerializeField] private float difficulty = 0;
 
@@ -53,8 +53,8 @@ public class GameManager : MonoBehaviour
         get { return score; }
     }
 
-    private List<bool> games;
-    [SerializeField] private List<string> gamesName;
+    private List<bool> games = new();
+    [SerializeField] private List<string> gamesName = new();
 
     private void Awake()
     {
@@ -62,13 +62,12 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            games = new List<bool>();
             currentState = State.None;
-            LoadData();
+            //LoadData();
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
@@ -185,7 +184,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SaveDataLoop());
     }
 
-    private void LoadData()
+/*    private void LoadData()
     {
         //difficulty = PlayerPrefs.GetFloat("Difficulty", 0);
         hightScore = PlayerPrefs.GetInt("HighScore", 0);
@@ -207,6 +206,6 @@ public class GameManager : MonoBehaviour
             else
                 games[i] = true;
         }
-    }
+    }*/
 
 }
