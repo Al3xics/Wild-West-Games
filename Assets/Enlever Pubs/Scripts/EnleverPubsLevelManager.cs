@@ -1,16 +1,20 @@
 using Nova;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnleverPubsLevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pubsPrefab;
-    [SerializeField] private TextBlock timerText;
+    [SerializeField] private GameObject pubs1;
+    [SerializeField] private GameObject pubs2;
+    [SerializeField] private GameObject pubs3;
+    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float timerDuration = 10f;
     [SerializeField] private float timer;
 
-    private GameObject UIRoot;
+    [SerializeField] private GameObject UIRoot;
+    [SerializeField] private Timer tm;
     private List<GameObject> pubsList = new();
     private int difficultyLevel = 1;
     private int numberOfPubs = 1;
@@ -20,7 +24,7 @@ public class EnleverPubsLevelManager : MonoBehaviour
     {
         pubsList.Clear();
         timer = timerDuration;
-        UIRoot = GameObject.Find("UIRoot");
+        tm.SetValues(timerDuration);
 
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 2;
         difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
@@ -42,12 +46,32 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     private void CreatePubs()
     {
-        if (pubsPrefab != null)
+        if (pubs1 != null && pubs2 != null && pubs3 != null)
         {
             for (int i = 0; i < numberOfPubs; i++)
             {
-                GameObject pubs = Instantiate(pubsPrefab, UIRoot.transform);
-                pubs.GetComponent<UIBlock2D>().Position = RandomSpawnPosition();
+                int rand = Random.Range(0, 2);
+                GameObject pubs;
+                switch (rand)
+                {
+                    case 0:
+                        pubs = Instantiate(pubs1);
+                        break;
+                    case 1:
+                        pubs = Instantiate(pubs2);
+                        break;
+                    case 2:
+                        pubs = Instantiate(pubs3);
+                        break;
+                    default:
+                        pubs = Instantiate(pubs1);
+                        break;
+                }
+                pubs.transform.SetParent(UIRoot.transform, false);
+                RectTransform uiRectTransform = pubs.GetComponent<RectTransform>();
+                Vector3 value = RandomSpawnPosition();
+                uiRectTransform.anchoredPosition = new Vector2(value.x, value.y);
+                uiRectTransform.pivot = new Vector2(0.5f, 0.5f);
                 pubsList.Add(pubs);
             }
         }
@@ -55,16 +79,18 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     private Vector3 RandomSpawnPosition()
     {
-        // Obtenir les dimensions de la vue de la caméra en pixels
-        float cameraWidthInPixels = Camera.main.pixelWidth;
-        float cameraHeightInPixels = Camera.main.pixelHeight;
+        float panelWidth = UIRoot.GetComponent<RectTransform>().rect.width;
+        float panelHeight = UIRoot.GetComponent<RectTransform>().rect.height;
 
         // Calculer les coins du rectangle en fonction de la résolution de la caméra
-        Vector2 topRight = new(cameraWidthInPixels / 3.5f, cameraHeightInPixels / 2.5f);
+        Vector2 topRight = new(panelWidth / 3.8f, panelHeight / 2.8f);
         Vector2 bottomLeft = new(-topRight.x, -topRight.y);
 
         float randomX = Random.Range(bottomLeft.x, topRight.x);
         float randomY = Random.Range(bottomLeft.y, topRight.y);
+
+        Debug.Log("width : " + panelWidth);
+        Debug.Log("height : " + panelHeight);
 
         Vector3 randomPosition = new(randomX, randomY, 0f);
 
@@ -111,6 +137,6 @@ public class EnleverPubsLevelManager : MonoBehaviour
             milliseconds = 0;
         }
 
-        timerText.Text = string.Format("{0:0}:{1:00}", seconds, milliseconds);
+        timerText.text = string.Format("{0:0}:{1:00}", seconds, milliseconds);
     }
 }

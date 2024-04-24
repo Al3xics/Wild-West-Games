@@ -6,10 +6,10 @@ using UnityEngine;
 public class Pompe_Timer : MonoBehaviour
 {
     [SerializeField] Pompe_LM Pompe_LM_script;
-    private TextMeshPro _textMeshPro;
+    private TextMeshProUGUI _textMeshPro;
     void Start()
     {
-        _textMeshPro = this.gameObject.GetComponent<TextMeshPro>();
+        _textMeshPro = this.gameObject.GetComponent<TextMeshProUGUI>();
 
         int seconds = Mathf.FloorToInt(Pompe_LM_script.Mytimer % 60f);
         int milliseconds = Mathf.FloorToInt((Pompe_LM_script.Mytimer - seconds) * 1000f);

@@ -1,18 +1,23 @@
-using NovaSamples.UIControls;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    [SerializeField] private Slider musicSlider;
+    [SerializeField] private GameObject musicSlider;
+    [SerializeField] private TMP_Text musicSliderText;
     private AudioSource audioSource;
+    private Slider slider;
 
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        slider = musicSlider.GetComponent<Slider>();
 
         if (Instance == null)
         {
@@ -22,6 +27,8 @@ public class MusicManager : MonoBehaviour
         else
         {
             Instance.musicSlider = musicSlider;
+            Instance.musicSliderText = musicSliderText;
+            slider = musicSlider.GetComponent<Slider>();
             Destroy(gameObject);
         }
 
@@ -29,17 +36,18 @@ public class MusicManager : MonoBehaviour
         {
             float volume = PlayerPrefs.GetFloat("MusicVolume");
             audioSource.volume = volume;
-            musicSlider.Value = volume * Slider.MaxValue;
+            slider.value = volume * slider.maxValue;
         }
         else
         {
-            audioSource.volume = Slider.MaxValue;
+            slider.value = slider.maxValue;
+            audioSource.volume = slider.maxValue;
         }
     }
 
     public void MusicVolume()
     {
-        float normalizedValue = musicSlider.Value / Slider.MaxValue;
+        float normalizedValue = slider.value / slider.maxValue;
 
         if (normalizedValue == 0)
         {
@@ -52,5 +60,10 @@ public class MusicManager : MonoBehaviour
         }
 
         PlayerPrefs.SetFloat("MusicVolume", normalizedValue);
+    }
+
+    public void SetTextSlider()
+    {
+        musicSliderText.text = slider.value.ToString();
     }
 }
