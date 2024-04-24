@@ -223,6 +223,8 @@ MonoBehaviour:
   difficulty: 10
   hightScore: 0
   life: 3
+  isTraining: 0
+  miniGameTrain: 
   gamesName: []
 --- !u!4 &475403711
 Transform:
@@ -535,6 +537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923661832}
   - component: {fileID: 1923661831}
+  - component: {fileID: 1923661833}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -609,6 +612,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923661833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923661830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3211466ab14db144e9566dca31e6c6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9161685443392342104
 PrefabInstance:
   m_ObjectHideFlags: 0
