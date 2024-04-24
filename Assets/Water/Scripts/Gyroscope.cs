@@ -43,7 +43,7 @@ public class Gyroscope : MonoBehaviour
 
         //Physics.gravity = new Vector3(0,12,0);
 
-        Debug.Log(r + " -> " + Physics2D.gravity + "  | " + monGyro.attitude.eulerAngles);
+        //Debug.Log(r + " -> " + Physics2D.gravity + "  | " + monGyro.attitude.eulerAngles);
         
 
     }
