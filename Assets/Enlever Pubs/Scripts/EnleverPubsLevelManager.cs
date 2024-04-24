@@ -6,21 +6,23 @@ using UnityEngine;
 
 public class EnleverPubsLevelManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pubsPrefab;
-    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private GameObject pubs1;
+    [SerializeField] private GameObject pubs2;
+    [SerializeField] private GameObject pubs3;
     [SerializeField] private float timerDuration = 10f;
-    [SerializeField] private float timer;
-
+    [SerializeField] private Timer tm;
     [SerializeField] private GameObject UIRoot;
     private List<GameObject> pubsList = new();
     private int difficultyLevel = 1;
     private int numberOfPubs = 1;
-    private bool timerFlow = true;
 
+    private void Awake()
+    {
+        tm.SetValues(timerDuration);
+    }
     void Start()
     {
         pubsList.Clear();
-        timer = timerDuration;
 
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 2;
         difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
@@ -32,21 +34,32 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     void Update()
     {
-        if (timerFlow)
-        {
-            timer -= Time.deltaTime;
-            CheckLose();
-            UpdateTimerUI();
-        }
+        CheckLose();
     }
 
     private void CreatePubs()
     {
-        if (pubsPrefab != null)
+        if (pubs1 != null && pubs2 != null && pubs3 != null)
         {
             for (int i = 0; i < numberOfPubs; i++)
             {
-                GameObject pubs = Instantiate(pubsPrefab);
+                int rand = Random.Range(0, 2);
+                GameObject pubs;
+                switch (rand)
+                {
+                    case 0:
+                        pubs = Instantiate(pubs1);
+                        break;
+                    case 1:
+                        pubs = Instantiate(pubs2);
+                        break;
+                    case 2:
+                        pubs = Instantiate(pubs3);
+                        break;
+                    default:
+                        pubs = Instantiate(pubs1);
+                        break;
+                }
                 pubs.transform.SetParent(UIRoot.transform, false);
                 RectTransform uiRectTransform = pubs.GetComponent<RectTransform>();
                 Vector3 value = RandomSpawnPosition();
@@ -85,38 +98,17 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     private void CheckWin()
     {
-        if (pubsList.Count == 0 && timer > 0f)
+        if (pubsList.Count == 0 && tm.GetValues()>0)
         {
-            timerFlow = false;
             GameManager.Instance.WinMiniGame();
         }
     }
 
     private void CheckLose()
     {
-        if (timer <= 0f)
+        if (tm.GetValues() <= 0f)
         {
-            timerFlow = false;
             GameManager.Instance.EndMiniGame();
         }
-    }
-
-    private void UpdateTimerUI()
-    {
-        int seconds;
-        int milliseconds;
-
-        if (timer > 0f)
-        {
-            seconds = Mathf.FloorToInt(timer % 60f);
-            milliseconds = Mathf.FloorToInt((timer - seconds) * 100f);
-        }
-        else
-        {
-            seconds = 0;
-            milliseconds = 0;
-        }
-
-        timerText.text = string.Format("{0:0}:{1:00}", seconds, milliseconds);
     }
 }

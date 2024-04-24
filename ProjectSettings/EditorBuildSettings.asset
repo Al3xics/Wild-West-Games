@@ -5,37 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/UI/Scenes/Menu.unity
     guid: 0eb9058566028964892a75047bb7eb36
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Compteur-MiniJeu.unity
-    guid: 658c786dc4188a54f9ae6fa588edf852
-  - enabled: 0
+    guid: a28d81b26b481e045bab123f54355cec
+  - enabled: 1
+    path: Assets/Scenes/Difference.unity
+    guid: e25ff015994f9d94e9fbe767043efc69
+  - enabled: 1
     path: Assets/Scenes/EnleverPubs.unity
-    guid: 20cf2c5b5bff46a47a75d257cf634c67
-  - enabled: 0
+    guid: a7d8dd16843290d4999fcadfdc2ebec9
+  - enabled: 1
     path: Assets/Scenes/Jauge.unity
-    guid: 3dcaf37d023df6a4fb06095f07c00a23
-  - enabled: 0
+    guid: 76dec212de0232e42a42e011cb046d5d
+  - enabled: 1
     path: Assets/Scenes/Liquide.unity
-    guid: cedb5f4d4c4187b498da9f97376359c5
-  - enabled: 0
+    guid: c628fb831b23537479c275c240d592f1
+  - enabled: 1
+    path: Assets/Scenes/Memory.unity
+    guid: 4fa9d739afe26a74fa8b8836b4abb859
+  - enabled: 1
     path: Assets/Scenes/Ninja.unity
-    guid: 0223b38afd2da634ea26964bdf0929d0
-  - enabled: 0
+    guid: 686a1ce1aedb0674e9baf45216980b4c
+  - enabled: 1
     path: Assets/Scenes/Pompe.unity
-    guid: 2981c9101bb24c74bbf8fdef02057921
-  - enabled: 0
+    guid: 1109bca237f3fce41bd12801649a1629
+  - enabled: 1
     path: Assets/Scenes/TapTap.unity
-    guid: 9ebace535861f96458072bec70dccb87
-  - enabled: 0
+    guid: c48f5075006278d4989db6545e0d9df2
+  - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
-  - enabled: 1
-    path: Assets/TapTap/TapTap.unity
-    guid: 70ee7bdd7611a744c90f608576f3a3c4
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: f8df215f721b47e40b301293cd91d4c5, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 81c28a2b8a685c74e8f441dfb72031a1, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c178f35ff80ebbb429435874c83572a9, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 6673826085ad97c4a9141f89b2312a71, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}

@@ -27,10 +27,13 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Fill: 1
+    - _Fill: 0
+    - _IsClean: 0
     m_Colors:
+    - _GoodColor: {r: 0, g: 0.02955195, b: 0.554717, a: 1}
     - _SideColor: {r: 0.2264151, g: 0.55224425, b: 0.9056604, a: 1}
     - _TopColor: {r: 0.010768958, g: 0.043695163, b: 0.20754719, a: 1}
+    - _WrongColor: {r: 0.18867922, g: 0.06574999, b: 0.016909925, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5042177957141110224
 MonoBehaviour:

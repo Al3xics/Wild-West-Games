@@ -9,7 +9,7 @@ public class NinjaLvlManager : MonoBehaviour
     [SerializeField] private bool end = false;
     [SerializeField] private bool win = false;
     [SerializeField] private float lvl;
-    [SerializeField] private int time = 8;
+    private int time = 8;
     [SerializeField] private int score = 0;
     [SerializeField] GameObject border;
     [SerializeField] GameObject depop;
@@ -57,16 +57,20 @@ public class NinjaLvlManager : MonoBehaviour
         borderU.transform.localScale = new Vector3(-scaleX, 1, 1);
         dep.transform.localScale = new Vector3(scaleX*3, 1, 1);
 
-        StartCoroutine(Timing(time-lvl));
+        timer.SetValues(time-lvl);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (score>=1+lvl)
+        if (timer.GetValues()<=0)
+        {
+            end = true;
+        }
+
+        else if (score>=1+lvl && timer.GetValues()>0)
         {
             win = true;
-            StopCoroutine(Timing(time));
             end = true;
         }
 
@@ -85,13 +89,6 @@ public class NinjaLvlManager : MonoBehaviour
                 GameManager.Instance.EndMiniGame();
             }
         }
-    }
-
-    private IEnumerator Timing(float waitTime)
-    {
-        timer.SetValues(waitTime);
-        yield return new WaitForSeconds(waitTime);
-        end = true;
     }
 
     public void SetEnd(bool b)
