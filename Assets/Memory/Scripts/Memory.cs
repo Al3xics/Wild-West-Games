@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Memory : MonoBehaviour
@@ -66,18 +68,8 @@ public class Memory : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))//Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
-            if (returnCard == 2)
-            {
-                returnCard = 0;
-                SpriteRenderer firstSprite = firstCard.GetComponentInChildren<SpriteRenderer>();
-                SpriteRenderer secondSprite = secondCard.GetComponentInChildren<SpriteRenderer>();
+            
 
-                if (!listFound.Contains(firstSprite.sprite.name))
-                {
-                    firstSprite.enabled = false;
-                    secondSprite.enabled = false;
-                }
-            }
             //Touch touch = Input.GetTouch(0);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//touch.position);
             RaycastHit hit;
@@ -100,11 +92,19 @@ public class Memory : MonoBehaviour
                     secondCard = hit.collider.gameObject;
                     firstCard.GetComponent<Collider>().enabled = true;
 
+                    SpriteRenderer firstSprite = firstCard.GetComponentInChildren<SpriteRenderer>();
+                    SpriteRenderer secondSprite = secondCard.GetComponentInChildren<SpriteRenderer>();
+
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
                     {
                         FoundPair(firstCard, secondCard);
                     }
-                        
+                    else
+                    {
+                        StartCoroutine(DisableSpritesWithDelay(firstSprite, secondSprite));
+                    }
+                    returnCard = 0;
+
                     if (listFound.Count == MemoryLvlManager.instance.Rows * MemoryLvlManager.instance.Columns)
                     {
                         MemoryLvlManager.instance.EndGame(true);
@@ -151,4 +151,13 @@ public class Memory : MonoBehaviour
         listFound.Add(obj2.GetComponentInChildren<SpriteRenderer>().sprite.name);
     }
 
+    IEnumerator DisableSpritesWithDelay(SpriteRenderer firstSprite, SpriteRenderer secondSprite)
+    {
+        // Attendre pendant un court laps de temps avant de désactiver les sprites
+        yield return new WaitForSeconds(.3f); // Vous pouvez ajuster ce délai selon vos besoins
+
+        // Désactiver les sprites après le délai
+        firstSprite.enabled = false;
+        secondSprite.enabled = false;
+    }
 }
