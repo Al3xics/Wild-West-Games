@@ -64,7 +64,7 @@ public class Memory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)/*Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began*/)
+        if (Input.GetMouseButtonDown(0))//Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             if (returnCard == 2)
             {
@@ -78,8 +78,8 @@ public class Memory : MonoBehaviour
                     secondSprite.enabled = false;
                 }
             }
-            /*Touch touch = Input.GetTouch(0);*/
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition/*touch.position*/);
+            //Touch touch = Input.GetTouch(0);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);//touch.position);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -92,11 +92,13 @@ public class Memory : MonoBehaviour
                 if (returnCard == 1)
                 {
                     firstCard = hit.collider.gameObject;
+                    firstCard.GetComponent<Collider>().enabled = false;
                 }
 
                 if (returnCard == 2)
                 {
                     secondCard = hit.collider.gameObject;
+                    firstCard.GetComponent<Collider>().enabled = true;
 
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
                     {
@@ -110,6 +112,7 @@ public class Memory : MonoBehaviour
                 }
             }
         }
+
     }
 
     private void Shuffle()
