@@ -54,8 +54,8 @@ public class Liquid_Target : MonoBehaviour
     void Update()
     {
         
-        if (timer <= 0 && !doOnce)
-            StartCoroutine(endGame());
+        //if (timer <= 0 && !doOnce)
+        //    StartCoroutine(endGame());
         if (timer <= 0)
         {
             float z = cup.transform.rotation.eulerAngles.z;
