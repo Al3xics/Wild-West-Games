@@ -24,6 +24,7 @@ public class BU_GameManager : MonoBehaviour
     private Vector3 endPos;
     private bool validStart = true;
     private bool validEnd = false;
+    private bool CanThrow = false;
 
     private GameObject[] ballsIndicator;
 
@@ -75,8 +76,28 @@ public class BU_GameManager : MonoBehaviour
             ballsIndicator[i].GetComponent<Rigidbody>().isKinematic = true;
         }
 
-        Instantiate(BinPrefab, BinPlacement[Random.Range(0,BinPlacement.Length)].position, Quaternion.identity);
+        int iiii = 0;
+        switch (GameManager.Instance.Difficulty)
+        {
+            case < 40:
+                iiii = 0;
+                break;
+            case < 70:
+                iiii = 1;
+                break;
+            case < 100:
+                iiii = 2;
+                break;
+        }
 
+        Instantiate(BinPrefab, BinPlacement[iiii].position, Quaternion.identity);
+        CanThrow = true;
+    }
+
+    IEnumerator win()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.WinMiniGame();
     }
 
     private void Update()
@@ -105,6 +126,11 @@ public class BU_GameManager : MonoBehaviour
         }
     }
 
+    public void BallInBin()
+    {
+        StartCoroutine(win());
+    }
+
     public void BallMissed()
     {
         ballCount--;
@@ -118,7 +144,7 @@ public class BU_GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Game Over");
+            GameManager.Instance.EndMiniGame();
         }
     }
     private void ResetBall()
@@ -126,13 +152,17 @@ public class BU_GameManager : MonoBehaviour
         ball.transform.position = BallPlacement.position;
         ball.GetComponent<Rigidbody>().velocity = Vector3.zero;
         ball.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        CanThrow = true;
     }
     private void throwBall()
     {
         //debug log for valid start and end
         Debug.Log("validStart: " + validStart + " validEnd: " + validEnd);
-        if (validStart && validEnd)
+        if (CanThrow && validStart && validEnd)
+        {
             ball.GetComponent<Rigidbody>().AddForce((endPos - startPos) * power);
+            CanThrow = false;
+        }
         
     }
 }

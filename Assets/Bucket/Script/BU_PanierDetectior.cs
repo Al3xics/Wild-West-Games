@@ -8,7 +8,7 @@ public class BU_PanierDetectior : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
-            Debug.Log("Panier detected");
+            BU_GameManager.instance.BallInBin();
     }
 
 }
