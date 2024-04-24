@@ -225,7 +225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.94600004}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &190138865
@@ -275,12 +275,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24.45
+  m_fontSizeBase: 45
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 3000
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c6e0f5a441daf439c8976b5550835c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 5
+  level: 3
   time: 10
   score: 0
 --- !u!114 &613095511
@@ -473,7 +473,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c1e2ad71d562754185d221dfe48207d, type: 3}
   - {fileID: 21300000, guid: 3b40ffb1cc02f4041a87382b9c6b9100, type: 3}
   - {fileID: 21300000, guid: 33c0ea19cecf1b94188ab14603b09532, type: 3}
-  listFound: []
   Cube: {fileID: 5866749116756521214, guid: 29a2179f2bffd89429e5b48fa695c01a, type: 3}
 --- !u!1 &1023304226
 GameObject:

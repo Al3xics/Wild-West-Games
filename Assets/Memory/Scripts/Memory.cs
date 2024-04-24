@@ -6,7 +6,7 @@ using UnityEngine;
 public class Memory : MonoBehaviour
 {
     [SerializeField] private List<Sprite> listItem = new List<Sprite>();
-    [SerializeField] private List<string> listFound = new List<string>();
+    private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
     private GameObject[,] blocs;
     private int returnCard = 0;
@@ -29,7 +29,7 @@ public class Memory : MonoBehaviour
     void GetCameraSize()
     {
         cameraHeight = 1.5f * mainCamera.orthographicSize;
-        cameraWidth = cameraHeight * mainCamera.aspect + 1f ;
+        cameraWidth = cameraHeight * mainCamera.aspect + 1f;
     }
 
     private void InitGame()
@@ -46,11 +46,12 @@ public class Memory : MonoBehaviour
     {
         int rows = MemoryLvlManager.instance.Rows;
         int columns = MemoryLvlManager.instance.Columns;
-        
+
         float offsetX = cameraWidth / columns;
         float offsetY = cameraHeight / rows;
         float startX = -cameraWidth / 2 + offsetX / 2;
         float startY = -cameraHeight / 2 + offsetY / 2 - .25f;
+        
 
         for (int i = 0; i < rows; i++)
         {
