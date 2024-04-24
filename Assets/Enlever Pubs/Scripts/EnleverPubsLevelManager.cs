@@ -9,22 +9,20 @@ public class EnleverPubsLevelManager : MonoBehaviour
     [SerializeField] private GameObject pubs1;
     [SerializeField] private GameObject pubs2;
     [SerializeField] private GameObject pubs3;
-    [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float timerDuration = 10f;
-    [SerializeField] private float timer;
-
-    [SerializeField] private GameObject UIRoot;
     [SerializeField] private Timer tm;
+    [SerializeField] private GameObject UIRoot;
     private List<GameObject> pubsList = new();
     private int difficultyLevel = 1;
     private int numberOfPubs = 1;
-    private bool timerFlow = true;
 
+    private void Awake()
+    {
+        tm.SetValues(timerDuration);
+    }
     void Start()
     {
         pubsList.Clear();
-        timer = timerDuration;
-        tm.SetValues(timerDuration);
 
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 2;
         difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
@@ -36,12 +34,7 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     void Update()
     {
-        if (timerFlow)
-        {
-            timer -= Time.deltaTime;
-            CheckLose();
-            UpdateTimerUI();
-        }
+        CheckLose();
     }
 
     private void CreatePubs()
@@ -105,38 +98,17 @@ public class EnleverPubsLevelManager : MonoBehaviour
 
     private void CheckWin()
     {
-        if (pubsList.Count == 0 && timer > 0f)
+        if (pubsList.Count == 0 && tm.GetValues()>0)
         {
-            timerFlow = false;
             GameManager.Instance.WinMiniGame();
         }
     }
 
     private void CheckLose()
     {
-        if (timer <= 0f)
+        if (tm.GetValues() <= 0f)
         {
-            timerFlow = false;
             GameManager.Instance.EndMiniGame();
         }
-    }
-
-    private void UpdateTimerUI()
-    {
-        int seconds;
-        int milliseconds;
-
-        if (timer > 0f)
-        {
-            seconds = Mathf.FloorToInt(timer % 60f);
-            milliseconds = Mathf.FloorToInt((timer - seconds) * 100f);
-        }
-        else
-        {
-            seconds = 0;
-            milliseconds = 0;
-        }
-
-        timerText.text = string.Format("{0:0}:{1:00}", seconds, milliseconds);
     }
 }
