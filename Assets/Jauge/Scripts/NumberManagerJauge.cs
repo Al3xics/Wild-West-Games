@@ -15,6 +15,9 @@ public class NumberManagerJauge : MonoBehaviour
     [HideInInspector] public float randNumber;
     [HideInInspector] public float valueMax;
 
+    [SerializeField] private float time = 8;
+    [SerializeField] private Timer tm;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +28,16 @@ public class NumberManagerJauge : MonoBehaviour
         valueMax = randNumber + interval;
         float newValueMax = 1 - valueMax;
         sliderMax.value = newValueMax;
+
+        tm.SetValues(time);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (tm.GetValues() <= 0)
+        {
+            GameManager.Instance.EndMiniGame();
+        }
     }
 }

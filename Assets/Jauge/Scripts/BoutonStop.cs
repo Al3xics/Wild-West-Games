@@ -27,14 +27,12 @@ public class BoutonStop : MonoBehaviour
         {
             if(slider.myVal >= numberManagerJauge.randNumber && slider.myVal <= numberManagerJauge.valueMax)
             {
-                Debug.Log("GG");
                 poc.SetActive(true);
                 GameManager.Instance.WinMiniGame();
             }
 
             else
             {
-                Debug.Log("FF");
                 ouch.SetActive(true);
                 handle.GetComponent<Image>().sprite = newSprite;
                 GameManager.Instance.EndMiniGame();
@@ -42,7 +40,6 @@ public class BoutonStop : MonoBehaviour
 
         }
     }
-
     private void OnMouseDown()
     {
         slider.enabled = false;
