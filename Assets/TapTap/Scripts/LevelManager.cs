@@ -2,6 +2,7 @@ using Nova;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,17 +18,16 @@ public class LevelManager : MonoBehaviour
     [SerializeField] int cockroachsToWin = 1;
     [SerializeField] int cockroachsDead = 0;
     [SerializeField] List<int> spawnNumbers;
-    [SerializeField] TextBlock winText;
-    [SerializeField] TextBlock loseText;
+   
 
     [SerializeField] float timeLimit = 11f;
     [SerializeField] float timer;
     [SerializeField] bool Timerflow = true;
-    [SerializeField] TextBlock timerText;
+    [SerializeField] Timer TimerVisual;
 
     [SerializeField] int difficultyLevel = 1;
     [SerializeField] bool TouchInput = true;
-
+   
     private void Start()
     {
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 10;
@@ -52,6 +52,9 @@ public class LevelManager : MonoBehaviour
             timeLimit = 4.0f;
         }
 
+        
+       
+        
 
         //SpawnCockroach
         if (cockroachPrefab != null)
@@ -78,6 +81,7 @@ public class LevelManager : MonoBehaviour
 
         //Timer start
         timer = timeLimit;
+        TimerVisual.SetValues(timeLimit);
        
     }
 
@@ -89,13 +93,12 @@ public class LevelManager : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                if (loseText != null)
-                {
+                
                     EndScreen(GameState.Lose);
-                }
+                
                 timer = 0;
             }
-            UpdateTimerUI();
+           
 
         }
         if (TouchInput)
@@ -148,22 +151,13 @@ public class LevelManager : MonoBehaviour
         //WinCheck
         if (cockroachsDead >= cockroachsToWin)
         {
-            if (winText != null)
-            {
+            
                 EndScreen(GameState.Win);
-            }
+            
         }
     }
 
-    private void UpdateTimerUI()
-    {
-
-        int seconds = Mathf.FloorToInt(timer % 60f);
-        int milliseconds = Mathf.FloorToInt((timer - seconds) * 1000f);
-
-
-        timerText.Text = string.Format("{0:00}:{1:000}", seconds, milliseconds);
-    }
+    
 
     private void ClearScreen()
     {
