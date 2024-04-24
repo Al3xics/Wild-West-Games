@@ -86,6 +86,7 @@ public class Cockroach : MonoBehaviour
     public void SetAlive(bool death)
     {
         alive = death;
+        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.SplashInsect);
         GetComponent<SpriteRenderer>().enabled = false;
         rb.isKinematic = true;
         particle.Play();

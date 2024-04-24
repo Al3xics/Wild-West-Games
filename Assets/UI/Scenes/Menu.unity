@@ -2347,6 +2347,7 @@ GameObject:
   - component: {fileID: 299530373}
   - component: {fileID: 299530372}
   - component: {fileID: 299530371}
+  - component: {fileID: 299530374}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -2417,7 +2418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 299530372}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299530374}
+        m_TargetAssemblyTypeName: LoadSceneByName, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &299530372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2456,6 +2469,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299530369}
   m_CullTransparentMesh: 1
+--- !u!114 &299530374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299530369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5175fa33de0a36847b9341eb25ba34a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &320629973
 GameObject:
   m_ObjectHideFlags: 0
@@ -12416,6 +12442,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Audio: {fileID: 0}
   Clip: {fileID: 8300000, guid: b726752f0677e5242bcdbd8414a21ab4, type: 3}
+  Cut: {fileID: 0}
+  Bomb: {fileID: 0}
+  SplashInsect: {fileID: 8300000, guid: 2234da2d252602942ac74989c2048755, type: 3}
   sfxSlider: {fileID: 2052177825}
   sfxSliderText: {fileID: 1809183022}
 --- !u!1 &1219994201
@@ -15064,6 +15093,8 @@ MonoBehaviour:
   difficulty: 0
   hightScore: 0
   life: 3
+  isTraining: 0
+  miniGameTrain: 
   gamesName: []
 --- !u!4 &1496185995
 Transform:
