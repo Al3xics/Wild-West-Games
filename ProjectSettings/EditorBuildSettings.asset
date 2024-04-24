@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pompe.unity
     guid: 1109bca237f3fce41bd12801649a1629
   - enabled: 1
-    path: Assets/Scenes/TapTap.unity
+    path: Assets/Scenes/Insecte Smash.unity
     guid: c48f5075006278d4989db6545e0d9df2
   - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity

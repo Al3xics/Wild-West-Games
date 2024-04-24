@@ -12,6 +12,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip Clip;
     public AudioClip Cut;
     public AudioClip Bomb;
+    public AudioClip SplashInsect;
 
     [SerializeField] private GameObject sfxSlider;
     [SerializeField] private TMP_Text sfxSliderText;

@@ -22,12 +22,14 @@ public class Cockroach : MonoBehaviour
     [SerializeField] private float stopTime = 1.0f;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private ParticleSystem particle;
 
 
     private void Start()
     {
         background = GameObject.Find("/Background");
-        
+
+        particle = GetComponent<ParticleSystem>();
         
         if (background == null)
         {
@@ -84,7 +86,11 @@ public class Cockroach : MonoBehaviour
     public void SetAlive(bool death)
     {
         alive = death;
-        gameObject.SetActive(false);
+        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.SplashInsect);
+        GetComponent<SpriteRenderer>().enabled = false;
+        rb.isKinematic = true;
+        particle.Play();
+       
     }
 
     public void SetCatch()
@@ -113,6 +119,11 @@ public class Cockroach : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(Vector3.forward, nextPosition);
             rb.transform.rotation = Quaternion.Lerp(rb.transform.rotation, rot, Time.deltaTime * turnSpeed);
 
+        }
+
+        if(!particle.isEmitting)
+        {
+            particle.Stop();
         }
     }
 }
