@@ -32,6 +32,7 @@ public class Liquid_Target : MonoBehaviour
     {
         Abovetarget.GetComponent<SpriteRenderer>().enabled = false;
         setupGame((int)GameManager.Instance.Difficulty);
+        doOnce = false;
     }
 
     public void setupGame(int difficulty)
@@ -53,21 +54,27 @@ public class Liquid_Target : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (timer <= 0 && !doOnce)
+        {
+            doOnce = true;
+            StartCoroutine(endGame());
+        }
         
-        //if (timer <= 0 && !doOnce)
-        //    StartCoroutine(endGame());
         if (timer <= 0)
         {
-            float z = cup.transform.rotation.eulerAngles.z;
-            float lerpedValue = Mathf.Lerp(z, 0, 0.05f);
-            cup.transform.rotation = Quaternion.Euler(0, 0, lerpedValue);
+            Vector3 z = Physics2D.gravity;
+            Vector3 vec = new Vector3(0, -9, 8);
+            Vector3 lerpedValue = Vector3.Lerp(z, vec, 0.05f);
+            Physics2D.gravity = lerpedValue;
             
         }
         else
         {
             if (Mathf.Abs(cup.transform.rotation.z) <= 10 && BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
             {
-                Debug.Log("you win");
+                Debug.Log("you win1");
+                //GameManager.Instance.WinMiniGame();
             }
             timer -= Time.deltaTime;
         }
@@ -79,9 +86,11 @@ public class Liquid_Target : MonoBehaviour
         if (BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
         {
             GameManager.Instance.WinMiniGame();
+            Debug.Log("you win");
         }
         else
         {
+            Debug.Log("you lose");
             GameManager.Instance.EndMiniGame();
         }
     }
