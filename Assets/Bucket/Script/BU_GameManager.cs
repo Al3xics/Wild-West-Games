@@ -163,8 +163,7 @@ public class BU_GameManager : MonoBehaviour
             GameManager.Instance.EndMiniGame();            
         }
         else
-        {
-
+        { 
             //ballsIndicator[ballCount - 1].SetActive(false);
             //ball.transform.position = BallPlacement.position;
         }
