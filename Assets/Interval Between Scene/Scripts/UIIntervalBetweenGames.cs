@@ -39,6 +39,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
         loseGame.SetActive(false);
         gameOver.SetActive(false);
 
+        
         switch (gameManager.CurrentState)
         {
             // Win a game
@@ -59,6 +60,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
             // Game Over
             case GameManager.State.LoseGame:
+                GameManager.Instance.isTraining = false;
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
@@ -140,6 +142,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
 
         adsManager.HideBanner();
+        
         gameManager.LoadNextMiniGame();
     }
 }
