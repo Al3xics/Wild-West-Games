@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Trail : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class Trail : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.touchCount >= 1)
+        {
+            Touch touch = Input.GetTouch(0);
+            gameObject.transform.position = Camera.main.ScreenToWorldPoint(touch.position);
+        }
+        if (Input.touchCount < 1)
         {
             Destroy(gameObject);
         }

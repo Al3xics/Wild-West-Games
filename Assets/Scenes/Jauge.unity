@@ -551,6 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySlider: {fileID: 951069093}
   myVal: 0
+  speed: 0.1
 --- !u!114 &899521257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,8 +567,8 @@ MonoBehaviour:
   sliderMin: {fileID: 1105621082}
   sliderMax: {fileID: 1199376955}
   RandValueMin: 0
-  RandValueMax: 0.5
-  interval: 0.3
+  RandValueMax: 0.8
+  interval: 0.2
   randNumber: 0
   valueMax: 0
 --- !u!1 &951069090
@@ -675,7 +676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &971919388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,8 +689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d4adb90dc2d5a44088ce2a1052787ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl: 1
-  managerJauge: {fileID: 899521257}
 --- !u!4 &971919389
 Transform:
   m_ObjectHideFlags: 0

@@ -1,7 +1,10 @@
 using Nova;
+using NovaSamples.UIControls;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 public class UIIntervalBetweenGames : MonoBehaviour
@@ -10,17 +13,26 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject loseGame;
     [SerializeField] private GameObject winGame;
+    [SerializeField] private GameObject buttonPubs;
 
     [Header("Variables")]
-    [SerializeField] private float waitingTime = 5f;
+    [SerializeField] private float waitingTime = 2f;
 
     private GameManager gameManager;
+    private AdsManager adsManager;
+
+    public GameObject GameOver => gameOver;
+    public GameObject LoseGame => loseGame;
+    public GameObject WinGame => winGame;
 
     void Start()
     {
         gameManager = GameManager.Instance;
+        adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
+        adsManager.DisplayBanner();
 
-        // Désactivation de tous les GameObject pour être clean
+
+        // DÃ©sactivation de tous les GameObject pour Ãªtre clean
         winGame.SetActive(false);
         loseGame.SetActive(false);
         gameOver.SetActive(false);
@@ -48,6 +60,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
+                CanWeWatchRewarded();
                 break;
 
             case GameManager.State.None:
@@ -56,19 +69,24 @@ public class UIIntervalBetweenGames : MonoBehaviour
         }
     }
 
-    // Lancement de la publicité récompensé par une vie en plus pour le joueur
-    public void StartPublicity()
+    private void CanWeWatchRewarded()
     {
-        // Le joueur lance une pubs, donc on fait une "rewarded video",
-        // on lui donne 1 vie en plus
+        if (adsManager.AlreadyWatchedPubs)
+        {
+            buttonPubs.SetActive(false);
+        }
+    }
 
-        // Si il a regarder la pub en entier, il passe au jeu suivant
-        StartCoroutine(WaitBeforeLaunchingScene());
+    public void LaunchRewardedVideo()
+    {
+        StartCoroutine(adsManager.WaitForRewarded());
     }
 
     // Retour au Menu
     public void BackToMenu()
     {
+        adsManager.DestroyBanner();
+        gameManager.RestartGame();
         SceneManager.LoadScene(0);
     }
 
@@ -100,19 +118,26 @@ public class UIIntervalBetweenGames : MonoBehaviour
     }
 
     // Afficher le score
-    private void ShowScore(GameObject go)
+    public void ShowScore(GameObject go)
     {
+        if (go.name == "GameOver")
+        {
+            GameObject bestScoreToShow = go.transform.Find("Best Score").gameObject;
+            int bestScore = gameManager.HightScore;
+            bestScoreToShow.GetComponent<TextBlock>().Text = "Best Score : " + bestScore;
+        }
+
         GameObject scoreToShow = go.transform.Find("Score").gameObject;
         int score = gameManager.Score;
-
         scoreToShow.GetComponent<TextBlock>().Text = "Score : " + score;
     }
 
     // On attend un peu puis on lance la scene suivante
-    IEnumerator WaitBeforeLaunchingScene()
+    public IEnumerator WaitBeforeLaunchingScene()
     {
         yield return new WaitForSeconds(waitingTime);
 
+        adsManager.HideBanner();
         gameManager.LoadNextMiniGame();
     }
 }
