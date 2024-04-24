@@ -13,6 +13,7 @@ public class Instanciate_Button : MonoBehaviour
     [SerializeField] private List<string> ListColorNamesFrench;
     [SerializeField] private List<Color> ListColors;
     [SerializeField] private List<Color> colorsWithoutColorToFind;
+    [SerializeField] private GameObject panel;
 
 
     [SerializeField] private GameObject prefab;
@@ -121,27 +122,9 @@ public class Instanciate_Button : MonoBehaviour
 
         for (int i = 0; i < nbrButton; i++)
         {
-                    if (i == 0 || i == 3 || i == 6)
-                        x = -3;
-                    else if (i == 1 || i == 4 || i == 7 || i == 9)
-                        x = 0;
-                    else
-                        x = 3;
-
-                    if (i == 9)
-                        y = -3;
-                    else if (i <= 2)
-                        y = 0f;
-                    else if (i > 2 && i <= 5)
-                        y = -1.5f;
-                    else
-                        y = 1.5f;
-
-            position = new Vector2(x, y);
             button_obj = Instantiate(prefab);
             BFD = button_obj.GetComponent<Button_Function_Difference>();
             button_obj.transform.SetParent(parent.transform, false);
-            button_obj.transform.position = position;
 
             if (Color_Find_Is_Given == false)
             {
@@ -149,7 +132,6 @@ public class Instanciate_Button : MonoBehaviour
                 if (rand <= 0.2f || i + 1 >= nbrButton)
                 {
                     int index = ListColorNames.IndexOf(Color_To_Find);
-                    //iswinner_Button = true;
                     BFD.IsWinning_Button = true;
                     if (Need_To_Find_Color_Button)
                     {
@@ -169,7 +151,6 @@ public class Instanciate_Button : MonoBehaviour
                 }
                 else
                 {
-                    //iswinner_Button = false;
                     BFD.IsWinning_Button = false;
                     RandomColorTextEtButton();
 
@@ -180,7 +161,6 @@ public class Instanciate_Button : MonoBehaviour
             }
             else
             {
-                //iswinner_Button = false;
                 BFD.IsWinning_Button = false;
                 RandomColorTextEtButton();
 
@@ -191,6 +171,7 @@ public class Instanciate_Button : MonoBehaviour
         }
         
     }
+
      private void RandomColorTextEtButton()
      {
         randColorButton = UnityEngine.Random.Range(0, colorsWithoutColorToFind.Count);
