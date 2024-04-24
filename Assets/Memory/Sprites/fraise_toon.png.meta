@@ -1,58 +1,7 @@
 fileFormatVersion: 2
-guid: 53711376b8efea04d9bc49ba330403d5
+guid: 33c0ea19cecf1b94188ab14603b09532
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 7293598183456022363
-    second: Apple_0
-  - first:
-      213: 3211865404380153573
-    second: Apple_1
-  - first:
-      213: 4808522734667448011
-    second: Apple_2
-  - first:
-      213: -8577097333041121892
-    second: Apple_3
-  - first:
-      213: 1419576285154770477
-    second: Apple_4
-  - first:
-      213: -7706788487438311687
-    second: Apple_5
-  - first:
-      213: 8638710384840876012
-    second: Apple_6
-  - first:
-      213: -4689406079702324653
-    second: Apple_7
-  - first:
-      213: -4804661220611782958
-    second: Apple_8
-  - first:
-      213: 542562350195365616
-    second: Apple_9
-  - first:
-      213: 1535906679059638393
-    second: Apple_10
-  - first:
-      213: -6207369124864647917
-    second: Apple_11
-  - first:
-      213: 7209791866757004406
-    second: Apple_12
-  - first:
-      213: -1462588236305530756
-    second: Apple_13
-  - first:
-      213: 4023135878370671054
-    second: Apple_14
-  - first:
-      213: -337911150936919937
-    second: Apple_15
-  - first:
-      213: 9139289913481491577
-    second: Apple_16
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -85,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -94,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -114,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -136,20 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -175,7 +111,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -188,7 +124,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -198,28 +134,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Apple_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8a08d8fa27377c4a953e5166a4e378a
-      internalID: 7293598183456022363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -230,24 +145,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Apple_0: 7293598183456022363
-      Apple_1: 3211865404380153573
-      Apple_10: 1535906679059638393
-      Apple_11: -6207369124864647917
-      Apple_12: 7209791866757004406
-      Apple_13: -1462588236305530756
-      Apple_14: 4023135878370671054
-      Apple_15: -337911150936919937
-      Apple_16: 9139289913481491577
-      Apple_2: 4808522734667448011
-      Apple_3: -8577097333041121892
-      Apple_4: 1419576285154770477
-      Apple_5: -7706788487438311687
-      Apple_6: 8638710384840876012
-      Apple_7: -4689406079702324653
-      Apple_8: -4804661220611782958
-      Apple_9: 542562350195365616
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
