@@ -6,9 +6,13 @@ using UnityEngine.UIElements;
 public class Trail : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (Input.touchCount >= 1)
+        {
+            Touch touch = Input.GetTouch(0);
+            gameObject.transform.position = Camera.main.ScreenToWorldPoint(touch.position) + new Vector3(0, 0, 0.5f);
+        }
     }
 
     // Update is called once per frame
@@ -17,7 +21,7 @@ public class Trail : MonoBehaviour
         if (Input.touchCount >= 1)
         {
             Touch touch = Input.GetTouch(0);
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(touch.position);
+            gameObject.transform.position = Camera.main.ScreenToWorldPoint(touch.position)+new Vector3 (0,0,0.5f);
         }
         if (Input.touchCount < 1)
         {

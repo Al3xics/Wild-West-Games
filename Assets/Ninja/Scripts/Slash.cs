@@ -9,6 +9,7 @@ public class Slash : MonoBehaviour
     [SerializeField] private float forceToSlash;
     private RaycastHit2D hit;
     [SerializeField] GameObject trail;
+    private bool trailOn = false;
     private Vector3 position;
     private float width;
     private float height;
@@ -24,19 +25,19 @@ public class Slash : MonoBehaviour
         if (Input.touchCount >= 1)
         {
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Began)
-            {
-                Instantiate(trail);
-            }
-        }
-
-        if (Input.touchCount >= 1)
-        {
-            Touch touch = Input.GetTouch(0);
             position = Camera.main.ScreenToWorldPoint(touch.position);
             if (Vector3.Distance(lastPos, position) > forceToSlash && lastPos != Vector3.zero)
             {
+                Debug.Log("1");
+                if (!trailOn)
+                {
+                    Debug.Log("2");
+                    trailOn = true;
+                    Instantiate(trail);
+                }
+
                 Debug.DrawLine(lastPos, position, Color.red, 1.0f, false);
+
                 if (Physics2D.Linecast(lastPos, position))
                 {
                     hit = Physics2D.Linecast(lastPos, position);
@@ -67,6 +68,7 @@ public class Slash : MonoBehaviour
         else
         {
             lastPos = Vector3.zero;
+            trailOn = false;
         }
     }
 }
