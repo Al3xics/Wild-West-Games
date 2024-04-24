@@ -174,16 +174,14 @@ public class LevelManager : MonoBehaviour
             case GameState.Win:
                 {
                     GameManager.Instance.WinMiniGame();
-                    ClearScreen();
-                    //winText.gameObject.SetActive(true);
+                    
                     Timerflow = false;
                     break;
                 }
             case GameState.Lose:
                 {
                     GameManager.Instance.EndMiniGame();
-                    ClearScreen();
-                    //loseText.gameObject.SetActive(true);
+                    
                     Timerflow = false;
                     break;
                 }
