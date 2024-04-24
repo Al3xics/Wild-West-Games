@@ -1,9 +1,10 @@
-using Nova;
 using NovaSamples.UIControls;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject loseGame;
     [SerializeField] private GameObject winGame;
     [SerializeField] private GameObject buttonPubs;
+    [SerializeField] private Sprite lifeWin;
 
     [Header("Variables")]
     [SerializeField] private float waitingTime = 2f;
@@ -108,11 +110,11 @@ public class UIIntervalBetweenGames : MonoBehaviour
         {
             if (i < life)
             {
-                lifeChildren[i].gameObject.GetComponent<UIBlock2D>().Color = Color.green;
+                lifeChildren[i].gameObject.GetComponent<Image>().sprite = lifeWin;
             }
             else
             {
-                lifeChildren[i].gameObject.GetComponent<UIBlock2D>().Color = Color.red;
+                lifeChildren[i].gameObject.GetComponent<Animator>().enabled = true;
             }
         }
     }
@@ -124,12 +126,12 @@ public class UIIntervalBetweenGames : MonoBehaviour
         {
             GameObject bestScoreToShow = go.transform.Find("Best Score").gameObject;
             int bestScore = gameManager.HightScore;
-            bestScoreToShow.GetComponent<TextBlock>().Text = "Best Score : " + bestScore;
+            bestScoreToShow.GetComponent<TMP_Text>().text = "Best Score : " + bestScore;
         }
 
         GameObject scoreToShow = go.transform.Find("Score").gameObject;
         int score = gameManager.Score;
-        scoreToShow.GetComponent<TextBlock>().Text = "Score : " + score;
+        scoreToShow.GetComponent<TMP_Text>().text = "Score : " + score;
     }
 
     // On attend un peu puis on lance la scene suivante
