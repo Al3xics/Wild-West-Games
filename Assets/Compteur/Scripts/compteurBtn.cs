@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class compteurBtn : MonoBehaviour
 {
-    [SerializeField] Text numberTxt;
     [SerializeField] NumberManager numberManager;
     [SerializeField] tube tube;
     
@@ -22,8 +21,6 @@ public class compteurBtn : MonoBehaviour
         }
 
         numberManager.number = tube.value;
-
-        numberTxt.text = numberManager.number.ToString();
 
 
         if(disabled)

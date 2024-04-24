@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject Fruit;
     [SerializeField] private GameObject Bomb;
     private bool cd = true;
-    private int timer = 1;
+    private int timer = 0;
     private float lvl = 1;
     // Start is called before the first frame update
     void Start()
