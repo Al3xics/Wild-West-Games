@@ -21,17 +21,9 @@ public class Memory : MonoBehaviour
         mainCamera = Camera.main;
         if (mainCamera != null) // Vérifiez si mainCamera est null
         {
-            GetCameraSize();
             InitGame();
         }
     }
-
-    void GetCameraSize()
-    {
-        cameraHeight = 1.5f * mainCamera.orthographicSize;
-        cameraWidth = cameraHeight * mainCamera.aspect + 1f;
-    }
-
     private void InitGame()
     {
         int rowsI = MemoryLvlManager.instance.Rows;
@@ -40,6 +32,18 @@ public class Memory : MonoBehaviour
         blocs = new GameObject[rowsI, columnsI];
         GenerateGrid();
         Shuffle();
+    }
+
+    /*void GetCameraSize()
+    {
+        // Trouver la taille de l'écran
+        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
+
+        // Convertir la taille de l'écran en coordonnées du monde
+        Vector3 screenToWorld = mainCamera.ScreenToWorldPoint(screenSize);
+
+        cameraHeight = Mathf.Abs(screenToWorld.x) * 2;
+        cameraWidth = Mathf.Abs(screenToWorld.y) * 2;
     }
 
     private void GenerateGrid()
@@ -51,7 +55,7 @@ public class Memory : MonoBehaviour
         float offsetY = cameraHeight / rows;
         float startX = -cameraWidth / 2 + offsetX / 2;
         float startY = -cameraHeight / 2 + offsetY / 2 - .25f;
-        
+
 
         for (int i = 0; i < rows; i++)
         {
@@ -59,6 +63,39 @@ public class Memory : MonoBehaviour
             {
                 GameObject newBlock = Instantiate(Cube); // Utilisez votre prefab ici 
                 newBlock.transform.position = new Vector3(startX + j * offsetX, startY + i * offsetY + 0.2f, 0);
+                blocs[i, j] = newBlock;
+            }
+        }
+    }*/
+    private void GenerateGrid()
+    {
+        int rows = MemoryLvlManager.instance.Rows;
+        int columns = MemoryLvlManager.instance.Columns;
+
+        float blockSize = 1.0f; // Taille d'un bloc
+        float padding = 0.5f; // Espacement entre les blocs
+
+        // Calcul de l'espacement entre les blocs
+        float totalPaddingX = (columns - 1) * padding;
+        float totalPaddingY = (rows - 1) * padding;
+
+        // Taille totale occupée par les blocs avec les espacements
+        float totalBlockSizeX = columns * blockSize + totalPaddingX;
+        float totalBlockSizeY = rows * blockSize + totalPaddingY;
+
+        // Calcul du décalage initial en X et en Y
+        float startX = -totalBlockSizeX / 2.0f + blockSize / 2.0f;
+        float startY = -totalBlockSizeY / 2.0f + blockSize / 2.0f;
+
+        // Placement des blocs
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                float posX = startX + j * (blockSize + padding);
+                float posY = startY + i * (blockSize + padding);
+                GameObject newBlock = Instantiate(Cube);
+                newBlock.transform.position = new Vector3(posX, posY, 0);
                 blocs[i, j] = newBlock;
             }
         }

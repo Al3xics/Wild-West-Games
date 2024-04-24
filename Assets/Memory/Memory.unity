@@ -275,7 +275,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.45
+  m_fontSize: 23.2
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c6e0f5a441daf439c8976b5550835c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
+  level: 5
   time: 10
   score: 0
 --- !u!114 &613095511
@@ -466,9 +466,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listItem:
   - {fileID: 21300000, guid: 244864a91cc565d42b95a5784e60083c, type: 3}
-  - {fileID: -5728686177044832811, guid: 7d959ce81f735954bb3ec0056d086544, type: 3}
+  - {fileID: 21300000, guid: 3d2652edb9b92734fa4e02178f77984e, type: 3}
   - {fileID: 21300000, guid: 6af5fec95a483234ea81ce7edd9e1fc3, type: 3}
-  - {fileID: 4138223980208024357, guid: 702171ce1eaa8aa43974cc8c1ecf4db5, type: 3}
+  - {fileID: 21300000, guid: 7ec6355fe6fc2a54eb69c17b206c3c95, type: 3}
   - {fileID: 21300000, guid: 92d0937e8f2589746acf0226f809d5ba, type: 3}
   - {fileID: 21300000, guid: 4c1e2ad71d562754185d221dfe48207d, type: 3}
   - {fileID: 21300000, guid: 3b40ffb1cc02f4041a87382b9c6b9100, type: 3}
@@ -572,7 +572,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_UpdateRectTransformForStandalone: 0
+  m_UpdateRectTransformForStandalone: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
