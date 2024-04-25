@@ -302,7 +302,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   end: 0
   win: 0
-  lvl: 2
   score: 0
   border: {fileID: 7637203409338724309, guid: b1f24883b52d1254fa7fd9bb8d55284e, type: 3}
   depop: {fileID: 6515003893715846771, guid: 2c4718af6687cbf47afe0392bda36906, type: 3}

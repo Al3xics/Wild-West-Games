@@ -23,6 +23,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
     private GameManager gameManager;
     private AdsManager adsManager;
+    private bool lostPreviousRound = false;
+
 
     public GameObject GameOver => gameOver;
     public GameObject LoseGame => loseGame;
@@ -61,11 +63,11 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
             // Game Over
             case GameManager.State.LoseGame:
-                GameManager.Instance.isTraining = false;
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
                 CanWeWatchRewarded();
+                GameManager.Instance.isTraining = false;
                 break;
 
             case GameManager.State.None:
@@ -92,7 +94,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         //adsManager.DestroyBanner();
         gameManager.RestartGame();
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0); // pas besoin car c'est fait dans RestartGame
     }
 
     // Affiche le nombre de vie restant
@@ -120,7 +122,10 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
                 if (i == life)
                 {
-                    lifeChildren[i].gameObject.GetComponent<Animator>().enabled = true;
+                    if (gameManager.lostprevious)
+                        lifeChildren[i].gameObject.GetComponent<Animator>().enabled = true;
+                    else
+                        lifeChildren[i].gameObject.GetComponent<Image>().sprite = lifeLose;
                 }
                 else
                 {
@@ -128,6 +133,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 }
             }
         }
+
+        lostPreviousRound = (life < gameManager.Life);
     }
 
     // Afficher le score
@@ -136,7 +143,16 @@ public class UIIntervalBetweenGames : MonoBehaviour
         if (go.name == "GameOver")
         {
             GameObject bestScoreToShow = go.transform.Find("Best Score").gameObject;
-            int bestScore = gameManager.HightScore;
+            int bestScore;
+            if (GameManager.Instance.isTraining)
+            {
+                string name = "HighScore" + GameManager.Instance.miniGameTrain;
+                bestScore = PlayerPrefs.GetInt(name);
+            }
+            else
+            {
+                bestScore = PlayerPrefs.GetInt("HighScore");
+            }
             bestScoreToShow.GetComponent<TMP_Text>().text = "Best Score : " + bestScore;
         }
 
