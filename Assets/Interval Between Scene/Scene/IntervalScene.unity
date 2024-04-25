@@ -207,7 +207,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.55
+  m_fontSize: 63.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -432,7 +432,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 230048389}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.15
+  m_fontSize: 41.45
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -910,7 +910,7 @@ MonoBehaviour:
   gameOver: {fileID: 1602221987}
   loseGame: {fileID: 1288930306}
   winGame: {fileID: 2125543743}
-  buttonPubs: {fileID: 0}
+  buttonPubs: {fileID: 230048386}
   lifeWin: {fileID: 1376178600, guid: 9dc32605977f0e2459af59e3b71b9529, type: 3}
   lifeLose: {fileID: 1654375912, guid: 9dc32605977f0e2459af59e3b71b9529, type: 3}
   waitingTime: 2
