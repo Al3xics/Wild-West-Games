@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     private int NumberOfMiniGame = 0;
     private int currentMiniGame = -1;
 
+    public bool lostprevious = false;
+
     [SerializeField] private float difficulty = 0;
 
     public float Difficulty
@@ -93,7 +95,6 @@ public class GameManager : MonoBehaviour
         {
             games.Add(false);
         }
-        StartCoroutine(SaveDataLoop());
     }
 
     public void setGamesName(string _gameName)
@@ -144,6 +145,7 @@ public class GameManager : MonoBehaviour
         currentState = State.WinMiniGame;
         if (difficulty < 100)
             difficulty += 1;
+        lostprevious = false;
         SceneManager.LoadScene("IntervalScene");
     }
 
@@ -152,6 +154,7 @@ public class GameManager : MonoBehaviour
         life = 3;
         score = 0;
         difficulty = 0;
+        hightScore = 0;
         musicManager.audioSource.clip = MenuClip;
         musicManager.audioSource.Play();
         SceneManager.LoadScene(0);
@@ -177,7 +180,10 @@ public class GameManager : MonoBehaviour
         if (life == 0)
         {
             if (score > hightScore)
+            {
                 hightScore = score;
+                _SaveData();
+            }
             currentState = State.LoseGame;
             SceneManager.LoadScene("IntervalScene");
             return false;
@@ -185,6 +191,7 @@ public class GameManager : MonoBehaviour
         if (difficulty < 100)
             difficulty += 1;
         currentState = State.LoseMiniGame;
+        lostprevious = true;
         SceneManager.LoadScene("IntervalScene");
         return true;
 
@@ -193,7 +200,15 @@ public class GameManager : MonoBehaviour
     private void _SaveData()
     {
         //PlayerPrefs.SetFloat("Difficulty", difficulty);
-        PlayerPrefs.SetInt("HighScore", hightScore);
+        if (isTraining)
+        {
+            string name = "HighScore" + miniGameTrain;
+            PlayerPrefs.SetInt(name, hightScore);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("HighScore", hightScore);
+        }
         string a = "";
         for (int i = 0; i < NumberOfMiniGame; i++)
         {
@@ -203,12 +218,6 @@ public class GameManager : MonoBehaviour
                 a += '0';
         }
         PlayerPrefs.SetString("MiniGame", a);
-    }
-    IEnumerator SaveDataLoop()
-    {
-        _SaveData();
-        yield return new WaitForSeconds(5);
-        StartCoroutine(SaveDataLoop());
     }
 
 

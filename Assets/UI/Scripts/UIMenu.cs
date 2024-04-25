@@ -56,7 +56,7 @@ public class UIMenu : MonoBehaviour
     public void ProgressionButton(GameObject panelProgression)
     {
         objectStack.Push(panelProgression);
-        int bestScore = gameManager.HightScore;
+        int bestScore = PlayerPrefs.GetInt("HighScore");
         panelProgression.GetComponentInChildren<TextMeshProUGUI>().text = "Best Score : " + bestScore;
         panelProgression.SetActive(true);
     }
