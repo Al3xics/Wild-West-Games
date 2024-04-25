@@ -21,7 +21,7 @@ public class UIMenu : MonoBehaviour
     {
         objectStack.Push(menu);
         gameManager = GameManager.Instance;
-        adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
+        adsManager = AdsManager.Instance;
         musicManager = MusicManager.Instance;
         adsManager.LaunchBanner();
         adsManager.HideBanner();
@@ -76,7 +76,7 @@ public class UIMenu : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Il n'y a pas d'objet précédent à activer.");
+            //Debug.LogWarning("Il n'y a pas d'objet précédent à activer.");
         }
     }
 }

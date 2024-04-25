@@ -113,6 +113,10 @@ public class GameManager : MonoBehaviour
 
         if(isTraining)
         {
+<<<<<<< Updated upstream
+=======
+            //Debug.Log("trainingLoad");
+>>>>>>> Stashed changes
             SceneManager.LoadScene(miniGameTrain);
         }
         else
@@ -134,6 +138,10 @@ public class GameManager : MonoBehaviour
                     num = availableMiniGames[randomIndex];
                 }
                 currentMiniGame = num;
+<<<<<<< Updated upstream
+=======
+                //Debug.Log("loadnewscene");
+>>>>>>> Stashed changes
                 SceneManager.LoadScene(num + 1);
             }
         }
@@ -146,6 +154,10 @@ public class GameManager : MonoBehaviour
         if (difficulty < 100)
             difficulty += 1;
         lostprevious = false;
+<<<<<<< Updated upstream
+=======
+        //Debug.Log("winload");
+>>>>>>> Stashed changes
         SceneManager.LoadScene("IntervalScene");
     }
 
@@ -173,10 +185,9 @@ public class GameManager : MonoBehaviour
 
     public bool EndMiniGame()
     {
-        
         life -= 1;
 
-        
+
         if (life == 0)
         {
             if (score > hightScore)

@@ -22,7 +22,7 @@ public class LoadSceneByName : MonoBehaviour
     
     public void OnButtonClick()
     {
-        Debug.Log("click");
+        //Debug.Log("click");
         GameManager.Instance.isTraining = true;
         GameManager.Instance.miniGameTrain = sceneName;
 
