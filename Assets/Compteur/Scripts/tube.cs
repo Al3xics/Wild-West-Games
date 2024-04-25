@@ -9,7 +9,8 @@ public class tube : MonoBehaviour
     [SerializeField] float maxValue;
     [SerializeField] compteurBtn compteurBtn;
 
-    private bool canAdd = true;
+    [SerializeField] private float power = 10;
+
 
     public float value;
 
@@ -19,26 +20,14 @@ public class tube : MonoBehaviour
     {
         image.fillAmount = value / maxValue;
 
-        if(value>= 100)
+        if (value >= 100)
         {
             value = 100;
         }
 
-        if(compteurBtn.isPressed)
+        if (compteurBtn.isPressed)
         {
-            if (canAdd)
-            {
-                canAdd = false;
-                StartCoroutine(addFillAmount(0.01f));
-            }
+            value += power * Time.deltaTime;
         }
-       
-    }
-
-    private IEnumerator addFillAmount(float add)
-    {
-        value++;
-        yield return new WaitForSeconds(add);
-        canAdd = true;
-    }
+    }       
 }

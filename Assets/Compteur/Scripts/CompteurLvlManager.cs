@@ -35,7 +35,7 @@ public class CompteurLvlManager : MonoBehaviour
             numberManager.interval = 10;
         }
 
-        if(GameManager.Instance.Difficulty > 80 && GameManager.Instance.Difficulty <= 100)
+        if(GameManager.Instance.Difficulty > 80)
         {
             tm.SetValues(timeLimit-5);
             numberManager.interval = 5;
