@@ -1298,7 +1298,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.5, z: 1}
-  m_LocalScale: {x: 0.49820104, y: 0.47747418, z: 0.6299963}
+  m_LocalScale: {x: 0.34407756, y: 0.32976276, z: 0.43510062}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1737,6 +1737,8 @@ MonoBehaviour:
   difficulty: 0
   hightScore: 0
   life: 0
+  isTraining: 0
+  miniGameTrain: 
   gamesName: []
 --- !u!4 &1882900630
 Transform:
