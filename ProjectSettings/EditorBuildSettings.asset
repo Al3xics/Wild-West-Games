@@ -5,43 +5,46 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/UI/Scenes/Menu.unity
     guid: 0eb9058566028964892a75047bb7eb36
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Water Source Rush.unity
     guid: cfa8c0055c40d3a4eaec202a1ca39ca7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Color Quest.unity
     guid: e25ff015994f9d94e9fbe767043efc69
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pop-up Purge.unity
     guid: a7d8dd16843290d4999fcadfdc2ebec9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Timing Triumph.unity
     guid: 76dec212de0232e42a42e011cb046d5d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Liquid Leak.unity
     guid: c628fb831b23537479c275c240d592f1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Memory Master.unity
     guid: 4fa9d739afe26a74fa8b8836b4abb859
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Fruit Frenzy.unity
     guid: 686a1ce1aedb0674e9baf45216980b4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pump Pro.unity
     guid: 1109bca237f3fce41bd12801649a1629
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Insecte Smash.unity
     guid: c48f5075006278d4989db6545e0d9df2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/B-Ball Blitz.unity
     guid: 313aacc55f1aec04ea5f957190c7bac7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
+  - enabled: 1
+    path: Assets/Water/Liquide.unity
+    guid: fe1153963ee45c643ba8696f7dc16649
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c178f35ff80ebbb429435874c83572a9, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 6673826085ad97c4a9141f89b2312a71, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: caa04d3e2f6e76b498d3a751f889bfca, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: f7cd44574d6205b46aca06d98301a95d, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}
