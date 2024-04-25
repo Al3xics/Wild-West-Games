@@ -70,8 +70,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
-                CanWeWatchRewarded();
                 GameManager.Instance.isTraining = false;
+                CanWeWatchRewarded();
                 break;
 
             case GameManager.State.None:
