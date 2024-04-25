@@ -8,14 +8,13 @@ public class NinjaLvlManager : MonoBehaviour
 {
     [SerializeField] private bool end = false;
     [SerializeField] private bool win = false;
-    [SerializeField] private float lvl;
+    private float lvl;
+    private float difficulty;
     private int time = 8;
     [SerializeField] private int score = 0;
     [SerializeField] GameObject border;
     [SerializeField] GameObject depop;
     [SerializeField] private Timer timer;
-
-    private Vector3[] corners;
     // Start is called before the first frame update
     void Start()
     {
@@ -104,10 +103,5 @@ public class NinjaLvlManager : MonoBehaviour
     public int GetScore()
     {
         return score;
-    }
-
-    public float GetLvl()
-    {
-        return lvl; 
     }
 }
