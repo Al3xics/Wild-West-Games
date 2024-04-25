@@ -170,7 +170,10 @@ public class UIIntervalBetweenGames : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         
         adsManager.HideBanner();
-
+        if (!MusicManager.Instance.audioSource.isPlaying)
+        {
+            MusicManager.Instance.audioSource.Play();
+        }
         gameManager.LoadNextMiniGame();
     }
 }
