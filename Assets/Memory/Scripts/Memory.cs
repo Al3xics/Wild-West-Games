@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Memory : MonoBehaviour
 {
@@ -75,6 +76,8 @@ public class Memory : MonoBehaviour
         float blockSize = 1.0f; // Taille d'un bloc
         float padding = 0.5f; // Espacement entre les blocs
 
+        GridLayoutGroup gridLayoutGroup = FindObjectOfType<Canvas>().GetComponentInChildren<GridLayoutGroup>();
+
         // Calcul de l'espacement entre les blocs
         float totalPaddingX = (columns - 1) * padding;
         float totalPaddingY = (rows - 1) * padding;
@@ -95,6 +98,8 @@ public class Memory : MonoBehaviour
                 float posX = startX + j * (blockSize + padding);
                 float posY = startY + i * (blockSize + padding);
                 GameObject newBlock = Instantiate(Cube);
+
+                newBlock.transform.SetParent(gridLayoutGroup.transform, false);
                 newBlock.transform.position = new Vector3(posX, posY, 0);
                 blocs[i, j] = newBlock;
             }
@@ -150,7 +155,6 @@ public class Memory : MonoBehaviour
                 }
             }
         }
-
     }
 
     private void Shuffle()
