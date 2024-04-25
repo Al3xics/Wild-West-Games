@@ -75,7 +75,6 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 break;
 
             case GameManager.State.None:
-                //Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
                 break;
         }
     }

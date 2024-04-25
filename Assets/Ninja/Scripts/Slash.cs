@@ -28,10 +28,8 @@ public class Slash : MonoBehaviour
             position = Camera.main.ScreenToWorldPoint(touch.position);
             if (Vector3.Distance(lastPos, position) > forceToSlash && lastPos != Vector3.zero)
             {
-                //Debug.Log("1");
                 if (!trailOn)
                 {
-                    //Debug.Log("2");
                     trailOn = true;
                     Instantiate(trail);
                 }

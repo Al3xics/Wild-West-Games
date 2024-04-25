@@ -26,10 +26,6 @@ public class GetScenesName : MonoBehaviour
                 }
                 Destroy(this.gameObject);
             }
-            else
-            {
-                //Debug.LogError("Le dossier n'existe pas : " + folderPath);
-            }
         }
     }
 }

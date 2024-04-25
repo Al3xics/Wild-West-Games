@@ -166,9 +166,6 @@ public class BU_GameManager : MonoBehaviour
     }
     private IEnumerator throwBall()
     {
-        ////debug log for valid start and end
-        //Debug.Log("validStart: " + validStart + " validEnd: " + validEnd);
-        //Debug.Log("ballCount: " + ballCount + " ballsIndicator.Length: " + ballsIndicator.Length);
         if (validStart && validEnd && ballCount >= 1  )
         {
             ball.GetComponent<Rigidbody>().AddForce((endPos - startPos) * power);

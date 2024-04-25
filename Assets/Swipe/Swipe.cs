@@ -36,12 +36,10 @@ public class Swipe : MonoBehaviour {
 						if(stopPosition.x > startPosition.x)
 						{
 							PtController.Swipe(Vector2.right);
-							Debug.Log("Swipe Right");
 						}
 						else
 						{
 							PtController.Swipe(Vector2.left);
-							Debug.Log("Swipe Left");
 						}
 					}
 					else
@@ -49,18 +47,12 @@ public class Swipe : MonoBehaviour {
 						if (stopPosition.y > startPosition.y)
 						{
 							PtController.Swipe(Vector2.up);
-							Debug.Log("Swipe Up");
 						}
 						else
 						{
 							PtController.Swipe(Vector2.down);
-							Debug.Log("Swipe Down");
 						}
 					}
-				}
-				else
-				{
-					Debug.Log("Tap");
 				}
 			}
 		}

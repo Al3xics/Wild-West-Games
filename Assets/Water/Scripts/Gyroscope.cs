@@ -27,16 +27,10 @@ public class Gyroscope : MonoBehaviour
 
         if (SystemInfo.supportsGyroscope)
         {
-            //Debug.Log("Gyro ON");
             monGyro.enabled = true;
         }
-        else
-        {
-            //Debug.Log("Gyro OFF");
-        }
-        yield return null;
 
-        //Debug.Log(Input.gyro.attitude); // attitude has data now
+        yield return null;
     }
 
     void Update()
@@ -44,7 +38,6 @@ public class Gyroscope : MonoBehaviour
         //Rot(monGyro.rotationRateUnbiased.z);
         if (!liquid_Target.doOnce)
             Rot(monGyro.rotationRateUnbiased.z * boost);
-        //Debug.Log(monGyro.rotationRateUnbiased.z);
 
 
         //transform.Rotate(monGyro.rotationRateUnbiased * speedRotation);
@@ -56,11 +49,6 @@ public class Gyroscope : MonoBehaviour
         transform.Rotate(Vector3.forward, r * speedRotation);
 
         Physics2D.gravity = Quaternion.Euler(0, 0, -r * 3 ) * Physics2D.gravity ;
-        //Debug.Log(Physics2D.gravity);
         //Physics.gravity = new Vector3(0,12,0);
-
-        //Debug.Log(r + " -> " + Physics2D.gravity + "  | " + monGyro.attitude.eulerAngles);
-        
-
     }
 }

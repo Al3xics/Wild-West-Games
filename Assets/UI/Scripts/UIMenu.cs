@@ -74,9 +74,5 @@ public class UIMenu : MonoBehaviour
             objectStack.Pop().SetActive(false);
             objectStack.Peek().SetActive(true);
         }
-        else
-        {
-            //Debug.LogWarning("Il n'y a pas d'objet précédent à activer.");
-        }
     }
 }

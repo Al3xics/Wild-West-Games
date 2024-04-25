@@ -41,7 +41,6 @@ public class Spawner : MonoBehaviour
         //{
         //    //lvl = go.GetComponent<NinjaLvlManager>().GetLvl();
         //}
-        //Debug.Log("Difficulty : " + lvl);
     }
 
     // Update is called once per frame

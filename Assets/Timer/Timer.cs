@@ -27,7 +27,6 @@ public class Timer : MonoBehaviour
 
     public void SetValues(float max)
     {
-        //Debug.Log("yeah");
         slider.maxValue = max;
         Time = max;
     }
