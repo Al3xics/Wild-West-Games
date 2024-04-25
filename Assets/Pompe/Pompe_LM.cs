@@ -7,15 +7,7 @@ using static LevelManager;
 public class Pompe_LM : MonoBehaviour
 {
     [SerializeField] float timeLimit = 11f;
-    [SerializeField] private float timer;
-    [SerializeField] private Pompe_Timer myTimer_S;
-
-    public float Mytimer
-    {
-        get { return timer; }
-        set { timer = value; }
-    }
-    [SerializeField] bool Timerflow = true;
+    [SerializeField] private Timer tm;
 
     [SerializeField] int difficultyLevel = 1;
 
@@ -93,25 +85,18 @@ public class Pompe_LM : MonoBehaviour
             timeLimit = 4.0f;
         }
 
-        timer = timeLimit;
+        tm.SetValues(timeLimit);
     }
 
     void Update()
     {
-        if (Timerflow)
+        if (tm.GetValues() <= 0)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                GameManager.Instance.EndMiniGame();
-                timer = 0;
-            }
-            if (nbrClickedPompe >= numberOfClickPompe && nbrClickedRemplis >= numberOfClickRemplis)
-            {
-                GameManager.Instance.WinMiniGame();
-                timer = 0;
-            }
-            myTimer_S.UpdateTimer();
+            GameManager.Instance.EndMiniGame();
+        }
+        if (nbrClickedPompe >= numberOfClickPompe && nbrClickedRemplis >= numberOfClickRemplis)
+        {
+            GameManager.Instance.WinMiniGame();
         }
     }
 }

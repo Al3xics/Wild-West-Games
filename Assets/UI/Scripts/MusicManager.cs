@@ -11,7 +11,7 @@ public class MusicManager : MonoBehaviour
 
     [SerializeField] private GameObject musicSlider;
     [SerializeField] private TMP_Text musicSliderText;
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     private Slider slider;
 
     void Awake()

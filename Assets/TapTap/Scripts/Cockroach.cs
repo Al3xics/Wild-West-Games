@@ -27,23 +27,18 @@ public class Cockroach : MonoBehaviour
 
     private void Start()
     {
-        background = GameObject.Find("/Background");
+        background = GameObject.Find("Panel");
 
         particle = GetComponent<ParticleSystem>();
-        
-        if (background == null)
-        {
-            return;
-        }
-        spriteRenderer = background.GetComponent<SpriteRenderer>();
-        spriteRenderer.size = new Vector2(Screen.width, Screen.height);
 
-        Vector2 localSize = background.GetComponent<Renderer>().bounds.size;
-        
+        Vector2 localSize = new Vector2(background.GetComponent<RectTransform>().rect.width, background.GetComponent<RectTransform>().rect.height);
 
-        
+        localSize /= 100;
+
         minPosition = localSize * -0.5f;
         maxPosition = localSize * 0.5f;
+        
+        
         
         nextPosition = GetRandomPosition();
         rb = GetComponent<Rigidbody2D>();

@@ -6,17 +6,8 @@ using UnityEngine;
 public class Difference_LM : MonoBehaviour
 {
     [SerializeField] float timeLimit = 8f;
-    [SerializeField] float timer;
-    [SerializeField] private Timer_Color myTimer_S;
+    [SerializeField] Timer tm;
     [SerializeField] private Instanciate_Button myInstanciateGame_S;
-
-    public float Mytimer
-    {
-        get { return timer; }
-        set { timer = value; }
-    }
-
-    [SerializeField] bool Timerflow = true;
 
     [SerializeField] int difficultyLevel = 1;
     void Start()
@@ -40,20 +31,14 @@ public class Difference_LM : MonoBehaviour
             myInstanciateGame_S.Make_Game(difficultyLevel);
             timeLimit = 5.0f;
         }
-        timer = timeLimit;
+        tm.SetValues(timeLimit);
     }
 
     void Update()
     {
-        if (Timerflow)
+        if (tm.GetValues() <= 0)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                GameManager.Instance.EndMiniGame();
-                timer = 0;
-            }
-            myTimer_S.UpdateTimerColor();
+            GameManager.Instance.EndMiniGame();
         }
     }
 }

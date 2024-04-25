@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private MusicManager musicManager;
+    [SerializeField] private AudioClip MenuClip;
+
 
     public enum State
     {
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        musicManager = MusicManager.Instance;
         Screen.orientation = ScreenOrientation.Portrait;
         NumberOfMiniGame = gamesName.Count;
         for (int i = 0; i < NumberOfMiniGame; i++)
@@ -151,6 +155,8 @@ public class GameManager : MonoBehaviour
         score = 0;
         difficulty = 0;
         hightScore = 0;
+        musicManager.audioSource.clip = MenuClip;
+        musicManager.audioSource.Play();
         SceneManager.LoadScene(0);
     }
 
