@@ -172,6 +172,7 @@ public class BU_GameManager : MonoBehaviour
         if (validStart && validEnd && ballCount >= 1  )
         {
             ball.GetComponent<Rigidbody>().AddForce((endPos - startPos) * power);
+            SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.LaunchBall);
             CanThrow = false;
             yield return new WaitForSeconds(0.5f);
             ballCount--;

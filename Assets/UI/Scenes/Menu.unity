@@ -4864,6 +4864,13 @@ MonoBehaviour:
   Cut: {fileID: 0}
   Bomb: {fileID: 0}
   SplashInsect: {fileID: 8300000, guid: 2234da2d252602942ac74989c2048755, type: 3}
+  CloseAdd: {fileID: 8300000, guid: 418159075976397499d490eb134ef70f, type: 3}
+  LaunchBall: {fileID: 8300000, guid: b955c5c2148da1d479b818699e28225c, type: 3}
+  WaterFill: {fileID: 8300000, guid: c139b2e6ce96aba4b9266597005f8620, type: 3}
+  WaterRemove: {fileID: 8300000, guid: 1f4a50eaccec57a43a103dd23d9ed49c, type: 3}
+  Validation: {fileID: 8300000, guid: 43e063a36a7640f40a12a5a59e43b979, type: 3}
+  Fail: {fileID: 8300000, guid: cb132c39d208dd44c9cfadaa6747fecd, type: 3}
+  WinSequence: {fileID: 8300000, guid: 47fc9f0ce33f1ba4e95be5081b21d482, type: 3}
   sfxSlider: {fileID: 2052177825}
   sfxSliderText: {fileID: 1809183022}
 --- !u!1 &1219994201

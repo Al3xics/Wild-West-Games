@@ -43,12 +43,14 @@ public class compteurBtn : MonoBehaviour
         if (disabled == false)
         {
             isPressed = true;
+            SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.WaterFill);
         }
     }
 
  
     void OnMouseUp()
     {
+        SFXManager.Instance.Audio.Stop();
         isPressed = false;
         disabled = true;
 

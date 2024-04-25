@@ -33,11 +33,13 @@ public class Button_Function_Difference : MonoBehaviour
     {
         if (isWinning_Button)
         {
+            SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Validation);
             GameManager.Instance.WinMiniGame();
             Debug.Log("win");
         }
         else
         {
+            SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Fail);
             GameManager.Instance.EndMiniGame();
             Debug.Log("loose");
         }

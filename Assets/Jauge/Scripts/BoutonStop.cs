@@ -28,12 +28,14 @@ public class BoutonStop : MonoBehaviour
             if(slider.myVal >= numberManagerJauge.randNumber && slider.myVal <= numberManagerJauge.valueMax)
             {
                 poc.SetActive(true);
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Validation);
                 GameManager.Instance.WinMiniGame();
             }
 
             else
             {
                 ouch.SetActive(true);
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Fail);
                 handle.GetComponent<Image>().sprite = newSprite;
                 GameManager.Instance.EndMiniGame();
             }

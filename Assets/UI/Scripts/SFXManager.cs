@@ -13,6 +13,14 @@ public class SFXManager : MonoBehaviour
     public AudioClip Cut;
     public AudioClip Bomb;
     public AudioClip SplashInsect;
+    public AudioClip CloseAdd;
+    public AudioClip LaunchBall;
+    public AudioClip WaterFill;
+    public AudioClip WaterRemove;
+    public AudioClip Validation;
+    public AudioClip Fail;
+    public AudioClip WinSequence;
+    //public AudioClip LoseSequence;
 
     [SerializeField] private GameObject sfxSlider;
     [SerializeField] private TMP_Text sfxSliderText;
