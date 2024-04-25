@@ -15,7 +15,7 @@ public class Liquid_Target : MonoBehaviour
     private Liquid_BallCounter BallCounterTarget;
     private Liquid_BallCounter BallCounterAbovetarget;
 
-    private bool doOnce = false;
+    public bool doOnce = false;
 
     [SerializeField] private float timer = 10;
 
@@ -59,13 +59,14 @@ public class Liquid_Target : MonoBehaviour
         {
             doOnce = true;
             StartCoroutine(endGame());
+
         }
         
         if (timer <= 0)
         {
             Vector3 z = Physics2D.gravity;
             Vector3 vec = new Vector3(0, -9, 8);
-            Vector3 lerpedValue = Vector3.Lerp(z, vec, 0.05f);
+            Vector3 lerpedValue = Vector3.Lerp(z, vec, 0.2f);
             Physics2D.gravity = lerpedValue;
             
         }
@@ -82,7 +83,7 @@ public class Liquid_Target : MonoBehaviour
 
     IEnumerator endGame()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         if (BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
         {
             GameManager.Instance.WinMiniGame();
