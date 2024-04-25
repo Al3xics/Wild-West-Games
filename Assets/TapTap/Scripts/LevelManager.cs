@@ -21,9 +21,7 @@ public class LevelManager : MonoBehaviour
    
 
     [SerializeField] float timeLimit = 11f;
-    [SerializeField] float timer;
-    [SerializeField] bool Timerflow = true;
-    [SerializeField] Timer TimerVisual;
+    [SerializeField] Timer tm;
 
     [SerializeField] int difficultyLevel = 1;
     [SerializeField] bool TouchInput = true;
@@ -52,10 +50,6 @@ public class LevelManager : MonoBehaviour
             timeLimit = 4.0f;
         }
 
-        
-       
-        
-
         //SpawnCockroach
         if (cockroachPrefab != null)
         {
@@ -80,31 +74,20 @@ public class LevelManager : MonoBehaviour
         }
 
         //Timer start
-        timer = timeLimit;
-        TimerVisual.SetValues(timeLimit);
+        tm.SetValues(timeLimit);
        
     }
 
     private void Update()
     {
-        //Timer update
-        if (Timerflow)
+        if (tm.GetValues()<=0)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                
-                    EndScreen(GameState.Lose);
-                
-                timer = 0;
-            }
-           
-
+            EndScreen(GameState.Lose);
         }
         if (TouchInput)
         {
             //TouchInput
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && timer > 0)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && tm.GetValues() > 0)
             {
                 Vector2 touchPosition = Input.GetTouch(0).position;
                 Vector2 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
@@ -128,7 +111,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             //Mouse Input
-            if (Input.GetMouseButtonDown(0) && timer > 0)
+            if (Input.GetMouseButtonDown(0) && tm.GetValues() > 0)
             {
                 Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Collider2D colliderHit = Physics2D.OverlapPoint(mousePosition);
@@ -175,14 +158,12 @@ public class LevelManager : MonoBehaviour
                 {
                     GameManager.Instance.WinMiniGame();
                     
-                    Timerflow = false;
                     break;
                 }
             case GameState.Lose:
                 {
                     GameManager.Instance.EndMiniGame();
                     
-                    Timerflow = false;
                     break;
                 }
             default:
