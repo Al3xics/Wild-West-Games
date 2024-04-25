@@ -91,6 +91,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
     public void LaunchRewardedVideo()
     {
+        SFXManager.Instance.Audio.Stop();
         StartCoroutine(adsManager.WaitForRewarded());
     }
 
@@ -170,6 +171,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
         
         adsManager.HideBanner();
+        
         if (!MusicManager.Instance.audioSource.isPlaying)
         {
             MusicManager.Instance.audioSource.Play();
