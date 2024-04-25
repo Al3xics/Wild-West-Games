@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class LevelManager : MonoBehaviour
    
     private void Start()
     {
+        //GameObject background = GameObject.Find("/Background");
+        //if (background == null)
+        //{
+        //    return;
+        //}
+        //background.GetComponent<SpriteRenderer>().size = new Vector2(Screen.width, Screen.height);
+
+
         float currentDifficultyLevel = GameManager.Instance.Difficulty / 10;
         difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
         if(difficultyLevel < 1) difficultyLevel = 1;

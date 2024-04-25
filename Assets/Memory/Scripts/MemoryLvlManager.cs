@@ -106,8 +106,8 @@ public class MemoryLvlManager : MonoBehaviour
        return score;
     }
 
-    public int GetLevel()
+    public int Level
     {
-        return level;
+        get { return level; }
     }
 }

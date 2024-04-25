@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,11 +12,13 @@ public class UIMenu : MonoBehaviour
 
     // L'objet en haut de la pile est l'objet actuel sur lequel on se situe
     private Stack<GameObject> objectStack = new();
+    private GameManager gameManager;
     private AdsManager adsManager;
 
     void Start()
     {
         objectStack.Push(menu);
+        gameManager = GameManager.Instance;
         adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
         adsManager.LaunchBanner();
         adsManager.HideBanner();
@@ -45,14 +48,18 @@ public class UIMenu : MonoBehaviour
         adsManager.LaunchInterstitial();
     }
 
-    public void ProgressionButton()
+    public void ProgressionButton(GameObject panelProgression)
     {
-
+        objectStack.Push(panelProgression);
+        int bestScore = gameManager.HightScore;
+        panelProgression.GetComponentInChildren<TextMeshProUGUI>().text = "Best Score : " + bestScore;
+        panelProgression.SetActive(true);
     }
 
-    public void AboutUsButton()
+    public void AboutUsButton(GameObject panelABoutUs)
     {
-
+        objectStack.Push(panelABoutUs);
+        panelABoutUs.SetActive(true);
     }
 
     public void BackButton()
