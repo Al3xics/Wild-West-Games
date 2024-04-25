@@ -141,10 +141,12 @@ public class Memory : MonoBehaviour
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
                     {
                         FoundPair(firstCard, secondCard);
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Validation);
                     }
                     else
                     {
                         StartCoroutine(DisableSpritesWithDelay(firstSprite, secondSprite));
+                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Fail);
                     }
                     returnCard = 0;
 

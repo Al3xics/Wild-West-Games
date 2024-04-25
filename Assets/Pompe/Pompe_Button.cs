@@ -28,11 +28,16 @@ public class Pompe_Button : MonoBehaviour
         if (Pompe_LM_S.NbrClickedPompe < Pompe_LM_S.NumberOfClickPompe) 
         {
             Pompe_LM_S.NbrClickedPompe += 1;
+            if (Pompe_LM_S.NbrClickedPompe <= 1)
+            {
+                SFXManager.Instance.Audio.Stop();
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.WaterRemove);
+            }
             value -= Pompe_LM_S.Diviseur;
            
             material.SetFloat("_Fill", value);
-
-            if(Pompe_LM_S.NbrClickedPompe == Pompe_LM_S.NumberOfClickPompe)
+            
+            if (Pompe_LM_S.NbrClickedPompe == Pompe_LM_S.NumberOfClickPompe)
             {
                 material.SetInt("_IsClean", 1);
             }
@@ -48,6 +53,11 @@ public class Pompe_Button : MonoBehaviour
         if (Pompe_LM_S.NbrClickedRemplis < Pompe_LM_S.NumberOfClickRemplis && material.GetInt("_IsClean") == 1)
         {
             Pompe_LM_S.NbrClickedRemplis += 1;
+            if (Pompe_LM_S.NbrClickedRemplis <= 1)
+            {
+                SFXManager.Instance.Audio.Stop();
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.WaterFill);
+            }
             value += Pompe_LM_S.Diviseur;
             material.SetFloat("_Fill", value);
         }

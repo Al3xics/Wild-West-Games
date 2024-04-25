@@ -15,7 +15,8 @@ public class Pubs : MonoBehaviour
 
     public void DestroyPubs()
     {
-        Debug.Log("je suis cliqué");
+        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.CloseAdd);
+       
         levelManager.RemovePubsFromList(gameObject);
         Destroy(gameObject);
     }
