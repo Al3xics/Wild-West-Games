@@ -1121,7 +1121,7 @@ Transform:
   m_GameObject: {fileID: 1346843922}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.31, z: 3.546608}
+  m_LocalPosition: {x: 0, y: -3.31, z: 3.546608}
   m_LocalScale: {x: 1.2516847, y: 1.1996104, z: 1.5828081}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1219,6 +1219,8 @@ MonoBehaviour:
   difficulty: 90
   hightScore: 0
   life: 0
+  isTraining: 0
+  miniGameTrain: 
   gamesName: []
 --- !u!4 &1369149460
 Transform:
@@ -1326,6 +1328,7 @@ MonoBehaviour:
   image: {fileID: 1446273491}
   maxValue: 100
   compteurBtn: {fileID: 1346843925}
+  power: 50
   value: 0
 --- !u!1 &1523729042
 GameObject:

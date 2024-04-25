@@ -50,9 +50,9 @@ public class compteurBtn : MonoBehaviour
  
     void OnMouseUp()
     {
-        SFXManager.Instance.Audio.Stop();
         isPressed = false;
         disabled = true;
+        SFXManager.Instance.Audio.Stop();
 
     }
 
