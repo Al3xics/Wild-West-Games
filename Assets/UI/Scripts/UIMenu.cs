@@ -9,10 +9,12 @@ public class UIMenu : MonoBehaviour
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject games;
+    [SerializeField] private AudioClip InGameClip;
 
     // L'objet en haut de la pile est l'objet actuel sur lequel on se situe
     private Stack<GameObject> objectStack = new();
     private GameManager gameManager;
+    private MusicManager musicManager;
     private AdsManager adsManager;
 
     void Start()
@@ -20,6 +22,7 @@ public class UIMenu : MonoBehaviour
         objectStack.Push(menu);
         gameManager = GameManager.Instance;
         adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
+        musicManager = MusicManager.Instance;
         adsManager.LaunchBanner();
         adsManager.HideBanner();
     }
@@ -27,6 +30,8 @@ public class UIMenu : MonoBehaviour
     public void PlayGameButton()
     {
         GameManager.Instance.LoadNextMiniGame();
+        musicManager.audioSource.clip = InGameClip;
+        musicManager.audioSource.Play();
     }
 
     public void SettingsButton()
