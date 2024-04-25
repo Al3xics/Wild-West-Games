@@ -19,6 +19,8 @@ public class Liquid_Target : MonoBehaviour
 
     [SerializeField] private float timer = 10;
 
+    [SerializeField] private Timer tm;
+
     private void Awake()
     {
         TargetCollider = Target.GetComponent<BoxCollider2D>();
@@ -33,6 +35,7 @@ public class Liquid_Target : MonoBehaviour
         Abovetarget.GetComponent<SpriteRenderer>().enabled = false;
         setupGame((int)GameManager.Instance.Difficulty);
         doOnce = false;
+        tm.SetValues(timer);
     }
 
     public void setupGame(int difficulty)
