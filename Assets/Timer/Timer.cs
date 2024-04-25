@@ -12,7 +12,6 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        gameObject.GetComponent<Canvas>().worldCamera = Camera.main;
     }
 
     // Update is called once per frame

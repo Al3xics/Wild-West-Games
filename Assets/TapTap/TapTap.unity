@@ -349,9 +349,7 @@ MonoBehaviour:
   cockroachsDead: 0
   spawnNumbers: 
   timeLimit: 10
-  timer: 0
-  Timerflow: 1
-  TimerVisual: {fileID: 1599568998}
+  tm: {fileID: 1599568998}
   difficultyLevel: 0
   TouchInput: 1
 --- !u!1001 &781760089

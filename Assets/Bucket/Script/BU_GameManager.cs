@@ -10,7 +10,6 @@ public class BU_GameManager : MonoBehaviour
     [SerializeField] private Transform BallPlacement;
     [SerializeField] private Transform[] BallPlacements;
     [SerializeField] private Transform BinPlacement;
-    [SerializeField] private TextMeshProUGUI timerText;
     //[SerializeField] private Transform[] FanPlacement;
 
     [SerializeField] private GameObject BallPrefab;
@@ -20,6 +19,7 @@ public class BU_GameManager : MonoBehaviour
     [SerializeField] private int ballCount = 5;
     [SerializeField] private float power = 1000;
     [SerializeField] private float timer = 10;
+    [SerializeField] private Timer tm;
 
 
 
@@ -104,6 +104,8 @@ public class BU_GameManager : MonoBehaviour
 
         CanThrow = true;
         missed = ballCount;
+
+        tm.SetValues(timer);
     }
 
     IEnumerator win()
@@ -138,13 +140,7 @@ public class BU_GameManager : MonoBehaviour
 
         }
 
-        timer -= Time.deltaTime;
-        string minutes = Mathf.Floor(timer / 60).ToString("00");
-        string seconds = (timer % 60).ToString("00");
-
-        timerText.text = minutes + ":" + seconds;
-
-        if (timer <= 0)
+        if (tm.GetValues() <= 0)
         {
             GameManager.Instance.EndMiniGame();
         }
