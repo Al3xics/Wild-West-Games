@@ -37,13 +37,13 @@ public class AdsManager : MonoBehaviour
 
     private void InitializeAds()
     {
-    #if UNITY_ANDROID
+#if UNITY_ANDROID
         appKey = androidAppKey;
-    #elif UNITY_IOS
+#elif UNITY_IOS
         appKey = iosAppKey;
-    #elif UNITY_EDITOR
+#elif UNITY_EDITOR
         appKey = androidAppKey;
-    #endif
+#endif
 
         IronSource.Agent.validateIntegration();
         IronSource.Agent.init(appKey);

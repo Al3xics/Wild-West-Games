@@ -33,8 +33,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
-        //adsManager = AdsManager.Instance;
-        //adsManager.DisplayBanner();
+        adsManager = AdsManager.Instance;
+        adsManager.DisplayBanner();
 
 
         // Désactivation de tous les GameObject pour être clean
@@ -96,7 +96,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     // Retour au Menu
     public void BackToMenu()
     {
-        //adsManager.DestroyBanner();
+        adsManager.DestroyBanner();
         gameManager.RestartGame();
     }
 
@@ -169,8 +169,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         yield return new WaitForSeconds(waitingTime);
 
-        //adsManager.HideBanner();
-        
+        adsManager.HideBanner();
+
         gameManager.LoadNextMiniGame();
     }
 }
