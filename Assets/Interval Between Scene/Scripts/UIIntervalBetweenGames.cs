@@ -16,6 +16,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     [SerializeField] private GameObject winGame;
     [SerializeField] private GameObject buttonPubs;
     [SerializeField] private Sprite lifeWin;
+    [SerializeField] private Sprite lifeLose;
 
     [Header("Variables")]
     [SerializeField] private float waitingTime = 2f;
@@ -116,7 +117,15 @@ public class UIIntervalBetweenGames : MonoBehaviour
             }
             else
             {
-                lifeChildren[i].gameObject.GetComponent<Animator>().enabled = true;
+
+                if (i == life)
+                {
+                    lifeChildren[i].gameObject.GetComponent<Animator>().enabled = true;
+                }
+                else
+                {
+                    lifeChildren[i].gameObject.GetComponent<Image>().sprite = lifeLose;
+                }
             }
         }
     }
