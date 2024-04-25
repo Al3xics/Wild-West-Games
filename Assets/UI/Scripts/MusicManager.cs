@@ -40,8 +40,8 @@ public class MusicManager : MonoBehaviour
         }
         else
         {
-            slider.value = slider.maxValue;
-            audioSource.volume = slider.maxValue;
+            slider.value = slider.maxValue / 2;
+            audioSource.volume = slider.maxValue / slider.maxValue / 2;
         }
     }
 

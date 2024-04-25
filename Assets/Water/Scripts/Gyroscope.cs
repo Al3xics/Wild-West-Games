@@ -27,16 +27,16 @@ public class Gyroscope : MonoBehaviour
 
         if (SystemInfo.supportsGyroscope)
         {
-            Debug.Log("Gyro ON");
+            //Debug.Log("Gyro ON");
             monGyro.enabled = true;
         }
         else
         {
-            Debug.Log("Gyro OFF");
+            //Debug.Log("Gyro OFF");
         }
         yield return null;
 
-        Debug.Log(Input.gyro.attitude); // attitude has data now
+        //Debug.Log(Input.gyro.attitude); // attitude has data now
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class Gyroscope : MonoBehaviour
         transform.Rotate(Vector3.forward, r * speedRotation);
 
         Physics2D.gravity = Quaternion.Euler(0, 0, -r * 3 ) * Physics2D.gravity ;
-        Debug.Log(Physics2D.gravity);
+        //Debug.Log(Physics2D.gravity);
         //Physics.gravity = new Vector3(0,12,0);
 
         //Debug.Log(r + " -> " + Physics2D.gravity + "  | " + monGyro.attitude.eulerAngles);

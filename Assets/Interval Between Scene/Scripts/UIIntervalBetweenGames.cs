@@ -33,8 +33,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
     void Start()
     {
         gameManager = GameManager.Instance;
-/*        adsManager = GameObject.Find("Ads Manager").GetComponent<AdsManager>();
-        adsManager.DisplayBanner();*/
+        //adsManager = AdsManager.Instance;
+        //adsManager.DisplayBanner();
 
 
         // Désactivation de tous les GameObject pour être clean
@@ -75,7 +75,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 break;
 
             case GameManager.State.None:
-                Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
+                //Debug.LogErrorFormat("GameManager state est : {0}", gameManager.CurrentState);
                 break;
         }
     }
@@ -98,7 +98,6 @@ public class UIIntervalBetweenGames : MonoBehaviour
     {
         //adsManager.DestroyBanner();
         gameManager.RestartGame();
-        //SceneManager.LoadScene(0); // pas besoin car c'est fait dans RestartGame
     }
 
     // Affiche le nombre de vie restant

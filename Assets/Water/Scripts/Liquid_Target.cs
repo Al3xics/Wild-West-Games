@@ -74,7 +74,7 @@ public class Liquid_Target : MonoBehaviour
         {
             if (Mathf.Abs(cup.transform.rotation.z) <= 10 && BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
             {
-                Debug.Log("you win1");
+                //Debug.Log("you win1");
                 //GameManager.Instance.WinMiniGame();
             }
             timer -= Time.deltaTime;
@@ -87,11 +87,11 @@ public class Liquid_Target : MonoBehaviour
         if (BallCounterTarget.BallCount > 0 && BallCounterAbovetarget.BallCount == 0)
         {
             GameManager.Instance.WinMiniGame();
-            Debug.Log("you win");
+            //Debug.Log("you win");
         }
         else
         {
-            Debug.Log("you lose");
+            //Debug.Log("you lose");
             GameManager.Instance.EndMiniGame();
         }
     }

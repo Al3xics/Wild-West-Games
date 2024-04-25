@@ -106,7 +106,7 @@ public class Instanciate_Button : MonoBehaviour
         rand_Consigne = UnityEngine.Random.Range(0f, 1f);
         if (rand_Consigne <= 0.5f) {
             Need_To_Find_Color_Button = true;
-            Consigne.SetText("Cliquer sur le button de couleur " + Color_To_Find_French_Name);
+            Consigne.SetText("Cliquer sur le bouton de couleur " + Color_To_Find_French_Name);
         } else {
             Need_To_Find_Color_Button = false;
             Consigne.SetText("Cliquer sur le texte de couleur " + Color_To_Find_French_Name);

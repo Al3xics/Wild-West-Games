@@ -28,7 +28,7 @@ public class GetScenesName : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Le dossier n'existe pas : " + folderPath);
+                //Debug.LogError("Le dossier n'existe pas : " + folderPath);
             }
         }
     }

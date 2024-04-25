@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
         if(isTraining)
         {
-            Debug.Log("trainingLoad");
+            //Debug.Log("trainingLoad");
             SceneManager.LoadScene(miniGameTrain);
         }
         else
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
                     num = availableMiniGames[randomIndex];
                 }
                 currentMiniGame = num;
-                Debug.Log("loadnewscene");
+                //Debug.Log("loadnewscene");
                 SceneManager.LoadScene(num + 1);
             }
         }
@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
         if (difficulty < 100)
             difficulty += 1;
         lostprevious = false;
-        Debug.Log("winload");
+        //Debug.Log("winload");
         SceneManager.LoadScene("IntervalScene");
     }
 
@@ -177,10 +177,9 @@ public class GameManager : MonoBehaviour
 
     public bool EndMiniGame()
     {
-        
         life -= 1;
 
-        
+
         if (life == 0)
         {
             if (score > hightScore)
