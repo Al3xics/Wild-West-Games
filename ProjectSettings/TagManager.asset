@@ -47,6 +47,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Cam
+    uniqueID: 1110981261
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

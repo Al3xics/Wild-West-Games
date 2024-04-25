@@ -8,6 +8,7 @@ public class MemoryLvlManager : MonoBehaviour
     [SerializeField] private int level = 1;
     [SerializeField] private int time = 10;
     [SerializeField] private int score = 0;
+    [SerializeField] private Timer tm;
 
     private int rows, columns;
 
@@ -41,6 +42,15 @@ public class MemoryLvlManager : MonoBehaviour
                 level = 1; // Niveau par défaut
         }
         SetDifficulty(level);
+        tm.SetValues(time);
+    }
+
+    private void Update()
+    {
+        if (tm.GetValues() <=0)
+        {
+            GameManager.Instance.EndMiniGame();
+        }
     }
 
     public void SetDifficulty(int dif)
