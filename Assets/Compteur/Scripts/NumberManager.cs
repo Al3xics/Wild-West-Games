@@ -25,10 +25,8 @@ public class NumberManager : MonoBehaviour
     void Start()
     {
         randomNumber = Random.Range(RandValueMin, RandValueMax);
-        NumberMin.text = randomNumber.ToString();
         
         ValueMax = randomNumber + interval;
-        NumberMax.text = ValueMax.ToString();
 
         ImageMin.fillAmount = randomNumber / 100;
 

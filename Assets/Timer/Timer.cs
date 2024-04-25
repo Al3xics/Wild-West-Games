@@ -22,7 +22,7 @@ public class Timer : MonoBehaviour
         if (cd)
         {
             cd = false;
-            StartCoroutine(Timing(1));
+            StartCoroutine(Timing(0.5f));
         }
     }
 
@@ -33,10 +33,15 @@ public class Timer : MonoBehaviour
         Time = max;
     }
 
+    public float GetValues()
+    {
+        return Time;
+    }
+
     private IEnumerator Timing(float waitTime)
     {
+        Time -= 0.5f;
         yield return new WaitForSeconds(waitTime);
-        Time -= 1;
         cd = true;
     }
 }
