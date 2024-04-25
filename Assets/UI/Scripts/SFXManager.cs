@@ -20,7 +20,8 @@ public class SFXManager : MonoBehaviour
     public AudioClip Validation;
     public AudioClip Fail;
     public AudioClip WinSequence;
-    //public AudioClip LoseSequence;
+    public AudioClip LoseSequence;
+    public AudioClip GameOverSequence;
 
     [SerializeField] private GameObject sfxSlider;
     [SerializeField] private TMP_Text sfxSliderText;

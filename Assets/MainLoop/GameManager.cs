@@ -109,14 +109,16 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextMiniGame(int num = -1)
     {
-        Debug.Log(isTraining);
+       
 
         if(isTraining)
         {
+            Debug.Log("trainingLoad");
             SceneManager.LoadScene(miniGameTrain);
         }
         else
         {
+            
             List<int> availableMiniGames = new List<int>();
             for (int i = 0; i < NumberOfMiniGame; i++)
             {
@@ -134,6 +136,7 @@ public class GameManager : MonoBehaviour
                     num = availableMiniGames[randomIndex];
                 }
                 currentMiniGame = num;
+                Debug.Log("loadnewscene");
                 SceneManager.LoadScene(num + 1);
             }
         }
@@ -146,6 +149,7 @@ public class GameManager : MonoBehaviour
         if (difficulty < 100)
             difficulty += 1;
         lostprevious = false;
+        Debug.Log("winload");
         SceneManager.LoadScene("IntervalScene");
     }
 
@@ -185,6 +189,7 @@ public class GameManager : MonoBehaviour
                 _SaveData();
             }
             currentState = State.LoseGame;
+            Debug.Log("loadIntervalfalse");
             SceneManager.LoadScene("IntervalScene");
             return false;
         }
@@ -192,6 +197,7 @@ public class GameManager : MonoBehaviour
             difficulty += 1;
         currentState = State.LoseMiniGame;
         lostprevious = true;
+        Debug.Log("loadIntervaltrue");
         SceneManager.LoadScene("IntervalScene");
         return true;
 

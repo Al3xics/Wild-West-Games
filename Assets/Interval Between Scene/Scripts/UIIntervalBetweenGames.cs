@@ -47,6 +47,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
         {
             // Win a game
             case GameManager.State.WinMiniGame:
+                
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.WinSequence);
                 winGame.SetActive(true);
                 UpdateLife(winGame);
                 ShowScore(winGame);
@@ -55,6 +57,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
             // Lose a life
             case GameManager.State.LoseMiniGame:
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.LoseSequence);
                 loseGame.SetActive(true);
                 UpdateLife(loseGame);
                 ShowScore(loseGame);
@@ -63,6 +66,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
             // Game Over
             case GameManager.State.LoseGame:
+                SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.GameOverSequence);
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);

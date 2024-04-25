@@ -82,8 +82,7 @@ public class EnleverPubsLevelManager : MonoBehaviour
         float randomX = Random.Range(bottomLeft.x, topRight.x);
         float randomY = Random.Range(bottomLeft.y, topRight.y);
 
-        Debug.Log("width : " + panelWidth);
-        Debug.Log("height : " + panelHeight);
+       
 
         Vector3 randomPosition = new(randomX, randomY, 0f);
 
