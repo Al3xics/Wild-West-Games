@@ -76,7 +76,7 @@ public class Memory : MonoBehaviour
         float blockSize = 1.0f; // Taille d'un bloc
         float padding = 0.5f; // Espacement entre les blocs
 
-        GridLayoutGroup gridLayoutGroup = FindObjectOfType<Canvas>().GetComponentInChildren<GridLayoutGroup>();
+        GridLayoutGroup gridLayoutGroup = GetComponentInParent<GridLayoutGroup>();
 
         // Calcul de l'espacement entre les blocs
         float totalPaddingX = (columns - 1) * padding;

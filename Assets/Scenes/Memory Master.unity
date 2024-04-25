@@ -547,7 +547,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 613095509}
   m_Father: {fileID: 2135099646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -644,15 +645,15 @@ RectTransform:
   m_GameObject: {fileID: 613095507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 52.54798, y: 52.54798, z: 52.54798}
+  m_LocalScale: {x: 52.547985, y: 52.547985, z: 52.547985}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2135099646}
+  m_Father: {fileID: 466647267}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613095510
 MonoBehaviour:
@@ -834,6 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6170ee0c1c73cf4a81366aab909f21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MenuClip: {fileID: 0}
   difficulty: 85
   hightScore: 0
   life: 3
@@ -1100,7 +1102,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 613095509}
   - {fileID: 195143084}
   - {fileID: 190138864}
   - {fileID: 466647267}
