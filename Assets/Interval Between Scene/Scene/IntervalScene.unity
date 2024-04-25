@@ -914,6 +914,7 @@ MonoBehaviour:
   lifeWin: {fileID: 1376178600, guid: 9dc32605977f0e2459af59e3b71b9529, type: 3}
   lifeLose: {fileID: 1654375912, guid: 9dc32605977f0e2459af59e3b71b9529, type: 3}
   waitingTime: 2
+  wasTraining: 0
 --- !u!1 &846668794
 GameObject:
   m_ObjectHideFlags: 0

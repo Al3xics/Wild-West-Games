@@ -18,6 +18,7 @@ public class AdsManager : MonoBehaviour
     public bool AlreadyWatchedPubs
     {
         get { return alreadyWatchedPubs; }
+        set { alreadyWatchedPubs = value; }
     }
 
 
@@ -188,21 +189,20 @@ public class AdsManager : MonoBehaviour
     public IEnumerator WaitForRewarded()
     {
         IronSource.Agent.loadRewardedVideo();
-        script = GameObject.Find("GameOver").transform.parent.GetComponent<UIIntervalBetweenGames>();
-
+        script = GameObject.Find("GameOver").transform.parent.transform.parent.GetComponent<UIIntervalBetweenGames>();
+        
         while (!IronSource.Agent.isRewardedVideoAvailable())
         {
             yield return null;
         }
-
+        
         IronSource.Agent.showRewardedVideo();
-
+        
         alreadyWatchedPubs = true;
 
         GameManager.Instance.Life++;
-
+        
         script.GameOver.SetActive(false);
-
         script.LoseGame.SetActive(true);
         script.UpdateLife(script.LoseGame);
         script.ShowScore(script.LoseGame);
@@ -233,6 +233,10 @@ public class AdsManager : MonoBehaviour
     // When using server-to-server callbacks, you may ignore this event and wait for the ironSource server callback.
     void RewardedVideoOnAdRewardedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
+        if (script.wasTraining)
+        {
+            GameManager.Instance.isTraining = true;
+        }
         StartCoroutine(script.WaitBeforeLaunchingScene());
     }
     // The rewarded video ad was failed to show.

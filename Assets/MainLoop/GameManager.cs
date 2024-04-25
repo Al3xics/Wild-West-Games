@@ -159,6 +159,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         difficulty = 0;
         hightScore = 0;
+        AdsManager.Instance.AlreadyWatchedPubs = false;
         musicManager.audioSource.clip = MenuClip;
         musicManager.audioSource.Play();
         SceneManager.LoadScene(0);
@@ -188,7 +189,7 @@ public class GameManager : MonoBehaviour
                 _SaveData();
             }
             currentState = State.LoseGame;
-            Debug.Log("loadIntervalfalse");
+            //Debug.Log("loadIntervalfalse");
             SceneManager.LoadScene("IntervalScene");
             return false;
         }
@@ -196,7 +197,7 @@ public class GameManager : MonoBehaviour
             difficulty += 1;
         currentState = State.LoseMiniGame;
         lostprevious = true;
-        Debug.Log("loadIntervaltrue");
+        //Debug.Log("loadIntervaltrue");
         SceneManager.LoadScene("IntervalScene");
         return true;
 

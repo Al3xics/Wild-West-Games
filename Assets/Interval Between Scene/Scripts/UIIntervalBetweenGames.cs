@@ -23,9 +23,8 @@ public class UIIntervalBetweenGames : MonoBehaviour
 
     private GameManager gameManager;
     private AdsManager adsManager;
-    private bool lostPreviousRound = false;
 
-
+    public bool wasTraining;
     public GameObject GameOver => gameOver;
     public GameObject LoseGame => loseGame;
     public GameObject WinGame => winGame;
@@ -70,6 +69,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 gameOver.SetActive(true);
                 UpdateLife(gameOver);
                 ShowScore(gameOver);
+                wasTraining = GameManager.Instance.isTraining;
                 GameManager.Instance.isTraining = false;
                 CanWeWatchRewarded();
                 break;
@@ -136,8 +136,6 @@ public class UIIntervalBetweenGames : MonoBehaviour
                 }
             }
         }
-
-        lostPreviousRound = (life < gameManager.Life);
     }
 
     // Afficher le score
@@ -168,7 +166,7 @@ public class UIIntervalBetweenGames : MonoBehaviour
     public IEnumerator WaitBeforeLaunchingScene()
     {
         yield return new WaitForSeconds(waitingTime);
-
+        
         adsManager.HideBanner();
 
         gameManager.LoadNextMiniGame();
