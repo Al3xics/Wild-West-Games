@@ -1003,14 +1003,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4496907231207423256, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_BlockingObjects
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4496907231207423256, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 5087178000776032111, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1021,26 +1013,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087178000776032111, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6447538915659363717, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1764216076}
-    - target: {fileID: 6447538915659363717, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6447538915659363717, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6447538915659363717, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_PlaneDistance
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6447538915659363717, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7912948243777213019, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
