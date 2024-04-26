@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Memory : MonoBehaviour
 {
     [SerializeField] private List<Sprite> listItem = new List<Sprite>();
-    private List<string> listFound = new List<string>();
+    [SerializeField] private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
     private GameObject[,] blocs;
     private int returnCard = 0;
@@ -76,7 +76,7 @@ public class Memory : MonoBehaviour
         float blockSize = 1.0f; // Taille d'un bloc
         float padding = 0.5f; // Espacement entre les blocs
 
-        GridLayoutGroup gridLayoutGroup = GetComponentInParent<GridLayoutGroup>();
+        GridLayoutGroup gridLayoutGroup = this.GetComponent<GridLayoutGroup>();
 
         // Calcul de l'espacement entre les blocs
         float totalPaddingX = (columns - 1) * padding;
@@ -141,12 +141,12 @@ public class Memory : MonoBehaviour
                     if (firstCard.GetComponentInChildren<SpriteRenderer>().sprite.name == secondCard.GetComponentInChildren<SpriteRenderer>().sprite.name)
                     {
                         FoundPair(firstCard, secondCard);
-                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Validation);
+                        //SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Validation);
                     }
                     else
                     {
                         StartCoroutine(DisableSpritesWithDelay(firstSprite, secondSprite));
-                        SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Fail);
+                        ///SFXManager.Instance.Audio.PlayOneShot(SFXManager.Instance.Fail);
                     }
                     returnCard = 0;
 

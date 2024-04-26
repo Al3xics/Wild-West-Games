@@ -123,6 +123,58 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36210370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36210372}
+  - component: {fileID: 36210371}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36210371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36210370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6170ee0c1c73cf4a81366aab909f21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MenuClip: {fileID: 0}
+  lostprevious: 0
+  difficulty: 100
+  hightScore: 0
+  life: 0
+  isTraining: 0
+  miniGameTrain: 
+  gamesName: []
+--- !u!4 &36210372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36210370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 180.38788, y: 283.4006, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &62333057
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +444,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 74.95
+  m_fontSize: 75
   m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -535,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &466647267
 RectTransform:
   m_ObjectHideFlags: 0
@@ -547,8 +599,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 613095509}
+  m_Children: []
   m_Father: {fileID: 2135099646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -629,6 +680,7 @@ GameObject:
   - component: {fileID: 613095509}
   - component: {fileID: 613095511}
   - component: {fileID: 613095510}
+  - component: {fileID: 613095512}
   m_Layer: 0
   m_Name: Grid (1)
   m_TagString: Untagged
@@ -648,12 +700,12 @@ RectTransform:
   m_LocalScale: {x: 52.547985, y: 52.547985, z: 52.547985}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 466647267}
+  m_Father: {fileID: 2135099646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &613095510
 MonoBehaviour:
@@ -692,7 +744,32 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4c1e2ad71d562754185d221dfe48207d, type: 3}
   - {fileID: 21300000, guid: 3b40ffb1cc02f4041a87382b9c6b9100, type: 3}
   - {fileID: 21300000, guid: 33c0ea19cecf1b94188ab14603b09532, type: 3}
+  listFound: []
   Cube: {fileID: 5866749116756521214, guid: 29a2179f2bffd89429e5b48fa695c01a, type: 3}
+--- !u!114 &613095512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613095507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 1, y: 1}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!114 &801410532 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8550793208913942002, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
@@ -1054,6 +1131,7 @@ RectTransform:
   - {fileID: 195143084}
   - {fileID: 190138864}
   - {fileID: 466647267}
+  - {fileID: 613095509}
   m_Father: {fileID: 1023304227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1108,3 +1186,4 @@ SceneRoots:
   - {fileID: 62333060}
   - {fileID: 1945684108}
   - {fileID: 104641497}
+  - {fileID: 36210372}
