@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Difference_LM : MonoBehaviour
 {
-    [SerializeField] float timeLimit = 8f;
+    [SerializeField] float timeLimit = 8.0f;
     [SerializeField] Timer tm;
     [SerializeField] private Instanciate_Button myInstanciateGame_S;
 
@@ -24,12 +24,12 @@ public class Difference_LM : MonoBehaviour
         {
             myInstanciateGame_S.Make_Game(difficultyLevel + 2);
 
-            timeLimit -= difficultyLevel - 3;
+            timeLimit -= difficultyLevel - 4;
         }
         else
         {
             myInstanciateGame_S.Make_Game(difficultyLevel);
-            timeLimit = 5.0f;
+            timeLimit = 3.0f;
         }
         tm.SetValues(timeLimit);
     }

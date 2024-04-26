@@ -82,7 +82,7 @@ public class Pompe_LM : MonoBehaviour
             diviseur = 1f / numberOfClickTotalToWin;
             numberOfClickPompe = numberOfClickTotalToWin / 2;
             numberOfClickRemplis = numberOfClickTotalToWin;
-            timeLimit = 4.0f;
+            timeLimit = 5.0f;
         }
 
         tm.SetValues(timeLimit);
