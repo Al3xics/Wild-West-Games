@@ -13,21 +13,24 @@ public class EnleverPubsLevelManager : MonoBehaviour
     [SerializeField] private Timer tm;
     [SerializeField] private GameObject UIRoot;
     private List<GameObject> pubsList = new();
-    private int difficultyLevel = 1;
+    [SerializeField] private int difficultyLevel = 1;
     private int numberOfPubs = 1;
 
-    private void Awake()
-    {
-        tm.SetValues(timerDuration);
-    }
+   
     void Start()
     {
         pubsList.Clear();
 
-        float currentDifficultyLevel = GameManager.Instance.Difficulty / 2;
+        float currentDifficultyLevel = GameManager.Instance.Difficulty / 3;
         difficultyLevel = Mathf.RoundToInt(currentDifficultyLevel);
         if (difficultyLevel < 1) difficultyLevel = 1;
 
+        if(difficultyLevel >= 18)
+        {
+            float timemodif = (difficultyLevel-17) * 0.3f;
+            timerDuration -= timemodif;
+        }
+        tm.SetValues(timerDuration);
         numberOfPubs *= difficultyLevel;
         CreatePubs();
     }
