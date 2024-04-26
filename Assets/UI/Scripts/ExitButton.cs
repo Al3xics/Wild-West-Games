@@ -5,10 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class ExitButton : MonoBehaviour
 {
+    public static ExitButton Instance;
+
     private void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+
+            Destroy(gameObject);
+        }
     }
+
     public void ExitGame()
     {
         GameManager.Instance.RestartGame();

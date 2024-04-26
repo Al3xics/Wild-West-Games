@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         score += 1;
         currentState = State.WinMiniGame;
         if (difficulty < 100)
-            difficulty += 1;
+            difficulty += 5;
         lostprevious = false;
         SceneManager.LoadScene("IntervalScene");
     }
@@ -156,6 +156,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         difficulty = 0;
         hightScore = 0;
+        isTraining = false;
         AdsManager.Instance.AlreadyWatchedPubs = false;
         musicManager.audioSource.clip = MenuClip;
         musicManager.audioSource.Play();
@@ -190,7 +191,7 @@ public class GameManager : MonoBehaviour
             return false;
         }
         if (difficulty < 100)
-            difficulty += 1;
+            difficulty += 5;
         currentState = State.LoseMiniGame;
         lostprevious = true;
         SceneManager.LoadScene("IntervalScene");

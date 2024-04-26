@@ -22,7 +22,7 @@ EditorBuildSettings:
     guid: c4f7aad411ba9b748804935adb158ff5
   - enabled: 1
     path: Assets/Scenes/Liquid Leak.unity
-    guid: b50c429cbb629f94a93ee65c703876c4
+    guid: 9a55ba381938559499c0cbd83078fb2a
   - enabled: 1
     path: Assets/Scenes/Memory Master.unity
     guid: 0143d071d4e0de24399fd9485eb137d1
@@ -41,10 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Interval Between Scene/Scene/IntervalScene.unity
     guid: fff2d294b1daf2346a61e51a3b05023b
-  - enabled: 0
-    path: Assets/Water/Liquide.unity
-    guid: fe1153963ee45c643ba8696f7dc16649
   m_configObjects:
-    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 46fcc4f17a779c54689bae371d32cb66, type: 2}
-    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: d044bebfb3279a5458fdcfff2947c37c, type: 2}
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: c178f35ff80ebbb429435874c83572a9, type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 6673826085ad97c4a9141f89b2312a71, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: b8492375cf809ee478c32a862986299e, type: 2}
