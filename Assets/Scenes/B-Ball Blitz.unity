@@ -593,7 +593,7 @@ MonoBehaviour:
   power: 400
   timer: 15
   tm: {fileID: 415345318}
-  BinPostionVariableX: 2
+  BinPostionVariableX: 1.5
   BinPostionVariableZ: 3
 --- !u!4 &1516812408
 Transform:
