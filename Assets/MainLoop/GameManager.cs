@@ -146,6 +146,8 @@ public class GameManager : MonoBehaviour
         currentState = State.WinMiniGame;
         if (difficulty < 100)
             difficulty += 5;
+        if (difficulty > 100)
+            difficulty = 100;
         lostprevious = false;
         SceneManager.LoadScene("IntervalScene");
     }
@@ -192,6 +194,8 @@ public class GameManager : MonoBehaviour
         }
         if (difficulty < 100)
             difficulty += 5;
+        if(difficulty>100)
+            difficulty = 100;
         currentState = State.LoseMiniGame;
         lostprevious = true;
         SceneManager.LoadScene("IntervalScene");
