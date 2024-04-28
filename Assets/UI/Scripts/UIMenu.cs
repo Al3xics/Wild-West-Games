@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UIMenu : MonoBehaviour
@@ -25,6 +26,9 @@ public class UIMenu : MonoBehaviour
         musicManager = MusicManager.Instance;
         adsManager.LaunchBanner();
         adsManager.HideBanner();
+
+        MusicManager.Instance.LinkMusicToSliderListener();
+        SFXManager.Instance.LinkSFXToSliderListener();
     }
 
     public void PlayGameButton()

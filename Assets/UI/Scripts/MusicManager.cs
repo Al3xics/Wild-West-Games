@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -9,61 +10,71 @@ public class MusicManager : MonoBehaviour
 {
     public static MusicManager Instance;
 
-    [SerializeField] private GameObject musicSlider;
-    [SerializeField] private TMP_Text musicSliderText;
-    public AudioSource audioSource;
-    private Slider slider;
+    [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public TMP_Text musicSliderText;
+    [HideInInspector] public Slider musicSlider;
 
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        slider = musicSlider.GetComponent<Slider>();
-
         if (Instance == null)
         {
             Instance = this;
+            Instance.audioSource = GetComponent<AudioSource>();
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Instance.musicSlider = musicSlider;
-            Instance.musicSliderText = musicSliderText;
-            slider = musicSlider.GetComponent<Slider>();
             Destroy(gameObject);
         }
+    }
+
+    public void LinkMusicToSliderListener()
+    {
+        musicSlider = GameObject.Find("Canvas/Panel/Settings/Music").GetComponent<Slider>();
+        musicSliderText = GameObject.Find("Canvas/Panel/Settings/Music/Handle Slide Area/Handle/Number").GetComponent<TMP_Text>();
 
         if (PlayerPrefs.HasKey("MusicVolume"))
         {
             float volume = PlayerPrefs.GetFloat("MusicVolume");
-            audioSource.volume = volume;
-            slider.value = volume * slider.maxValue;
+            Instance.audioSource.volume = volume;
+            musicSlider.value = volume * musicSlider.maxValue;
+
+            string number = PlayerPrefs.GetString("MusicSliderText");
+            musicSliderText.text = number;
         }
         else
         {
-            slider.value = slider.maxValue / 2;
-            audioSource.volume = slider.maxValue / slider.maxValue / 2;
+            musicSlider.value = musicSlider.maxValue / 2;
+            Instance.audioSource.volume = musicSlider.maxValue / musicSlider.maxValue / 2;
+
+            musicSliderText.text = musicSlider.value.ToString();
         }
+
+        musicSlider.onValueChanged.AddListener(SetTextSlider);
+        musicSlider.onValueChanged.AddListener(MusicVolume);
     }
 
-    public void MusicVolume()
+    public void MusicVolume(float val)
     {
-        float normalizedValue = slider.value / slider.maxValue;
+        float normalizedValue = musicSlider.value / musicSlider.maxValue;
 
         if (normalizedValue == 0)
         {
-            audioSource.mute = true;
+            Instance.audioSource.mute = true;
         }
         else
         {
-            audioSource.mute = false;
-            audioSource.volume = normalizedValue;
+            Instance.audioSource.mute = false;
+            Instance.audioSource.volume = normalizedValue;
         }
 
         PlayerPrefs.SetFloat("MusicVolume", normalizedValue);
     }
 
-    public void SetTextSlider()
+    public void SetTextSlider(float val)
     {
-        musicSliderText.text = slider.value.ToString();
+        musicSliderText.text = musicSlider.value.ToString();
+
+        PlayerPrefs.SetString("MusicSliderText", musicSliderText.text);
     }
 }

@@ -411,9 +411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1475ddec2f6b28641a41f25b5023f0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 349614384}
-  musicSliderText: {fileID: 902658613}
   audioSource: {fileID: 0}
+  musicSliderText: {fileID: 0}
+  musicSlider: {fileID: 0}
 --- !u!1 &176648526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,31 +1531,7 @@ MonoBehaviour:
   m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 170555085}
-        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
-        m_MethodName: MusicVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 170555085}
-        m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
-        m_MethodName: SetTextSlider
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &352142427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4961,8 +4937,6 @@ MonoBehaviour:
   WinSequence: {fileID: 8300000, guid: 47fc9f0ce33f1ba4e95be5081b21d482, type: 3}
   LoseSequence: {fileID: 8300000, guid: 74bd36f48cab0f84aae15822cb6fa720, type: 3}
   GameOverSequence: {fileID: 8300000, guid: 88adc78180cb10a4d980347a54e85452, type: 3}
-  sfxSlider: {fileID: 2052177825}
-  sfxSliderText: {fileID: 1809183022}
 --- !u!1 &1219994201
 GameObject:
   m_ObjectHideFlags: 0
@@ -5175,7 +5149,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1237356599}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7364,7 +7338,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70.55
+  m_fontSize: 70.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7492,7 +7466,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 2012826867}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7679,31 +7653,7 @@ MonoBehaviour:
   m_Value: 50
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1218170679}
-        m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
-        m_MethodName: SFXVolume
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1218170679}
-        m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
-        m_MethodName: SetTextSlider
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2065602796
 GameObject:
   m_ObjectHideFlags: 0
