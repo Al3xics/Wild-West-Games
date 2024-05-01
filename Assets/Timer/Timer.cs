@@ -21,7 +21,7 @@ public class Timer : MonoBehaviour
         if (cd)
         {
             cd = false;
-            StartCoroutine(Timing(0.5f));
+            StartCoroutine(Timing(0.01f));
         }
     }
 
@@ -38,7 +38,7 @@ public class Timer : MonoBehaviour
 
     private IEnumerator Timing(float waitTime)
     {
-        Time -= 0.5f;
+        Time -= 0.01f;
         yield return new WaitForSeconds(waitTime);
         cd = true;
     }
