@@ -2536,58 +2536,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1046483430385843500, guid: de606dfab3cd6a741a73452e634b2bd8, type: 3}
   m_PrefabInstance: {fileID: 757074016}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &195997750
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 195997752}
-  - component: {fileID: 195997751}
-  m_Layer: 0
-  m_Name: Game Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &195997751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195997750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6170ee0c1c73cf4a81366aab909f21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MenuClip: {fileID: 0}
-  lostprevious: 0
-  difficulty: 100
-  hightScore: 0
-  life: 3
-  isTraining: 0
-  miniGameTrain: 
-  gamesName: []
---- !u!4 &195997752
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195997750}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6191559, y: 0.20394579, z: 0.16404818}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &198253727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1046483430385843500, guid: de606dfab3cd6a741a73452e634b2bd8, type: 3}
@@ -26344,4 +26292,3 @@ SceneRoots:
   - {fileID: 871950407}
   - {fileID: 802437176}
   - {fileID: 962696899}
-  - {fileID: 195997752}
