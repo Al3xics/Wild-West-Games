@@ -18,7 +18,7 @@ public class DestroyWater : MonoBehaviour
         Vector3 maxBound = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, mainCamera.nearClipPlane));
 
         // Vérifier si un objet sort des limites de la caméra
-        foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Ball"))
         {
             if (obj.transform.position.x < minBound.x || obj.transform.position.x > maxBound.x ||
                 obj.transform.position.y < minBound.y || obj.transform.position.y > maxBound.y)
