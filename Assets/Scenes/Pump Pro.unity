@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLimit: 11
-  tm: {fileID: 1145471383}
+  tm: {fileID: 8550793208655453109}
   difficultyLevel: 4
   numberOfClickTotalToWin: 0
   numberOfClickPompe: 0
@@ -874,17 +874,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059284983}
   m_CullTransparentMesh: 1
---- !u!114 &1145471383 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8550793208913942002, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
-  m_PrefabInstance: {fileID: 278416967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bcd7fe21e585eb4b896313aa3db76ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1153737036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,6 +1188,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8550793208655453109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8550793208913942002, guid: 08a8c5281a0fffa449d10333bdac43c0, type: 3}
+  m_PrefabInstance: {fileID: 278416967}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bcd7fe21e585eb4b896313aa3db76ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
