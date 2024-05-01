@@ -430,7 +430,7 @@
                 "m_Node": {
                     "m_Id": "87ba7d0de4c44c8fad4661bbcb87ea4d"
                 },
-                "m_SlotId": 4
+                "m_SlotId": 3
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -2447,7 +2447,7 @@
         "m_Id": "b05791905e8644bb948745dce0178fa1"
     },
     "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_SurfaceType": 1,
     "m_ZWriteControl": 0,
     "m_ZTestMode": 4,
     "m_AlphaMode": 0,
