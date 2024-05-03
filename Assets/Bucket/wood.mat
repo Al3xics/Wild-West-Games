@@ -40,10 +40,13 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _X: 0.9
+    - _X: 0.95
     - _Y: 0.5
     m_Colors:
+    - _Color_1: {r: 0, g: 0, b: 0, a: 0}
+    - _Color_2: {r: 0.15667494, g: 0.509434, b: 0.20444442, a: 0}
+    - _Color_3: {r: 0.3500391, g: 0.8792453, b: 0.4768737, a: 0}
     - _aaaaa: {r: 100, g: 1000, b: 0, a: 0}
-    - _till: {r: 100, g: 662.3, b: 0, a: 0}
+    - _till: {r: 25, g: 100, b: 0, a: 0}
     - _till2: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
