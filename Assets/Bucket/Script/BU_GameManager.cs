@@ -44,11 +44,13 @@ public class BU_GameManager : MonoBehaviour
 
         Gizmos.DrawSphere(BinPlacement.position, 0.05f);
         //draw square for every point in front of bin placement that are +3 x max and +2 z max
-        Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x + BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z));
-        Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ), new Vector3(BinPlacement.position.x + BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ));
-        Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x- BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+BinPostionVariableZ));
-        Gizmos.DrawLine(new Vector3(BinPlacement.position.x+ BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x+ BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+BinPostionVariableZ));
+        //Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x + BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z));
+        //Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x- BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+BinPostionVariableZ));
+        //Gizmos.DrawLine(new Vector3(BinPlacement.position.x+ BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x+ BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+BinPostionVariableZ));
         
+        Gizmos.DrawLine(new Vector3(BinPlacement.position.x-BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ), new Vector3(BinPlacement.position.x + BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ));
+        Gizmos.DrawLine(new Vector3(BinPlacement.position.x, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x + BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ));
+        Gizmos.DrawLine(new Vector3(BinPlacement.position.x, BinPlacement.position.y, BinPlacement.position.z), new Vector3(BinPlacement.position.x - BinPostionVariableX, BinPlacement.position.y, BinPlacement.position.z+ BinPostionVariableZ));
         
         
 
@@ -92,16 +94,17 @@ public class BU_GameManager : MonoBehaviour
             ballsIndicator[i].GetComponent<Rigidbody>().isKinematic = true;
         }
 
-
-        float xx = UnityEngine.Random.Range(
-            BinPlacement.position.x - Mathf.Lerp(0.0f, BinPostionVariableX, GameManager.Instance.Difficulty / 100),
-            BinPlacement.position.x + Mathf.Lerp(0.0f, BinPostionVariableX, GameManager.Instance.Difficulty / 100)
-            );
-
         float zz = UnityEngine.Random.Range(BinPlacement.position.z, BinPlacement.position.z + Mathf.Lerp(0.0f, BinPostionVariableZ, GameManager.Instance.Difficulty / 100));
 
-        Instantiate(BinPrefab, new Vector3(xx, BinPlacement.position.y, zz), Quaternion.identity);
+        float xRelativeToZ = Mathf.Lerp(0.0f, BinPostionVariableX, (zz - BinPlacement.position.z) / BinPostionVariableZ);
 
+        float xx = UnityEngine.Random.Range(
+            BinPlacement.position.x - Mathf.Lerp(0.0f, xRelativeToZ, GameManager.Instance.Difficulty / 100),
+            BinPlacement.position.x + Mathf.Lerp(0.0f, xRelativeToZ, GameManager.Instance.Difficulty / 100)
+            );
+
+
+        Instantiate(BinPrefab, new Vector3(xx, BinPlacement.position.y, zz), Quaternion.identity);
         CanThrow = true;
         missed = ballCount;
 
