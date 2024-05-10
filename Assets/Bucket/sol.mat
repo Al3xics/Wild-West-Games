@@ -40,7 +40,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Float: -5.18
+    - _Float: 0
     - _var1: 10
     - _var2: 100
     m_Colors:
