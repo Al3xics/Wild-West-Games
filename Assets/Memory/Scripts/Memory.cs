@@ -9,6 +9,8 @@ public class Memory : MonoBehaviour
     [SerializeField] private List<Sprite> listItem = new List<Sprite>();
     [SerializeField] private List<string> listFound = new List<string>();
     [SerializeField] private GameObject Cube;
+    [SerializeField] private float blockSize = 1.0f;
+    [SerializeField] private float padding = 0.2f;
     private GameObject[,] blocs;
     private int returnCard = 0;
     private GameObject firstCard, secondCard;
@@ -25,6 +27,7 @@ public class Memory : MonoBehaviour
             InitGame();
         }
     }
+
     private void InitGame()
     {
         int rowsI = MemoryLvlManager.instance.Rows;
@@ -35,46 +38,10 @@ public class Memory : MonoBehaviour
         Shuffle();
     }
 
-    /*void GetCameraSize()
-    {
-        // Trouver la taille de l'écran
-        Vector2 screenSize = new Vector2(Screen.width, Screen.height);
-
-        // Convertir la taille de l'écran en coordonnées du monde
-        Vector3 screenToWorld = mainCamera.ScreenToWorldPoint(screenSize);
-
-        cameraHeight = Mathf.Abs(screenToWorld.x) * 2;
-        cameraWidth = Mathf.Abs(screenToWorld.y) * 2;
-    }
-
     private void GenerateGrid()
     {
         int rows = MemoryLvlManager.instance.Rows;
         int columns = MemoryLvlManager.instance.Columns;
-
-        float offsetX = cameraWidth / columns;
-        float offsetY = cameraHeight / rows;
-        float startX = -cameraWidth / 2 + offsetX / 2;
-        float startY = -cameraHeight / 2 + offsetY / 2 - .25f;
-
-
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < columns; j++)
-            {
-                GameObject newBlock = Instantiate(Cube); // Utilisez votre prefab ici 
-                newBlock.transform.position = new Vector3(startX + j * offsetX, startY + i * offsetY + 0.2f, 0);
-                blocs[i, j] = newBlock;
-            }
-        }
-    }*/
-    private void GenerateGrid()
-    {
-        int rows = MemoryLvlManager.instance.Rows;
-        int columns = MemoryLvlManager.instance.Columns;
-
-        float blockSize = 1.0f; // Taille d'un bloc
-        float padding = 0.5f; // Espacement entre les blocs
 
         GridLayoutGroup gridLayoutGroup = this.GetComponent<GridLayoutGroup>();
 
